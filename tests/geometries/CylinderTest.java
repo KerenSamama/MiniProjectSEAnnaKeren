@@ -43,6 +43,7 @@ class CylinderTest {
      // tc4 BDA p4 centre du cercle du haut
 
         Vector expectedNormal4=dir;
+        //
         Vector normal4 = cylinder.getNormal(p4);
 
         assertEquals(normal4, expectedNormal4, "ERROR: Not the same : getNormal() wrong result");
