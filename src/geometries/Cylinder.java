@@ -4,6 +4,9 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 /**
  * Cylinder class is the basic class representing a cylinder in 3D Cartesian coordinate system
  * Cylinder is a finished tube, cylinder class inherits from tube class
@@ -38,7 +41,25 @@ public class Cylinder extends Tube{
 
     @Override
     public Vector getNormal(Point3D point) {
-        return super.getNormal(point);
+        Point3D P0 = _axisRay.getP0();
+        Vector v = _axisRay.getDir();
+
+
+        Vector P0_P = point.subtract(P0);
+
+        double t = alignZero(P0_P.dotProduct(v));
+        if (isZero(t)||t==_height) {
+            return v.normalize();
+        }
+        else
+        {
+            Point3D O = P0.add(v.scale(t));
+            Vector O_P = point.subtract(O);
+            return O_P.normalize();
+        }
+
+
+
     }
 
     @Override
