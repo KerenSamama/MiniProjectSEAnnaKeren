@@ -3,16 +3,9 @@ package geometries;
 import primitives.Point3D;
 import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
-/**
- * Unit tests for primitives.Vector class
- * @author Dan
- */
 
 class TriangleTest {
 
-    /**
-     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
-     */
 
     public void testGetNormal()
     {

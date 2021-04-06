@@ -11,7 +11,10 @@ class TubeTest {
 
     @Test
     void testGetNormal() {
-        //EP
+
+        // ============ Equivalence Partitions Tests ==============
+        // TCO1 EP
+
         Point3D p0= new Point3D(0,0,10);
         Point3D p= new Point3D(0,10,30);
         Point3D pE= new Point3D(0,10,10);
@@ -26,7 +29,9 @@ class TubeTest {
         Vector normal = tube.getNormal(p);
         assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
 
-        //bda
+        // =============== Boundary Values Tests ==================
+        // TC10 BDA
+
         double t2= dir.dotProduct(pE.subtract(p0));
         Vector expectedNormal2=(pE.subtract(p0)).normalize();
         Vector normal2 = tube.getNormal(pE);
