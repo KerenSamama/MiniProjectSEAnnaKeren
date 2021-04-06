@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlaneTest {
 
     @Test
+        // ============ Equivalence Partitions Tests ==============
+
+        // TCO1 EP : Any Point on the plane, there is a simple single test here
     void testGetNormal() {
         Point3D p1 = new Point3D(0, 1, 1);
         Point3D p2 = new Point3D(1, 0, 1);
@@ -27,13 +30,13 @@ class PlaneTest {
     }
     @Test
     public void testConstructor() {
-        // TC11: First point = Second point
+        // TC10: First point = Second point
         assertThrows(
 
                 IllegalArgumentException.class,
                 () -> new Plane(new Point3D(0, 1, 1), new Point3D(0, 1, 1), new Point3D(1, 1, 1)), "ERROR : first and second point are the same");
 
-        // TC12: Collocated points
+        // TC11: Collocated points
         assertThrows(
 
                 IllegalArgumentException.class,

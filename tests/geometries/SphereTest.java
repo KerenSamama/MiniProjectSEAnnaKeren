@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SphereTest {
 
+    // ============ Equivalence Partitions Tests ==============
+    // TCO1 EP : Any Point on Sphere, there is a simple single test here
     @Test
     void testGetNormal() {
         Point3D o=new Point3D(0,4,2);

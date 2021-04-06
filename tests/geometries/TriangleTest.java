@@ -3,21 +3,14 @@ package geometries;
 import primitives.Point3D;
 import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
-/**
- * Unit tests for primitives.Triangle class
- * @author Anna Keren
- */
 
 class TriangleTest {
 
-    /**
-     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
-     */
 
     public void testGetNormal()
     {
         // ============ Equivalence Partitions Tests ==============
-        // TC01: Test that Normal is is proper
+        // TC01: There is a simple single test here
 
         Point3D p1=new Point3D(0,1,1);
         Point3D p2=new Point3D(1,0,1);
