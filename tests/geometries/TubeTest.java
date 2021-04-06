@@ -38,7 +38,7 @@ class TubeTest {
         Vector expectedNormal2=(pE.subtract(p0)).normalize();
         Vector normal2 = tube.getNormal(pE);
 
-        // TC11: Test that normal is is proper
+        // TC11: Test that normal is proper
         assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() wrong result");
 
     }
