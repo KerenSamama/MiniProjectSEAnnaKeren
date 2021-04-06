@@ -4,8 +4,8 @@ import primitives.Point3D;
 import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
 /**
- * Unit tests for primitives.Vector class
- * @author Dan
+ * Unit tests for primitives.Triangle class
+ * @author Anna Keren
  */
 
 class TriangleTest {
@@ -17,7 +17,7 @@ class TriangleTest {
     public void testGetNormal()
     {
         // ============ Equivalence Partitions Tests ==============
-        // TC01: There is a simple single test here
+        // TC01: Test that Normal is is proper
 
         Point3D p1=new Point3D(0,1,1);
         Point3D p2=new Point3D(1,0,1);

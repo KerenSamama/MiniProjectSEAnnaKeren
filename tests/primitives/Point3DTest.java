@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
+/**
+ * Unit tests for primitives.Point3D class
+ * @author Anna Keren
+ */
 class Point3DTest {
 
     @Test
@@ -23,7 +27,7 @@ class Point3DTest {
     }
 
     @Test
-    void testTestEquals() { //A DEMANDE
+    void testTestEquals() {
         Point3D p1 = new Point3D(1, 2, 3);
 
     }
