@@ -96,6 +96,18 @@ public class Point3D {
         return "(" + _x + "," + _y + "," + _z + ")";
 
     }
+
+    public double getX() {
+        return _x._coord;
+    }
+
+    public double getY() {
+        return _y._coord;
+    }
+
+    public double getZ() {
+        return _z._coord;
+    }
 }
 
 

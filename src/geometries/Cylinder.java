@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
@@ -11,7 +13,7 @@ import static primitives.Util.isZero;
  * Cylinder class is the basic class representing a cylinder in 3D Cartesian coordinate system
  * Cylinder is a finished tube, cylinder class inherits from tube class
  */
-public class Cylinder extends Tube{
+public class Cylinder extends Tube implements Geometry{
 
     /**
      * cylinder height
@@ -58,8 +60,11 @@ public class Cylinder extends Tube{
             return O_P.normalize();
         }
 
+    }
 
-
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
     }
 
     @Override

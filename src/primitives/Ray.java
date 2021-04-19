@@ -44,7 +44,7 @@ public class Ray {
                 '}';
     }
 
-    public Point3D getPoint() {
-        return  null;
+    public Point3D getPoint(double t) {
+        return  _p0.add(_dir.scale(t));
     }
 }
