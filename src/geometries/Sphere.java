@@ -78,7 +78,12 @@ public class Sphere implements Geometry {
         Point3D O = _center;
         Vector v = ray.getDir();
 
-        Vector u = O.subtract(p0);
+        Vector u;
+        try {
+            u = O.subtract(p0);
+        } catch (IllegalArgumentException e) {
+            return List.of(ray.getPoint(_radius));
+        }
         double tm = v.dotProduct(u);
         double d = Math.sqrt(u.lengthSquared() - tm * tm);
 
