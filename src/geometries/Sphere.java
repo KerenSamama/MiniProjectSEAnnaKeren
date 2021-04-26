@@ -6,6 +6,8 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
+
 /**
  * Sphere class is the basic class representing a sphere in 3D Cartesian coordinate
  * system
@@ -74,6 +76,7 @@ public class Sphere implements Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+
         Point3D p0 = ray.getP0();
         Point3D O = _center;
         Vector v = ray.getDir();
@@ -109,5 +112,6 @@ public class Sphere implements Geometry {
         }
 
         return null;
+
     }
 }
