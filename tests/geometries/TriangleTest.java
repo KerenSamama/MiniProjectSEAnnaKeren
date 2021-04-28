@@ -3,9 +3,7 @@ package geometries;
 import org.junit.jupiter.api.Test;
 import primitives.Point3D;
 import primitives.*;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -30,6 +28,10 @@ class TriangleTest {
         assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
     }
 
+
+    /**
+     * Test method for {@link geometries.Triangle#findIntersections(primitives.Ray)}.
+     */
     @Test
     void testFindIntersections() {
 
@@ -54,13 +56,13 @@ class TriangleTest {
         // TC02: Outside against edge
         Ray ray2 = new Ray(new Point3D(1, 1,  0), new Vector(2, 0, -1));
         List intersectionPoints2 =  tr.findIntersections(ray2);
-        assertEquals(null,intersectionPoints2,"ERROR, there must not be any intersection point");
+        assertNull(intersectionPoints2,"ERROR, there must not be any intersection point");
 
 
         // TC03:Outside against vertex
         Ray ray3 = new Ray(new Point3D(0, 2,  0), new Vector(0, 0, -1));
         List intersectionPoints3 = tr.findIntersections(ray3);
-        assertEquals( null, intersectionPoints3,"ERROR, there must not be any intersection point");
+        assertNull(intersectionPoints3,"ERROR, there must not be any intersection point");
 
 
         // =============== Boundary Values Tests ==================
@@ -69,17 +71,20 @@ class TriangleTest {
         // TC11: On edge ok
         Ray ray4 = new Ray(new Point3D(1, 0,  0), new Vector(0, 1, 0));
         List intersectionPoints4 = tr.findIntersections(ray4);
+        assertNull(intersectionPoints4,"ERROR, there must not be any intersection point");
 
 
 
         // TC12: In vertex
         Ray ray5 = new Ray(new Point3D(1, 1,  0), new Vector(-1, -1, 0));
         List intersectionPoints5 = tr.findIntersections(ray5);
+        assertNull(intersectionPoints5,"ERROR, there must not be any intersection point");
 
 
         // TC13: On edge's continuation
         Ray ray6 = new Ray(new Point3D(-0.5, 2,  0), new Vector(-1, 0, 0));
         List intersectionPoints6 = tr.findIntersections(ray6);
+        assertNull(intersectionPoints6,"ERROR, there must not be any intersection point");
 
     }
 }

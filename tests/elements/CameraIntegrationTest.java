@@ -12,13 +12,12 @@ import primitives.Ray;
 import primitives.Vector;
 
 public class CameraIntegrationTest {
-    Camera cam1;
-    Camera cam2;
 
-    public CameraIntegrationTest() {
-        this.cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
-        this.cam2 = new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D));
-    }
+        Camera cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D),
+                new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        Camera cam2 = new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D),
+                new Vector(0.0D, -1.0D, 0.0D)).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);;
+
 
     @Test
     void constructRayThroughPixelWithSphere1() {
@@ -40,15 +39,15 @@ public class CameraIntegrationTest {
         System.out.println("count:" + count);
     }
 
+    @Test
     public void cameraRaySphereIntegrationTest2() {
-        Camera cam = (new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
         Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.5D), 2.5D);
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 3; ++j) {
-                intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
+                intersections = sphere.findIntersections(cam2.constructRayThroughPixel(3, 3, j, i));
                 if (intersections != null) {
                     count += ((List)intersections).size();
                 }
@@ -63,14 +62,13 @@ public class CameraIntegrationTest {
 
     @Test
     public void cameraRaySphereIntegrationTest3() {
-        Camera cam = (new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
         Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.0D), 2.0D);
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 3; ++j) {
-                intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
+                intersections = sphere.findIntersections(cam2.constructRayThroughPixel(3, 3, j, i));
                 if (intersections != null) {
                     count += ((List)intersections).size();
                 }
@@ -107,14 +105,13 @@ public class CameraIntegrationTest {
 
     @Test
     public void cameraRaySphereIntegrationTest5() {
-        Camera cam = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
         Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, -1.0D), 0.5D);
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 3; ++j) {
-                intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
+                intersections = sphere.findIntersections(cam1.constructRayThroughPixel(3, 3, j, i));
                 if (intersections != null) {
                     count += ((List)intersections).size();
                 }
@@ -127,6 +124,7 @@ public class CameraIntegrationTest {
 
     }
 
+    @Test
     public void constructRayThroughPixelWithPlane1() {
         Plane plane = new Plane(new Point3D(0.0D, 0.0D, 1.25D), new Vector(0.0D, 0.0D, 1.0D));
         int count = 0;
@@ -135,7 +133,7 @@ public class CameraIntegrationTest {
 
         for(int i = 0; i < Ny; ++i) {
             for(int j = 0; j < Nx; ++j) {
-                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
                 List<Point3D> results = plane.findIntersections(ray);
                 if (results != null) {
                     count += results.size();
@@ -156,7 +154,7 @@ public class CameraIntegrationTest {
 
         for(int i = 0; i < Ny; ++i) {
             for(int j = 0; j < Nx; ++j) {
-                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
                 List<Point3D> results = plane.findIntersections(ray);
                 if (results != null) {
                     count += results.size();
@@ -177,7 +175,7 @@ public class CameraIntegrationTest {
 
         for(int i = 0; i < Ny; ++i) {
             for(int j = 0; j < Nx; ++j) {
-                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
                 List<Point3D> results = plane.findIntersections(ray);
                 if (results != null) {
                     count += results.size();
@@ -189,9 +187,9 @@ public class CameraIntegrationTest {
         System.out.println("count: " + count);
     }
 
+    @Test
     public void constructRayThroughPixelWithTriangle1() {
         Triangle triangle = new Triangle(new Point3D(0.0D, -1.0D, 2.0D), new Point3D(1.0D, 1.0D, 2.0D), new Point3D(-1.0D, 1.0D, 2.0D));
-        Camera cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
         int count = 0;
         int Nx = 3;
         int Ny = 3;
@@ -213,7 +211,6 @@ public class CameraIntegrationTest {
     @Test
     public void constructRayThroughPixelWithTriangle2() {
         Triangle triangle = new Triangle(new Point3D(1.0D, 1.0D, 2.0D), new Point3D(-1.0D, 1.0D, 2.0D), new Point3D(0.0D, -20.0D, 2.0D));
-        Camera cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
         int count = 0;
         int Nx = 3;
         int Ny = 3;

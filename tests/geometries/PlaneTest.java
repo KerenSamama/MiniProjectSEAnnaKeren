@@ -47,6 +47,10 @@ class PlaneTest {
                 () -> new Plane(new Point3D(1, 0, 0), new Point3D(2, 0, 0), new Point3D(3, 0, 0)), "ERROR : all of points are on the same line");
     }
 
+
+    /**
+     * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}.
+     */
     @Test
     void testFindIntersections() {
 
@@ -61,9 +65,9 @@ class PlaneTest {
 
 
         // TC02: Ray does not intersect the plane
-       Ray ray2 = new Ray(new Point3D(-1, -2, 0), new Vector(-1, -2, 0));
+        Ray ray2 = new Ray(new Point3D(-1, -2, 0), new Vector(-1, -2, 0));
         List<Point3D> intersectionPoints2 = plane.findIntersections(ray2);
-        assertEquals(null, intersectionPoints2, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints2, "ERROR, Ray does not intersect the plane");
 
 
         // =============== Boundary Values Tests ==================
@@ -72,12 +76,12 @@ class PlaneTest {
         // TC11: The ray included in the plane
         Ray ray3 = new Ray(new Point3D(1, 0, 0), new Vector(0, 0, 2));
         List intersectionPoints3 = plane.findIntersections(ray3);
-        assertEquals(null, intersectionPoints3, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints3, "ERROR, Ray does not intersect the plane");
 
         // TC12: The ray not included in the plane
         Ray ray4 = new Ray(new Point3D(-1, 1, 0), new Vector(-2, 2, 0));
         List intersectionPoints4 = plane.findIntersections(ray4);
-        assertEquals(null, intersectionPoints4, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints4, "ERROR, Ray does not intersect the plane");
 
 
         // **** Group:  Ray is orthogonal to the plane
@@ -91,25 +95,25 @@ class PlaneTest {
         // TC14: P0 in the plane
         Ray ray6 = new Ray(new Point3D(0.5, 0.5, 0), new Vector(-1, -1, 0));
         List intersectionPoints6 = plane.findIntersections(ray6);
-        assertEquals(null, intersectionPoints6, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints6, "ERROR, Ray does not intersect the plane");
 
 
         // TC15: P0 after the plane
         Ray ray5 = new Ray(new Point3D(0.25, 0.25, 0), new Vector(-1, -1, 0));
         List intersectionPoints5 = plane.findIntersections(ray5);
-        assertEquals(null, intersectionPoints5, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints5, "ERROR, Ray does not intersect the plane");
 
         // **** Group: Ray is neither orthogonal nor parallel to the plane
         //  TC16: Ray begins at the plane,P0 is in the plane but not the ray
         Ray ray8 = new Ray(new Point3D(1,0 ,0 ), new Vector(1.5, 1, 0));
         List intersectionPoints8 = plane.findIntersections(ray8);
-        assertEquals(null, intersectionPoints8, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints8, "ERROR, Ray does not intersect the plane");
 
 
         // TC17: Ray begins at q0
         Ray ray9 = new Ray(new Point3D(0.5, 0.5, 0), new Vector(1.5, 1, 0));
         List intersectionPoints9 = plane.findIntersections(ray9);
-        assertEquals(null, intersectionPoints9, "ERROR, Ray does not intersect the plane");
+        assertNull(intersectionPoints9, "ERROR, Ray does not intersect the plane");
 
     }
 }
