@@ -44,6 +44,12 @@ public class Ray {
                 '}';
     }
 
+
+    /**
+     * Refactoring : to calculate a point on a ray
+     * @param t : the distance from the beginning point p0
+     * @return : the point who is on the ray with a distance t from p0
+     */
     public Point3D getPoint(double t) {
         return  _p0.add(_dir.scale(t));
     }

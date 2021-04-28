@@ -74,40 +74,45 @@ public class Sphere implements Geometry {
         return O_P.normalize();
     }
 
+
+    /**
+     * This function helps to find the intersections between a ray and a sphere.
+     * @param ray
+     * @return a list of intersection points or null
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
 
-        Point3D p0 = ray.getP0();
-        Point3D O = _center;
-        Vector v = ray.getDir();
+        Point3D p0 = ray.getP0(); // beginning point of the ray
+        Vector v = ray.getDir();  // vector direction of the ray
+        Point3D O = _center;      // center of the sphere
 
         Vector u;
         try {
-            u = O.subtract(p0);
-        } catch (IllegalArgumentException e) {
-            return List.of(ray.getPoint(_radius));
+            u = O.subtract(p0); // vector from p0 to the center
+        } catch (IllegalArgumentException e) {  // if p0=center, the vector u is the vector ZERO so exception
+            return List.of(ray.getPoint(_radius)); // t= radius of the sphere
         }
-        double tm = v.dotProduct(u);
-        double d = Math.sqrt(u.lengthSquared() - tm * tm);
+        double tm = v.dotProduct(u); // tm is the projection of u on v
+        double d = Math.sqrt(u.lengthSquared() - tm * tm); // calculate the side d on the triangle d-u-tm
 
-        if (d >= _radius) {
+        if (d >= _radius) { // there are no intersections
             return null;
         }
 
-        double th = Math.sqrt(_radius * _radius - d * d);
-        double t1 = tm - th;
-        double t2 = tm + th;
+        double th = Math.sqrt(_radius * _radius - d * d); // calculate the side th on the triangle r-d-th
+        double t1 = tm - th; // the distance between p0 and the first intersection point
+        double t2 = tm + th;  // the distance between p0 and the second intersection point
 
-        if (t1 > 0 && t2 > 0) {
-            ;
+        if (t1 > 0 && t2 > 0) { // there are two intersections points
             return (List.of(ray.getPoint(t1), ray.getPoint(t2)));
         }
 
-        if (t1 > 0) {
+        if (t1 > 0) { // there are only one intersection point
             return (List.of(ray.getPoint(t1)));
         }
 
-        if (t2 > 0) {
+        if (t2 > 0) { // // there are only one intersection point
             return (List.of(ray.getPoint(t2)));
         }
 

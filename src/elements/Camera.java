@@ -71,11 +71,11 @@ public class Camera {
         return this;
     }
 
-     public Camera setDistance(double distance) {
+    public Camera setDistance(double distance) {
 
-     _distance = distance;
-     return this;
-     }
+        _distance = distance;
+        return this;
+    }
 
     /**
      *

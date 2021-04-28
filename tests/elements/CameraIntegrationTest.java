@@ -3,285 +3,232 @@ package elements;
 import geometries.Plane;
 import geometries.Sphere;
 import geometries.Triangle;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 public class CameraIntegrationTest {
+    Camera cam1;
+    Camera cam2;
 
-
-
-
-
-    Camera cam1 = new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-    Camera cam2 = new Camera(new Point3D(0, 0, -0.5), new Vector(0, 0, 1), new Vector(0, -1, 0));
-
-
-    /**
-     * Sphere TC:1
-     * a function that checks if we can find intersection with sphere1
-     */
-    @Test
-    void constructRayThroughPixelWithSphere1() {
-
-        Sphere sph = new Sphere(new Point3D(0, 0, 3), 1);
-
-       int count=0;
-        List<Point3D> results;
-
-
-        System.out.println("sphere1: ");
-
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-
-
-                Ray ray = cam1.constructRayThroughPixel(3, 3, j, i);
-                results = sph.findIntersections(ray);
-
-                if (results != null)
-                    count += results==null?0: results.size();
-
-
-            }
-        }
-
-
-        assertEquals(2, count, "ERROR, wrong number of intersections with sphere");
-        System.out.println("count:"+ count);
+    public CameraIntegrationTest() {
+        this.cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        this.cam2 = new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D));
     }
 
-//
-
-
-    public void cameraRaySphereIntegrationTest2() {
-        Camera cam = new Camera(new Point3D(0, 0, -0.5), new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-        Sphere sphere = new Sphere( new Point3D(0, 0, 2.5),2.5);
-        List<Point3D> intersections=new ArrayList<Point3D>();
+    @Test
+    void constructRayThroughPixelWithSphere1() {
+        Sphere sph = new Sphere(new Point3D(0.0D, 0.0D, 3.0D), 1.0D);
         int count = 0;
+        System.out.println("sphere1: ");
 
-
-        for (int i=0;i<3;i++) {
-            for (int j = 0; j < 3; j++) {
-                intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
-                if (intersections != null)
-                    count+=intersections.size();
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
+                Ray ray = this.cam1.constructRayThroughPixel(3, 3, j, i);
+                List<Point3D> results = sph.findIntersections(ray);
+                if (results != null) {
+                    count += results == null ? 0 : results.size();
+                }
             }
         }
 
-        if (intersections != null)
-            assertEquals(18,count,"wrong intersection");
+        Assertions.assertEquals(2, count, "ERROR, wrong number of intersections with sphere");
+        System.out.println("count:" + count);
+    }
+
+    public void cameraRaySphereIntegrationTest2() {
+        Camera cam = (new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.5D), 2.5D);
+        List<Point3D> intersections = new ArrayList();
+        int count = 0;
+
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
+                intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
+                if (intersections != null) {
+                    count += ((List)intersections).size();
+                }
+            }
+        }
+
+        if (intersections != null) {
+            Assertions.assertEquals(18, count, "wronge intersection");
+        }
+
     }
 
     @Test
     public void cameraRaySphereIntegrationTest3() {
-        Camera cam = new Camera(new Point3D(0, 0, -0.5), new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-        Sphere sphere = new Sphere( new Point3D(0, 0, 2),2);
-        List<Point3D> intersections=new ArrayList<Point3D>();
+        Camera cam = (new Camera(new Point3D(0.0D, 0.0D, -0.5D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.0D), 2.0D);
+        List<Point3D> intersections = new ArrayList();
         int count = 0;
 
-
-        for (int i=0;i<3;i++) {
-            for (int j = 0; j < 3; j++) {
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
                 intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
-                if (intersections != null)
-                    count+=intersections.size();
+                if (intersections != null) {
+                    count += ((List)intersections).size();
+                }
             }
         }
 
-        if (intersections != null)
-            assertEquals(10,count,"wrong intersection");
+        if (intersections != null) {
+            Assertions.assertEquals(10, count, "wronge intersection");
+        }
+
     }
+
     @Test
     public void cameraRaySphereIntegrationTest4() {
-        Camera cam = new Camera(new Point3D(2, 2, 2), new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-        Sphere sphere = new Sphere(new Point3D(2, 2, 2),4);
-        List<Point3D> intersections=new ArrayList<Point3D>();
+        Camera cam = (new Camera(new Point3D(2.0D, 2.0D, 2.0D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        Sphere sphere = new Sphere(new Point3D(2.0D, 2.0D, 2.0D), 4.0D);
+        List<Point3D> intersections = new ArrayList();
         int count = 0;
 
-
-        for (int i=0;i<3;i++) {
-            for (int j = 0; j < 3; j++) {
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
                 intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
-                if (intersections != null)
-                    count+=intersections.size();
+                if (intersections != null) {
+                    count += ((List)intersections).size();
+                }
             }
         }
 
-        if (intersections != null)
-            assertEquals(9,count,"wrong intersection");
+        if (intersections != null) {
+            Assertions.assertEquals(9, count, "wronge intersection");
+        }
+
     }
+
     @Test
     public void cameraRaySphereIntegrationTest5() {
-        Camera cam = new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-        Sphere sphere = new Sphere(new Point3D(0, 0, -1),0.5);
-        List<Point3D> intersections=new ArrayList<Point3D>();
+        Camera cam = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, -1.0D), 0.5D);
+        List<Point3D> intersections = new ArrayList();
         int count = 0;
 
-
-        for (int i=0;i<3;i++) {
-            for (int j = 0; j < 3; j++) {
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
                 intersections = sphere.findIntersections(cam.constructRayThroughPixel(3, 3, j, i));
-                if (intersections != null)
-                    count+=intersections.size();
+                if (intersections != null) {
+                    count += ((List)intersections).size();
+                }
             }
         }
 
-        if (intersections != null)
-            assertEquals(0,count,"wrong intersection");
+        if (intersections != null) {
+            Assertions.assertEquals(0, count, "wronge intersection");
+        }
+
     }
 
-    public void constructRayThroughPixelWithPlane1()
-    {
-        Plane plane =  new Plane(new Point3D(0, 0, 1.25), new Vector(0, 0, 1));
-
-        List<Point3D> results;
+    public void constructRayThroughPixelWithPlane1() {
+        Plane plane = new Plane(new Point3D(0.0D, 0.0D, 1.25D), new Vector(0.0D, 0.0D, 1.0D));
         int count = 0;
-
         int Nx = 3;
         int Ny = 3;
 
-        for (int i = 0; i < Ny; i++)
-        {
-            for (int j = 0; j < Nx; j ++)
-            {
-                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
-                results = plane.findIntersections(ray);
-
-                if (results != null)
+        for(int i = 0; i < Ny; ++i) {
+            for(int j = 0; j < Nx; ++j) {
+                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                List<Point3D> results = plane.findIntersections(ray);
+                if (results != null) {
                     count += results.size();
+                }
             }
         }
 
-        assertEquals(9, count,"ERROR, wrong number of intersections with plane");
-        System.out.println("count: "+ count);
-
-
-
+        Assertions.assertEquals(9, count, "ERROR, wrong number of intersections with plane");
+        System.out.println("count: " + count);
     }
-
-    /** Plane TC:2
-     * a function that checks if we can find intersection with plane2
-     */
-    @Test
-    public void constructRayThroughPixelWithPlane2()
-    {
-        Plane plane =  new Plane(new Point3D(0, 0, 9), new Vector(0,-0.5, 1));
-
-        List<Point3D> results;
-        int count = 0;
-
-        int Nx = 3;
-        int Ny = 3;
-
-        for (int i = 0; i < Ny; ++i)
-        {
-            for (int j = 0; j < Nx; ++j)
-            {
-                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
-                results = plane.findIntersections(ray);
-                if (results != null)
-                    count += results.size();
-            }
-        }
-
-        assertEquals(9, count,"ERROR, wrong number of intersections with plane");
-        System.out.println("count: "+ count);
-
-    }
-
-    /** Plane TC:3
-     * a function that checks if we can find intersection with plane3
-     */
-    @Test
-    public void constructRayThroughPixelWithPlane3()
-    {
-        Plane plane =  new Plane(new Point3D(0, 0, 8), new Vector(0,-3, 1));
-
-        List<Point3D> results;
-        int count = 0;
-
-        int Nx = 3;
-        int Ny = 3;
-
-        for (int i = 0; i < Ny; ++i)
-        {
-            for (int j = 0; j < Nx; ++j)
-            {
-                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
-                results = plane.findIntersections(ray);
-                if (results != null)
-                    count += results.size();
-            }
-        }
-
-        assertEquals( 6, count,"ERROR, wrong number of intersections with plane");
-        System.out.println("count: "+ count);
-    }
-
-
-    public void constructRayThroughPixelWithTriangle1()
-    {
-        Triangle triangle =  new Triangle(new Point3D(0, -1, 2), new Point3D(1,1, 2), new Point3D(-1,1,2));
-        Camera cam1 = new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-
-        List<Point3D> results;
-        int count = 0;
-
-        int Nx = 3;
-        int Ny = 3;
-
-        for (int i = 0; i < Ny; ++i)
-        {
-            for (int j = 0; j < Nx; ++j)
-            {
-                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
-                results = triangle.findIntersections(ray);
-
-                if (results != null)
-                    count += results.size();
-            }
-        }
-
-        assertEquals(1, count,"ERROR, wrong number of intersections with triangle");
-        System.out.println("count: "+ count);
-    }
-
 
     @Test
-    public void constructRayThroughPixelWithTriangle2()
-    {
-        Triangle triangle =  new Triangle(new Point3D(1, 1, 2), new Point3D(-1,1, 2), new Point3D(0,-20,2));
-        Camera cam1 = new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(1).setViewPlaneSize(3,3);
-
-        List<Point3D> results;
+    public void constructRayThroughPixelWithPlane2() {
+        Plane plane = new Plane(new Point3D(0.0D, 0.0D, 9.0D), new Vector(0.0D, -0.5D, 1.0D));
         int count = 0;
-
         int Nx = 3;
         int Ny = 3;
 
-        for (int i = 0; i < Ny; ++i)
-        {
-            for (int j = 0; j < Nx; ++j)
-            {
-                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
-                results = triangle.findIntersections(ray);
-                if (results != null)
+        for(int i = 0; i < Ny; ++i) {
+            for(int j = 0; j < Nx; ++j) {
+                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                List<Point3D> results = plane.findIntersections(ray);
+                if (results != null) {
                     count += results.size();
+                }
             }
         }
 
-        assertEquals(2, count,"ERROR, wrong number of intersections with triangle");
-        System.out.println("count: "+ count);
+        Assertions.assertEquals(9, count, "ERROR, wrong number of intersections with plane");
+        System.out.println("count: " + count);
     }
 
+    @Test
+    public void constructRayThroughPixelWithPlane3() {
+        Plane plane = new Plane(new Point3D(0.0D, 0.0D, 8.0D), new Vector(0.0D, -3.0D, 1.0D));
+        int count = 0;
+        int Nx = 3;
+        int Ny = 3;
 
+        for(int i = 0; i < Ny; ++i) {
+            for(int j = 0; j < Nx; ++j) {
+                Ray ray = this.cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                List<Point3D> results = plane.findIntersections(ray);
+                if (results != null) {
+                    count += results.size();
+                }
+            }
+        }
 
+        Assertions.assertEquals(6, count, "ERROR, wrong number of intersections with plane");
+        System.out.println("count: " + count);
+    }
+
+    public void constructRayThroughPixelWithTriangle1() {
+        Triangle triangle = new Triangle(new Point3D(0.0D, -1.0D, 2.0D), new Point3D(1.0D, 1.0D, 2.0D), new Point3D(-1.0D, 1.0D, 2.0D));
+        Camera cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        int count = 0;
+        int Nx = 3;
+        int Ny = 3;
+
+        for(int i = 0; i < Ny; ++i) {
+            for(int j = 0; j < Nx; ++j) {
+                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                List<Point3D> results = triangle.findIntersections(ray);
+                if (results != null) {
+                    count += results.size();
+                }
+            }
+        }
+
+        Assertions.assertEquals(1, count, "ERROR, wrong number of intersections with triangle");
+        System.out.println("count: " + count);
+    }
+
+    @Test
+    public void constructRayThroughPixelWithTriangle2() {
+        Triangle triangle = new Triangle(new Point3D(1.0D, 1.0D, 2.0D), new Point3D(-1.0D, 1.0D, 2.0D), new Point3D(0.0D, -20.0D, 2.0D));
+        Camera cam1 = (new Camera(Point3D.ZERO, new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
+        int count = 0;
+        int Nx = 3;
+        int Ny = 3;
+
+        for(int i = 0; i < Ny; ++i) {
+            for(int j = 0; j < Nx; ++j) {
+                Ray ray = cam1.constructRayThroughPixel(Nx, Ny, j, i);
+                List<Point3D> results = triangle.findIntersections(ray);
+                if (results != null) {
+                    count += results.size();
+                }
+            }
+        }
+
+        Assertions.assertEquals(2, count, "ERROR, wrong number of intersections with triangle");
+        System.out.println("count: " + count);
+    }
 }

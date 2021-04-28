@@ -3,6 +3,11 @@ package geometries;
 import primitives.Point3D;
 import primitives.Vector;
 
+
+/**
+ * interface Geometry who implements the interface Intersectable
+ * with the operation getNormal
+ */
 public interface Geometry extends Intersectable{
 
     /**

@@ -87,19 +87,24 @@ public class Plane implements Geometry{
                 '}';
     }
 
+    /**
+     * This function helps to find the intersection between a ray and a plane.
+     * @param ray : the function findIntersections receives a ray and
+     * @return a list of intersection points with the ray or null if they are no intersections.
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
 
-        Point3D p0 = ray.getP0();
-        Vector v = ray.getDir();
-        Point3D q0 = _q0;
-        Vector n= _normal;
+        Point3D p0 = ray.getP0();  // beginning point of the ray
+        Vector v = ray.getDir();   // direction vector of the ray
+        Point3D q0 = _q0;          // reference point of the plane
+        Vector n= _normal;         // normal vector of the plane
 
-        Vector p0q0;
+        Vector p0q0;    // Vector from p0 to q0
         try {
             p0q0 = q0.subtract(p0);
         } catch (IllegalArgumentException e) {
-            return null;  // ray starts from point q0 - no intersections
+            return null;  // ray starts at the reference point of the plane q0 - no intersections
         }
 
         double nv = n.dotProduct(v);
@@ -109,6 +114,8 @@ public class Plane implements Geometry{
 
         double t = alignZero(n.dotProduct(p0q0) / nv);
 
-        return t <= 0 ? null : List.of(ray.getPoint(t));
+        return t <= 0 ? null : List.of(ray.getPoint(t)); // we take only t>0
     }
 }
+
+
