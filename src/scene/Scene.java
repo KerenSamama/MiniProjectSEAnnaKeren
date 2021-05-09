@@ -17,13 +17,18 @@ public class Scene {
         geometries= new Geometries();
     }
 
-    public Scene setAmbientLight(elements.AmbientLight ambientLight) {
+    public Scene setAmbientLight(AmbientLight ambientLight) {
         this.ambientLight=ambientLight;
         return this;
     }
 
     public Scene setBackground(Color color) {
         this.backGroundColor=color;
+        return this;
+    }
+
+    public Scene setGeometries(Geometries geometries) {
+        this.geometries = geometries;
         return this;
     }
 }

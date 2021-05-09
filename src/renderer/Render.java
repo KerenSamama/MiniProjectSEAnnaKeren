@@ -1,5 +1,4 @@
 package renderer;
-
 import elements.Camera;
 import primitives.Color;
 import primitives.Point3D;
@@ -7,6 +6,7 @@ import primitives.Ray;
 import scene.Scene;
 
 import java.util.List;
+import java.util.MissingResourceException;
 
 public class Render {
     private ImageWriter _imageWriter;
@@ -20,10 +20,10 @@ public class Render {
         return this;
     }
 
-    public Render setScene(Scene scene) {
-        _scene = scene;
-        return this;
-    }
+     public Render setScene(Scene scene) {
+         _scene = scene;
+         return this;
+     }
 
     public Render setCamera(Camera camera) {
         _camera = camera;
@@ -35,7 +35,7 @@ public class Render {
         return this;
     }
 
-    public void renderImage() {
+    public void renderImage() { // first exception after implement
         int nX = _imageWriter.getNx();
         int nY = _imageWriter.getNy();
         for (int i = 0; i < nY; i++) {
@@ -48,6 +48,10 @@ public class Render {
     }
 
     public void printGrid(int interval, Color intervalColor) {
+        if(_imageWriter.getNx()==0 || _imageWriter.getNy()==0){
+            throw new MissingResourceException("The fields of ImageWriter are empty","ImageWriter","Nx,Ny");
+        }
+
         int nX = _imageWriter.getNx();
         int nY = _imageWriter.getNy();
         for (int i = 0; i < nY; i++) {
@@ -59,6 +63,9 @@ public class Render {
     }
 
     public void writeToImage() {
+        if(_imageWriter.getNx()==0 || _imageWriter.getNy()==0){
+            throw new MissingResourceException("The fields of ImageWriter are empty","ImageWriter","Nx,Ny");
+        }
         _imageWriter.writeToImage();
     }
 }
