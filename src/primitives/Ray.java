@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.List;
+
 import static primitives.Point3D.ZERO;
 
 public class Ray {
@@ -10,13 +12,12 @@ public class Ray {
      * primary constructor for Ray
      *
      * @param p0;
-     * @param  dir;
+     * @param dir;
      */
     public Ray(Point3D p0, Vector dir) {
-         _p0 = p0;
+        _p0 = p0;
         _dir = dir.normalized();
     }
-
 
 
     public Point3D getP0() {
@@ -47,10 +48,27 @@ public class Ray {
 
     /**
      * Refactoring : to calculate a point on a ray
+     *
      * @param t : the distance from the beginning point p0
      * @return : the point who is on the ray with a distance t from p0
      */
     public Point3D getPoint(double t) {
-        return  _p0.add(_dir.scale(t));
+        return _p0.add(_dir.scale(t));
+    }
+
+    public Point3D getClosestPoint(List<Point3D> intersections) {
+        Point3D result = null;
+        if (intersections == null) {
+            return null;
+        }
+        double distance = Double.MAX_VALUE;
+        for (Point3D p : intersections) {
+            double newDist = _p0.distance(p);
+            if (newDist < distance) {
+                distance = newDist;
+                result = p;
+            }
+        }
+        return result;
     }
 }
