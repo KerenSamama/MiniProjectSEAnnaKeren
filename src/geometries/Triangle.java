@@ -7,12 +7,9 @@ import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
- *  @author Anna and Keren
- */
-
-/**
  * Triangle class is the basic class representing a triangle.
  * Triangle class inherits from Polygon class
+ * *  @author Anna and Keren
  */
 public class Triangle extends Polygon {
 

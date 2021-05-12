@@ -33,10 +33,8 @@ public class Camera {
     }
 
 
-    // getters
-    public Point3D getP0() {
-        return _p0;
-    }
+    // Getters methods
+    public Point3D getP0() { return _p0; }
 
     public Vector getvTo() {
         return _vTo;
@@ -62,7 +60,7 @@ public class Camera {
         return _distance;
     }
 
-    // setters using methode chaining
+    // Setters methods using chaining
 
     /**
      * @param width
@@ -75,7 +73,6 @@ public class Camera {
         return this;
     }
 
-
     /**
      *
      * @param distance
@@ -85,6 +82,8 @@ public class Camera {
         _distance = distance;
         return this;
     }
+
+
 
     /**
      *

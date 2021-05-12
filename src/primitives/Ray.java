@@ -5,13 +5,13 @@ import java.util.List;
 import static primitives.Point3D.ZERO;
 
 public class Ray {
-    final Point3D _p0;
-    final Vector _dir;
+    final Point3D _p0; // starting point of the ray
+    final Vector _dir; // directional vector of the ray
 
     /**
      * primary constructor for Ray
      *
-     * @param p0;
+     * @param p0
      * @param dir;
      */
     public Ray(Point3D p0, Vector dir) {
@@ -56,6 +56,12 @@ public class Ray {
         return _p0.add(_dir.scale(t));
     }
 
+
+    /**
+     * Find the most closest point to the starting point of the ray
+     * @param intersections a list of Point3D
+     * @return a point who is the closest to _p0
+     */
     public Point3D getClosestPoint(List<Point3D> intersections) {
         Point3D result = null;
         if (intersections == null) {

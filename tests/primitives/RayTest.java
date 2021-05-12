@@ -8,35 +8,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RayTest {
 
+
+    /**
+     * Test method for {@link primitives.Ray#getClosestPoint(List)}.
+     */
     @Test
     void testGetClosestPoint() {
 
-        Ray ray = new Ray(new Point3D(0,1,0),new Vector(0,1,0));
+        Ray ray = new Ray(new Point3D(0, 1, 0), new Vector(0, 1, 0));
         // ============ Equivalence Partitions Tests ==============
 
-        // TC01: A point in the middle of the list is closest to the beginning of the ray
+        // TC01: The point in the middle of the list is the closest point to the beginning of the ray
 
-        List<Point3D> list1 = new ArrayList<Point3D> ();
-        Collections.addAll(list1,new Point3D(0,15,0), new Point3D(0,2,0), new Point3D(0,7,0));
-        assertEquals(new Point3D(0,2,0),ray.getClosestPoint(list1), "Don't find the closest point, it was the middle point !");
+        List<Point3D> list1 = new ArrayList<Point3D>();
+        Collections.addAll(list1, new Point3D(0, 15, 0), new Point3D(0, 2, 0), new Point3D(0, 7, 0));
+        assertEquals(new Point3D(0, 2, 0), ray.getClosestPoint(list1), "Don't find the closest point, it was the middle point !");
 
 
         // =============== Boundary Values Tests ==================
 
-        // TC11: closest null is null, there are no intersections, the list is empty
-        List<Point3D> list4 = new ArrayList<Point3D> ();
-        assertNull(ray.getClosestPoint(list4), "It an empty list, it must return null!");
+        // TC11:  There are no intersections, the list is empty, so the closest point is null,
+        List<Point3D> list4 = new ArrayList<Point3D>();
+        assertNull(ray.getClosestPoint(list4), "It's an empty list, it must return null!");
 
 
-        // TC12: The first point of the list is closest to the beginning of the ray
-        List<Point3D> list2 = new ArrayList<Point3D> ();
-        Collections.addAll(list2,new Point3D(0,2,0), new Point3D(0,15,0), new Point3D(0,7,0));
-        assertEquals(new Point3D(0,2,0),ray.getClosestPoint(list2), "Don't find the closest point, it was the first point !");
+        // TC12: The first point of the list is the closest to the beginning of the ray
+        List<Point3D> list2 = new ArrayList<Point3D>();
+        Collections.addAll(list2, new Point3D(0, 2, 0), new Point3D(0, 15, 0), new Point3D(0, 7, 0));
+        assertEquals(new Point3D(0, 2, 0), ray.getClosestPoint(list2), "Don't find the closest point, it was the first point !");
 
-        // TC13: The last point of the list is closest to the beginning of the ray
-        List<Point3D> list3 = new ArrayList<Point3D> ();
-        Collections.addAll(list3,new Point3D(0,15,0), new Point3D(0,7,0), new Point3D(0,2,0));
-        assertEquals(new Point3D(0,2,0),ray.getClosestPoint(list3), "Don't find the closest point, it was the last point !");
+        // TC13: The last point of the list is the closest to the beginning of the ray
+        List<Point3D> list3 = new ArrayList<Point3D>();
+        Collections.addAll(list3, new Point3D(0, 15, 0), new Point3D(0, 7, 0), new Point3D(0, 2, 0));
+        assertEquals(new Point3D(0, 2, 0), ray.getClosestPoint(list3), "Don't find the closest point, it was the last point !");
 
     }
 }
