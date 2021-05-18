@@ -13,7 +13,6 @@ import java.util.MissingResourceException;
 public class Render {
 
     private ImageWriter _imageWriter;
-    private Scene _scene;
     private Camera _camera;
     private RayTracerBase _rayTracer;
 
@@ -30,15 +29,7 @@ public class Render {
         return this;
     }
 
-    /**
-     * Setter method for scene
-     * @param scene
-     * @return the Render object itself for chaining calls
-     */
-     public Render setScene(Scene scene) {
-         _scene = scene;
-         return this;
-     }
+
 
     /**
      * Setter method for camera
@@ -67,7 +58,7 @@ public class Render {
      */
     public void renderImage() {
         if(_imageWriter == null){
-            throw new MissingResourceException("The fields of ImageWriter are empty","ImageWriter","Nx,Ny");
+            throw new MissingResourceException("The fields of ImageWriter are empty","Render","_imageWriter");
         }
         int nX = _imageWriter.getNx();
         int nY = _imageWriter.getNy();
@@ -87,7 +78,7 @@ public class Render {
      */
     public void printGrid(int interval, Color intervalColor) {
         if(_imageWriter == null){
-            throw new MissingResourceException("The fields of ImageWriter are empty","ImageWriter","Nx,Ny");
+            throw new MissingResourceException("The fields of ImageWriter are empty","Render","_imageWriter");
         }
 
         int nX = _imageWriter.getNx();
@@ -105,7 +96,7 @@ public class Render {
      */
     public void writeToImage() {
         if(_imageWriter==null){
-            throw new MissingResourceException("The fields of ImageWriter are empty","ImageWriter","Nx,Ny");
+            throw new MissingResourceException("The fields of ImageWriter are empty","Render","_imageWriter");
         }
         _imageWriter.writeToImage();
     }

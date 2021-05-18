@@ -12,7 +12,7 @@ import static primitives.Util.alignZero;
  * Sphere class is the basic class representing a sphere in 3D Cartesian coordinate
  * system
  */
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
 
     /**
      * sphere center
@@ -75,14 +75,8 @@ public class Sphere implements Geometry {
     }
 
 
-    /**
-     * This function helps to find the intersections between a ray and a sphere.
-     * @param ray
-     * @return a list of intersection points or null
-     */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D p0 = ray.getP0(); // beginning point of the ray
         Vector v = ray.getDir();  // vector direction of the ray
         Point3D O = _center;      // center of the sphere
@@ -91,7 +85,7 @@ public class Sphere implements Geometry {
         try {
             u = O.subtract(p0); // vector from p0 to the center
         } catch (IllegalArgumentException e) {  // if p0=center, the vector u is the vector ZERO so exception
-            return List.of(ray.getPoint(_radius)); // t= radius of the sphere
+            return List.of(new GeoPoint(this,ray.getPoint(_radius))); // t= radius of the sphere
         }
         double tm = v.dotProduct(u); // tm is the projection of u on v
         double d = Math.sqrt(u.lengthSquared() - tm * tm); // calculate the side d on the triangle d-u-tm
@@ -105,18 +99,25 @@ public class Sphere implements Geometry {
         double t2 = tm + th;  // the distance between p0 and the second intersection point
 
         if (t1 > 0 && t2 > 0) { // there are two intersections points
-            return (List.of(ray.getPoint(t1), ray.getPoint(t2)));
+            return (List.of(new GeoPoint(this,ray.getPoint(t1)), new GeoPoint(this,ray.getPoint(t2))));
         }
 
         if (t1 > 0) { // there are only one intersection point
-            return (List.of(ray.getPoint(t1)));
+            return (List.of(new GeoPoint(this,ray.getPoint(t1))));
         }
 
         if (t2 > 0) { // // there are only one intersection point
-            return (List.of(ray.getPoint(t2)));
+            return (List.of(new GeoPoint(this,ray.getPoint(t2))));
         }
 
         return null;
 
     }
+
+    /** on a supprime
+     * This function helps to find the intersections between a ray and a sphere.
+     * @param ray
+     * @return a list of intersection points or null
+     */
+
 }

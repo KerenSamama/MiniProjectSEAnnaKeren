@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
  * Plane class is the basic class representing a plane in 3D Cartesian coordinate
  * system
  */
-public class Plane implements Geometry{
+public class Plane extends Geometry{
 
     /**
      *  reference point of the plane
@@ -87,14 +87,8 @@ public class Plane implements Geometry{
                 '}';
     }
 
-    /**
-     * This function helps to find the intersection between a ray and a plane.
-     * @param ray : the function findIntersections receives a ray and
-     * @return a list of intersection points with the ray or null if they are no intersections.
-     */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D p0 = ray.getP0();  // beginning point of the ray
         Vector v = ray.getDir();   // direction vector of the ray
         Point3D q0 = _q0;          // reference point of the plane
@@ -114,8 +108,15 @@ public class Plane implements Geometry{
 
         double t = alignZero(n.dotProduct(p0q0) / nv);
 
-        return t <= 0 ? null : List.of(ray.getPoint(t)); // we take only t>0
+        return t <= 0 ? null : List.of(new GeoPoint(this, ray.getPoint(t) )); // we take only t>0
     }
+
+    /** on a supprime la fonction
+     * This function helps to find the intersection between a ray and a plane.
+     * @param ray : the function findIntersections receives a ray and
+     * @return a list of intersection points with the ray or null if they are no intersections.
+     */
+
 }
 
 

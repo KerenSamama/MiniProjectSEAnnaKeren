@@ -58,17 +58,11 @@ public class Geometries implements Intersectable {
     }
 
 
-    /**
-     * This function returns a list of intersection points that includes intersection points of all the bodies in the collection.
-     * If there is no intercept in any body, the action will return null.
-     * @param ray : the function findIntersections receives a ray
-     * @return a list of intersection points with this ray.
-     */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        List<Point3D> result = null;
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<GeoPoint> result = null;
         for (Intersectable geo : _intersectables) {
-            List<Point3D> geoPoints = geo.findIntersections(ray);  // geopoints is temporary intersections points with one geometric body
+            List<GeoPoint> geoPoints = geo.findGeoIntersections(ray);  // geopoints is temporary intersections points with one geometric body
             if (geoPoints != null) {
                 if (result == null) {
                     result = new LinkedList<>();
@@ -78,4 +72,12 @@ public class Geometries implements Intersectable {
         }
         return result;
     }
+
+    /** on a supprimer la fonction findintersection
+     * This function returns a list of intersection points that includes intersection points of all the bodies in the collection.
+     * If there is no intercept in any body, the action will return null.
+     * @param ray : the function findIntersections receives a ray
+     * @return a list of intersection points with this ray.
+     */
+
 }

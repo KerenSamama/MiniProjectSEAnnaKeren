@@ -6,34 +6,21 @@ import primitives.Color;
  * AmbientLight class for environmental lighting
  *
  */
-public class AmbientLight {
+public class AmbientLight extends Light {
 
     /**
-     * _intensity represents the intensity of light filling
-     */
-    private final Color _intensity;
-
-    /**
-     * Default constructor - to generate the intensity in Black Color
+     * Default constructor - to generate the intensity in Black Color modifffff
      */
     public AmbientLight(){
-        _intensity=Color.BLACK;
+        super(Color.BLACK);
     }
 
     /**
-     * AmbientLight Constructor
+     * AmbientLight Constructor modiffff
      * @param Ia : original light filling according to RGB components
      * @param Ka coefficient of attenuation of light filling
      */
     public AmbientLight(Color Ia, double Ka)  {
-        _intensity = Ia.scale(Ka);
-    }
-
-    /**
-     *
-     * @return the value of ambient light intensity
-     */
-    public Color getIntensity() {
-        return _intensity;
+        super(Ia.scale(Ka));
     }
 }

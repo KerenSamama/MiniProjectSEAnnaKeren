@@ -12,7 +12,7 @@ import static primitives.Util.*;
  * Tube class is the basic class representing a tube in 3D Cartesian coordinate
  * system
  */
-public class Tube implements Geometry {
+public class Tube extends Geometry {
 
     Ray _axisRay;
     double _radius;
@@ -20,8 +20,8 @@ public class Tube implements Geometry {
     /**
      * primary constructor for Tube
      *
-     * @param  axisRay Ray
-     * @param  radius double
+     * @param axisRay Ray
+     * @param radius  double
      */
     public Tube(Ray axisRay, double radius) {
         if (radius == 0d) {
@@ -82,7 +82,8 @@ public class Tube implements Geometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;
     }
+
 }

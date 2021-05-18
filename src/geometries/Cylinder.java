@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
  * Cylinder class is the basic class representing a cylinder in 3D Cartesian coordinate system
  * Cylinder is a finished tube, cylinder class inherits from tube class
  */
-public class Cylinder extends Tube implements Geometry{
+public class Cylinder extends Tube{
 
     /**
      * cylinder height
