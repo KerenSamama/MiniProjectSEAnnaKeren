@@ -24,6 +24,7 @@ public class PointLight extends  Light implements LightSource{
         return _intensity.scale(attenuation);
     }
 
+
     @Override
     public Vector getL(Point3D p) {
         return p.subtract(_position).normalized();

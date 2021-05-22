@@ -4,6 +4,8 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+
 public class SpotLight extends PointLight{
     private final Vector _direction;
 
@@ -16,8 +18,8 @@ public class SpotLight extends PointLight{
     public Color getIntensity(Point3D p) {
         double cosTetha = _direction.dotProduct(getL(p));
         Color intensity= super.getIntensity(p);
-        return intensity.scale(Math.max(0,cosTetha));
-    }
+        return intensity.scale(alignZero(Math.max(0,cosTetha)));
 
+    }
 
 }

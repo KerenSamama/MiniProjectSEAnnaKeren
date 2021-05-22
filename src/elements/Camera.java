@@ -2,24 +2,24 @@ package elements;
 
 import primitives.Point3D;
 import primitives.Ray;
-import primitives.Util;
 import primitives.Vector;
 import static primitives.Util.isZero;
 
 public class Camera {
-    private final Point3D _p0;
-    private final Vector _vTo;
-    private final Vector _vUp;
-    private final Vector _vRight;
+    private final Point3D _p0; // position of the camera
+    private final Vector _vTo; // forward directional vector
+    private final Vector _vUp; // up directional vector
+    private final Vector _vRight; // right directional vector
     private double _width;
     private double _height;
     private double _distance;
 
     /**
-     * Camera Constructor who receives two vectors and a position point
-     * @param p0 Position
-     * @param vTo Forward Vector
-     * @param vUp Up Vector
+     * Constructor for Camera class who receives two vectors and a position point
+     * The constructor checks if the vectors are orthogonal, are unit vectors and creates the right directional vector.
+     * @param p0 of type Point3D for position
+     * @param vTo of type Vector for forward directional vector
+     * @param vUp of type Vector for up directional vector
      */
     public Camera(Point3D p0, Vector vTo, Vector vUp) {
         if (!isZero(vUp.dotProduct(vTo))) {
@@ -63,9 +63,9 @@ public class Camera {
     // Setters methods using chaining
 
     /**
-     * @param width
-     * @param height
-     * @return "this": camera current instance
+     * @param width of type double : width of the view plane
+     * @param height of type double  : height of the view plane
+     * @return the Camera object itself for chaining calls
      */
     public Camera setViewPlaneSize(double width, double height) {
         _width = width;
@@ -74,9 +74,8 @@ public class Camera {
     }
 
     /**
-     *
-     * @param distance
-     * @return
+     * @param distance of type double : distance from the camera to the view plane
+     * @return the Camera object itself for chaining calls
      */
     public Camera setDistance(double distance) {
         _distance = distance;
@@ -117,7 +116,7 @@ public class Camera {
             {
                 Right = Right.scale(Xj);
                 Up = Up.scale(Yi);
-                Vector res = Right.substract(Up);
+                Vector res = Right.subtract(Up);
                 Pij = Pc.add(res);
             }
         }

@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
 
 
+    /**
+     * Test method for {@link geometries.Triangle#getNormal(Point3D)} 
+     */
     public void testGetNormal()
     {
         // ============ Equivalence Partitions Tests ==============
@@ -72,7 +75,6 @@ class TriangleTest {
         Ray ray4 = new Ray(new Point3D(1, 0,  0), new Vector(0, 1, 0));
         List intersectionPoints4 = tr.findIntersections(ray4);
         assertNull(intersectionPoints4,"ERROR, there must not be any intersection point");
-
 
 
         // TC12: In vertex

@@ -1,29 +1,33 @@
 package primitives;
-
 import geometries.Geometry;
 import geometries.Intersectable;
 import static geometries.Intersectable.GeoPoint;
-
 import java.util.List;
-
 import static primitives.Point3D.ZERO;
 
+/**
+ * Class Ray is the basic class representing a ray of Euclidean geometry in Cartesian
+ * 3-Dimensional coordinate system.
+ * Ray is defined by the set of points on a straight that are on one relative side
+ * to a given point who is the starting point of the ray.
+ */
 public class Ray {
     final Point3D _p0; // starting point of the ray
     final Vector _dir; // directional vector of the ray
 
     /**
-     * primary constructor for Ray
-     *
+     * Primary constructor for Ray receiving a point and a vector
      * @param p0
-     * @param dir;
+     * @param dir
      */
     public Ray(Point3D p0, Vector dir) {
         _p0 = p0;
         _dir = dir.normalized();
     }
 
-
+    /**
+     * Getters
+     */
     public Point3D getP0() {
         return _p0;
     }
@@ -32,27 +36,8 @@ public class Ray {
         return _dir;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ray ray = (Ray) o;
-        return _p0.equals(ray._p0) && _dir.equals(ray._dir);
-    }
-
-
-    @Override
-    public String toString() {
-        return "Ray{" +
-                "_head=" + _p0 +
-                ", _vec=" + _dir +
-                '}';
-    }
-
-
     /**
      * Refactoring : to calculate a point on a ray
-     *
      * @param t : the distance from the beginning point p0
      * @return : the point who is on the ray with a distance t from p0
      */
@@ -82,7 +67,7 @@ public class Ray {
         return result;
     }
 
-    public GeoPoint getClosestGeoPoint(List<GeoPoint> intersections){
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections){
         GeoPoint result = null;
         if (intersections == null) {
             return null;
@@ -96,5 +81,22 @@ public class Ray {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ray ray = (Ray) o;
+        return _p0.equals(ray._p0) && _dir.equals(ray._dir);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Ray{" +
+                "_head=" + _p0 +
+                ", _vec=" + _dir +
+                '}';
     }
 }

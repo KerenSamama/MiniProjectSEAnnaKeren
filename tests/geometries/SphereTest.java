@@ -17,6 +17,7 @@ class SphereTest {
      */
     @Test
     void testGetNormal() {
+
         // ============ Equivalence Partitions Tests ==============
         // TCO1 EP : Any Point on Sphere, there is a simple single test here
         Point3D o = new Point3D(0, 4, 2);

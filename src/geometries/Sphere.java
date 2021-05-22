@@ -9,8 +9,7 @@ import java.util.List;
 import static primitives.Util.alignZero;
 
 /**
- * Sphere class is the basic class representing a sphere in 3D Cartesian coordinate
- * system
+ * Sphere class is the basic class representing a sphere in 3D cartesian coordinate system
  */
 public class Sphere extends Geometry {
 
@@ -25,10 +24,9 @@ public class Sphere extends Geometry {
     double _radius;
 
     /**
-     * constructor for Sphere receiving a point center and a double value for radius
-     *
-     * @param center Point3D value for _center
-     * @param radius double value for _radius
+     * Constructor for Sphere class receiving a Point3D value for the center and a double value for the radius
+     * @param center of type Point3D
+     * @param radius of type double value
      */
     public Sphere(Point3D center, double radius) {
         if (radius == 0d) {
@@ -39,7 +37,7 @@ public class Sphere extends Geometry {
     }
 
     /**
-     * function get
+     * Function get
      *
      * @return _center
      */
@@ -48,7 +46,7 @@ public class Sphere extends Geometry {
     }
 
     /**
-     * function get
+     * Function get
      *
      * @return _radius
      */
@@ -56,25 +54,27 @@ public class Sphere extends Geometry {
         return _radius;
     }
 
-    @Override
-    public String toString() {
-        return "Sphere{" +
-                "_center=" + _center +
-                ", _radius=" + _radius +
-                '}';
-    }
-
+    /**
+     * Implementation of getNormal from Geometry
+     * @param point of type Point3D
+     * @return Vector : the normal Vector at this point
+     */
     @Override
     public Vector getNormal(Point3D point) {
-
         if (point.equals(_center)) {
-            throw new IllegalArgumentException("Point cannot be equals to the center of the sphere");
+            throw new IllegalArgumentException("Point cannot be equals to the center of the sphere to calculate the normal");
         }
         Vector O_P = point.subtract(_center);
         return O_P.normalize();
     }
 
 
+
+    /**
+     * This function helps to find the intersections between a ray and a sphere.
+     * @param ray of type Ray
+     * @return A list of intersection points of type GeoPoint or null if there are no intersections
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D p0 = ray.getP0(); // beginning point of the ray
@@ -85,7 +85,7 @@ public class Sphere extends Geometry {
         try {
             u = O.subtract(p0); // vector from p0 to the center
         } catch (IllegalArgumentException e) {  // if p0=center, the vector u is the vector ZERO so exception
-            return List.of(new GeoPoint(this,ray.getPoint(_radius))); // t= radius of the sphere
+            return List.of(new GeoPoint(this, ray.getPoint(_radius))); // t= radius of the sphere
         }
         double tm = v.dotProduct(u); // tm is the projection of u on v
         double d = Math.sqrt(u.lengthSquared() - tm * tm); // calculate the side d on the triangle d-u-tm
@@ -99,25 +99,27 @@ public class Sphere extends Geometry {
         double t2 = tm + th;  // the distance between p0 and the second intersection point
 
         if (t1 > 0 && t2 > 0) { // there are two intersections points
-            return (List.of(new GeoPoint(this,ray.getPoint(t1)), new GeoPoint(this,ray.getPoint(t2))));
+            return (List.of(new GeoPoint(this, ray.getPoint(t1)), new GeoPoint(this, ray.getPoint(t2))));
         }
 
         if (t1 > 0) { // there are only one intersection point
-            return (List.of(new GeoPoint(this,ray.getPoint(t1))));
+            return (List.of(new GeoPoint(this, ray.getPoint(t1))));
         }
 
         if (t2 > 0) { // // there are only one intersection point
-            return (List.of(new GeoPoint(this,ray.getPoint(t2))));
+            return (List.of(new GeoPoint(this, ray.getPoint(t2))));
         }
 
         return null;
 
     }
 
-    /** on a supprime
-     * This function helps to find the intersections between a ray and a sphere.
-     * @param ray
-     * @return a list of intersection points or null
-     */
 
+    @Override
+    public String toString() {
+        return "Sphere{" +
+                "_center=" + _center +
+                ", _radius=" + _radius +
+                '}';
+    }
 }

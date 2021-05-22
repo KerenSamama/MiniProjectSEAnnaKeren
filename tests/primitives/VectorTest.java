@@ -5,38 +5,35 @@ import org.junit.jupiter.api.Test;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
+
 /**
  * Unit tests for primitives.Vector class
+ *
  * @author Anna Keren
  */
 
 class VectorTest {
 
+
     /**
      * Test method for
-     * {@link geometries.Vector#Vector(primitives.Point3D, primitives.Point3D, primitives.Point3D, primitives.Point3D)}
      */
-    /**
-     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
-     */
-
-
     @Test
     void testScale() {
         Vector v1 = new Vector(1, 2, 3);
         double d = 2.5;
-        Vector v2= new Vector(2.5,5,7.5);
-        Vector v3=v1.scale(d);
-        assertEquals(v2,v3,"ERROR : scale() wrong result");
+        Vector v2 = new Vector(2.5, 5, 7.5);
+        Vector v3 = v1.scale(d);
+        assertEquals(v2, v3, "ERROR : scale() wrong result");
 
 
     }
 
+    /**
+     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+     */
     @Test
     void testCrossProduct() {
-        /**
-         * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
-         */
 
         Vector v1 = new Vector(1, 2, 3);
 
@@ -64,6 +61,9 @@ class VectorTest {
 
     }
 
+    /**
+     *
+     */
     @Test
     void testDotProduct() {
         Vector v1 = new Vector(1, 2, 3);
@@ -76,51 +76,54 @@ class VectorTest {
             out.println("ERROR: dotProduct() wrong value");
     }
 
-
+    /**
+     *
+     */
     @Test
     void testAdd() {
-
-
-            Vector v1 = new Vector(1, 2, 3);
-            Vector v2 = new Vector(0, 3, -2);
-            Vector va;
-            Vector v3 = new Vector(1, 5, 1);
-            va = v1.add(v2);
-            assertEquals(v3, va, "ERROR: Add() wrong result ");
+        Vector v1 = new Vector(1, 2, 3);
+        Vector v2 = new Vector(0, 3, -2);
+        Vector va;
+        Vector v3 = new Vector(1, 5, 1);
+        va = v1.add(v2);
+        assertEquals(v3, va, "ERROR: Add() wrong result ");
     }
 
+    /**
+     *
+     */
     @Test
-    void testSubstract() {
+    void testSubtract() {
         Vector v1 = new Vector(1, 2, 3);
         Vector v2 = new Vector(0, 3, -2);
         Vector vs;
         Vector v3 = new Vector(1, -1, 5);
-        vs = v1.substract(v2);
+        vs = v1.subtract(v2);
         assertEquals(v3, vs, "ERROR: Substract() wrong result ");
     }
 
-
-
-
+    /**
+     *
+     */
     @Test
     void testLengthSquared() {
         Vector v1 = new Vector(1, 2, 3);
-
-
-
         assertTrue(isZero(v1.lengthSquared() - 14), "ERROR: lengthSquared() wrong value");
-
     }
 
+    /**
+     *
+     */
     @Test
     void testLength() {
-
         Vector v1 = new Vector(0, 3, 4);
         assertTrue(isZero(v1.length() - 5), "ERROR: length() wrong value");
 
     }
 
-
+    /**
+     *
+     */
     @Test
     void testNormalize() {
         Vector v = new Vector(1, 2, 3);
@@ -131,16 +134,17 @@ class VectorTest {
         assertTrue(isZero(vCopyNormalize.length() - 1), "ERROR: normalize() result is not a unit vector");
     }
 
+    /**
+     *
+     */
     @Test
     void testNormalized() {
-
         Vector v = new Vector(1, 2, 3);
         Vector u = v.normalized();
 
-        assertNotEquals(u,v,"ERROR: normalizated() function does not create a new vector");
+        assertNotEquals(u, v, "ERROR: normalizated() function does not create a new vector");
 
-        }
-
+    }
 
 
 }

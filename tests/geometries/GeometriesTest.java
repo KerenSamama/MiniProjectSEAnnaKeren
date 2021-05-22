@@ -55,17 +55,17 @@ class GeometriesTest {
         Ray ray2 = new Ray(new Point3D(1, 1, 1), new Vector(1, 0, 0));
         assertNull(geo2.findIntersections(ray2),"ERROR: empty geometries collection, therefore it must return null ");
 
-        //TC11 : None of the geometries shapes is cut by the ray
+        //TC12 : None of the geometries shapes is cut by the ray
         Ray ray3 = new Ray(new Point3D(-1, -1, 0), new Vector(-2, -2, 0));
         List<Point3D> intersectionPoints3 = geo1.findIntersections(ray3);
         assertNull(intersectionPoints3,"ERROR, there are no intersection points, therefore it must return null");
 
-        //TC12 : only one shape is cut by the ray
+        //TC13 : only one shape is cut by the ray
         Ray ray4 = new Ray(new Point3D(1, 0, 0), new Vector(0, 0, 1));
         assertEquals(1,geo1.findIntersections(ray4).size(), "ERROR, there must be only one intersection point");
 
 
-        //TC13 : all the collection is cut by the ray
+        //TC14 : all the collection is cut by the ray
         Ray ray5 = new Ray(new Point3D(0, -4, 0), new Vector(0,1,0));
         assertEquals(3,geo3.findIntersections(ray5).size(), "ERROR, there must be three intersection points");
 

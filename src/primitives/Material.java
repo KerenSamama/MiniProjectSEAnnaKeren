@@ -3,7 +3,7 @@ package primitives;
 public class Material {
     public double Kd =0;
     public double Ks =0;
-    public int nShininess;
+    public int nShininess=0;
 
 
 
@@ -22,7 +22,5 @@ public class Material {
         return this;
     }
 
-    public int getShininess() {
-        return nShininess;
-    }
+
 }

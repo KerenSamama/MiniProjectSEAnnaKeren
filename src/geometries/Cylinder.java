@@ -11,7 +11,8 @@ import static primitives.Util.isZero;
 
 /**
  * Cylinder class is the basic class representing a cylinder in 3D Cartesian coordinate system
- * Cylinder is a finished tube, cylinder class inherits from tube class
+ * Cylinder is a finished tube
+ * Cylinder class inherits from tube class
  */
 public class Cylinder extends Tube{
 
@@ -21,11 +22,11 @@ public class Cylinder extends Tube{
     double _height;
 
     /**
-     * Constructor for Cylinder receiving a ray, a value for radius and a value for height and
-     * activate the father constructor by sending the ray and radius
-     * @param axisRay value for  _axisRay
-     * @param radius  value for _radius
-     * @param height value for  _height
+     * Constructor for Cylinder class receiving a Ray and two double values
+     * activates the father constructor by sending the ray and radius
+     * @param axisRay Ray value for  _axisRay
+     * @param radius double value for _radius
+     * @param height double value for  _height
      *
      */
     public Cylinder(Ray axisRay, double radius, double height) {
@@ -34,7 +35,6 @@ public class Cylinder extends Tube{
     }
 
     /**
-     *
      * @return height
      */
     public double getHeight() {
@@ -45,7 +45,6 @@ public class Cylinder extends Tube{
     public Vector getNormal(Point3D point) {
         Point3D P0 = _axisRay.getP0();
         Vector v = _axisRay.getDir();
-
 
         Vector P0_P = point.subtract(P0);
 
@@ -63,8 +62,8 @@ public class Cylinder extends Tube{
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        return super.findIntersections(ray);
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        return super.findGeoIntersections(ray);
     }
 
     @Override

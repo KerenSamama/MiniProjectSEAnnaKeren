@@ -1,10 +1,8 @@
 package renderer;
 import elements.Camera;
 import primitives.Color;
-import primitives.Point3D;
 import primitives.Ray;
-import scene.Scene;
-import java.util.List;
+
 import java.util.MissingResourceException;
 
 /**
@@ -43,11 +41,11 @@ public class Render {
 
     /**
      * Setter method for basicRayTracer
-     * @param basicRayTracer
+     * @param rayTracerBase
      * @return the Render object itself for chaining calls
      */
-    public Render setRayTracer(BasicRayTracer basicRayTracer) {
-        _rayTracer = basicRayTracer;
+    public Render setRayTracer(RayTracerBase rayTracerBase) {
+        _rayTracer = rayTracerBase;
         return this;
     }
 

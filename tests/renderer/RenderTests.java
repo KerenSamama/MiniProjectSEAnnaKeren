@@ -5,7 +5,6 @@ import elements.*;
 import geometries.*;
 import org.junit.jupiter.api.Test;
 import primitives.*;
-import renderer.*;
 import scene.Scene;
 
 /**
@@ -42,7 +41,7 @@ public class RenderTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
-                .setRayTracer(new BasicRayTracer(scene));
+                .setRayTracer(new RayTracerBasic(scene));
 
         render.renderImage();
         render.printGrid(100, new Color(java.awt.Color.YELLOW));
@@ -93,7 +92,7 @@ public class RenderTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
-                .setRayTracer(new BasicRayTracer(scene));
+                .setRayTracer(new RayTracerBasic(scene));
 
         render.renderImage();
         render.printGrid(100, new Color(java.awt.Color.WHITE));

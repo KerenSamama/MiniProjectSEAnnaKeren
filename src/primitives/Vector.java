@@ -4,13 +4,18 @@ package primitives;
 import static primitives.Point3D.ZERO;
 import static primitives.Util.isZero;
 
+/**
+ * Class Vector is the basic class representing a vector of Euclidean geometry in Cartesian
+ * 3-Dimensional coordinate system.
+ * A vector is an object with direction and size and
+ * is defined by the end point when the start point is the first of the axes
+ */
 public class Vector {
 
     Point3D _head;
 
     /**
-     * primary constructor for Vector receiving one Point3D
-     *
+     * Primary constructor for Vector receiving a Point3D
      * @param head
      */
     public Vector(Point3D head) {
@@ -21,19 +26,19 @@ public class Vector {
     }
 
     /**
-     * constructor for Vector receiving three numbers of type double
-     * @param x
-     * @param y
-     * @param z
+     * Constructor for Vector receiving three numbers of type double and calling to the primary constructor
+     * @param x double value for creating x coordinate
+     * @param y double value for creating y coordinate
+     * @param z double value for creating z coordinate
      */
     public Vector(double x, double y, double z) {
         this(new Point3D(x, y, z));
     }
 
 
+
     /**
-     * Function get,
-     *
+     * Function get
      * @return _head
      */
     public Point3D getHead() {
@@ -45,25 +50,9 @@ public class Vector {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vector vector = (Vector) o;
-        return _head.equals(vector._head);
-    }
-
-    @Override
-    public String toString() {
-        return "Vector{" +
-                "_head=" + _head +
-                '}';
-    }
-
     /**
-     * Function scale vector with scalar
-     *
-     * @param  scalar double
+     * Function for product vector with scalar and returns a new vector
+     * @param  scalar of type double
      * @return new Vector
      */
     public Vector scale(double scalar) {
@@ -80,10 +69,9 @@ public class Vector {
     }
 
     /**
-     * Function do cross-product mathematic between 2 vectors
-     *
-     * @param v Vector v
-     * @return new Vector who is perpendicular to the other two vectors
+     * Function for cross-product mathematics between 2 vectors
+     * @param v of type Vector
+     * @return new Vector who is perpendicular to the others two vectors
      */
     public Vector crossProduct(Vector v) {
 
@@ -104,10 +92,9 @@ public class Vector {
     }
 
     /**
-     * Function do dot-product between 2 vectors
-     *
-     * @param  v Vector pour ....
-     * @return value double
+     * Function for dot-product between two vectors and returns a double value
+     * @param  v of type Vector
+     * @return double value
      */
     public double dotProduct(Vector v) {
         double u1 = _head._x._coord;
@@ -122,9 +109,8 @@ public class Vector {
     }
 
     /**
-     * Function do add two vectors
-     *
-     * @param v Vector v
+     * Function for add two vectors and returns a new Vector
+     * @param v of type Vector
      * @return new Vector
      */
     public Vector add(Vector v) {
@@ -136,14 +122,13 @@ public class Vector {
     }
 
     /**
-     * Function do substract 2 vectors
-     *
-     * @param v Vector v
+     * Function for subtract two vectors and returns a new Vector
+     * @param v of type Vector
      * @return new Vector
      */
-    public Vector substract(Vector v) {
+    public Vector subtract(Vector v) {
         if (v.equals(this)) {
-            throw new IllegalArgumentException("Parameter vector cannot be equals to me");
+            throw new IllegalArgumentException("Parameter vector cannot be equals to me to subtract");
         }
         double x = _head._x._coord - v._head._x._coord;
         double y = _head._y._coord - v._head._y._coord;
@@ -154,9 +139,8 @@ public class Vector {
     }
 
     /**
-     * Function find the vector squared length
-     *
-     * @return length squared (double)
+     * Function to calculate the vector squared length
+     * @return double value
      */
     public double lengthSquared() {
         double xx = _head._x._coord * _head._x._coord;
@@ -167,17 +151,15 @@ public class Vector {
     }
 
     /**
-     * Function return the vector length
-     *
-     * @return length (double)
+     * Function to calculate the vector length and using the function lengthSquared
+     * @return double value for length
      */
     public double length() {
         return Math.sqrt(lengthSquared());
     }
 
     /**
-     * Function normalize : change the original vector to a unit vector
-     *
+     * Function normalize who change the original vector to a unit vector
      * @return Vector
      */
     public Vector normalize() {
@@ -201,14 +183,28 @@ public class Vector {
     }
 
     /**
-     * Function normalized : return a new vector which is a unit vector in the same direction
-     *
+     * Function normalized who returns a new vector which is a unit vector in the same direction like the original vector
      * @return new Vector
      */
     public Vector normalized() {
         Vector result = new Vector(_head);
         result.normalize();
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vector vector = (Vector) o;
+        return _head.equals(vector._head);
+    }
+
+    @Override
+    public String toString() {
+        return "Vector{" +
+                "_head=" + _head +
+                '}';
     }
 
 

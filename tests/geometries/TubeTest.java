@@ -12,10 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class TubeTest {
 
+    /**
+     * Test method for {@link geometries.Tube#getNormal(Point3D)}
+     */
     @Test
     void testGetNormal() {
 
         // ============ Equivalence Partitions Tests ==============
+
+        // TC01: Test that Normal is proper
         Point3D p0= new Point3D(0,0,10);
         Point3D p= new Point3D(0,10,30);
         Point3D pE= new Point3D(0,10,10);
@@ -29,16 +34,15 @@ class TubeTest {
         Vector expectedNormal=(p.subtract(o)).normalize();
         Vector normal = tube.getNormal(p);
 
-        // TC01: Test that Normal is is proper
          assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
 
         // =============== Boundary Values Tests ==================
 
+        // TC11:
         double t2= dir.dotProduct(pE.subtract(p0));
         Vector expectedNormal2=(pE.subtract(p0)).normalize();
         Vector normal2 = tube.getNormal(pE);
 
-        // TC11: Test that normal is proper
         assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() wrong result");
 
     }

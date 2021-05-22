@@ -6,6 +6,7 @@ import geometries.Geometries;
 import primitives.Color;
 import primitives.Point3D;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Scene {
@@ -14,7 +15,7 @@ public class Scene {
     public Color backGroundColor = Color.BLACK; // the color of the background
     public AmbientLight ambientLight = new AmbientLight(new Color(0,0,0),1.d); // the environmental lighting
     public Geometries geometries=null; // 3D model
-    public List<LightSource> lights;
+    public List<LightSource> lights = new LinkedList<>();
 
     /**
      * Constructor for Scene who receives the name of the scene and who builts an empty collection of bodies for the 3D model
@@ -53,5 +54,10 @@ public class Scene {
     public Scene setGeometries(Geometries geometries) {
         this.geometries = geometries;
         return this;
+    }
+
+    public Scene setLights(List<LightSource> lights){
+       this.lights=lights;
+       return this;
     }
 }

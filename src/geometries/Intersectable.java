@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 
 /**
- * interface Intersectable with the operation : findIntersections
+ * Interface Intersectable
  */
 public interface Intersectable{
 

@@ -1,5 +1,4 @@
 package geometries;
-
 import primitives.Point3D;
 import primitives.Ray;
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.List;
 
 /**
  * Geometries class is the class representing a collection of geometric bodies.
- * Geometries class implements the interface Intersectable.
+ * Geometries class implements the interface Intersectable according to composite design template.
  */
 
 public class Geometries implements Intersectable {
@@ -20,7 +19,7 @@ public class Geometries implements Intersectable {
 
 
     /**
-     * default constructor who initializes with an empty list
+     * Default constructor for Geometries class who initializes with an empty list
      */
     public Geometries(){
         _intersectables = new ArrayList<Intersectable>();
@@ -34,30 +33,37 @@ public class Geometries implements Intersectable {
      */
     public Geometries(Intersectable... geometries) {
         _intersectables = new ArrayList<Intersectable>();
+        add(geometries);
 
-      /*  for(int i = 0 ; i< geometries.length ; i++)
+        /*  for(int i = 0 ; i< geometries.length ; i++)
         {
             _intersectables.add(i, geometries[i]);
         }*/
-        add(geometries);
+
     }
 
 
     /**
-     * function to add geometric bodies to the collection _intersectables;
+     * Function to add geometric bodies to the collection _intersectables;
      * @param geometries list of objects who implement the interface Intersectable
      */
     public void add(Intersectable... geometries) {
-
+        Collections.addAll(_intersectables, geometries);
 
        /* for(int i =0; i<geometries.length ; i++)
         {
             _intersectables.add(_intersectables.size() + i ,geometries[i]);
         }*/
-        Collections.addAll(_intersectables, geometries);
     }
 
 
+    /**
+     * This function returns a list of intersection points
+     * that includes intersection points with the geometric bodies in the collection.
+     * If there is no intercept in any body, the action will return null.
+     * @param ray : the function findIntersections receives a ray
+     * @return a list of intersection points of type GeoPoint with this ray.
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         List<GeoPoint> result = null;
@@ -73,11 +79,5 @@ public class Geometries implements Intersectable {
         return result;
     }
 
-    /** on a supprimer la fonction findintersection
-     * This function returns a list of intersection points that includes intersection points of all the bodies in the collection.
-     * If there is no intercept in any body, the action will return null.
-     * @param ray : the function findIntersections receives a ray
-     * @return a list of intersection points with this ray.
-     */
 
 }

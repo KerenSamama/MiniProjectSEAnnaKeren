@@ -112,20 +112,13 @@ public class Polygon extends Geometry {
     }
 
 
+    // On verifie s'il y a un point d'intersection avec le plan.
+    // Dans le cas ou oui, la fonction nous renvoie un GeoPoint avec le point mais comme geometry = Plane
+    // C'est pourquoi on recupere juste le point et on le place dans notre geometry avec this qui est Polygon
 
-    public List<GeoPoint> findGeoIntersections(Ray ray){
-        Point3D planePoint= _plane.findGeoIntersections(ray).get(0).point;
-        if(planePoint==null){
-            return null;
-        }
-        return List.of(new GeoPoint(this,planePoint));
-    }
-
-
-
-    /*@Override
-    public List<GeoPoint3D> findIntersections(Ray ray) {
-        List<GeoPoint> intersections = _plane.findIntersections(ray);
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<GeoPoint> intersections = _plane.findGeoIntersections(ray);
         if (intersections == null){
          return null;
          }
@@ -156,5 +149,14 @@ public class Polygon extends Geometry {
 
         return List.of(new GeoPoint(this,intersections.get(0).point));
 
-    }*/
+    }
+       /*public List<GeoPoint> findGeoIntersections(Ray ray){
+        Point3D planePoint= _plane.findGeoIntersections(ray).get(0).point;
+        if(planePoint==null){
+            return null;
+        }
+        return List.of(new GeoPoint(this,planePoint));
+    }
+     */
+
 }

@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CylinderTest {
 
+    /**
+     * Test method for {@link Cylinder#getNormal(Point3D)}
+     */
     @Test
     void testGetNormal() {
 
@@ -24,7 +27,6 @@ class CylinderTest {
 
         // ============ Equivalence Partitions Tests ==============
        // TCO1 EP : Point is on cylindre'side
-
 
         Vector expectedNormal=dir;
         Vector normal = cylinder.getNormal(p1);

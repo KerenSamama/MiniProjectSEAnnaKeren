@@ -11,11 +11,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlaneTest {
 
+
+    /**
+     * Test method for {@link geometries.Plane#Plane(Point3D, Point3D, Point3D)}
+     */
     @Test
+    public void testConstructor() {
+        // =============== Boundary Values Tests ==================
+
+        // TC10: First point = Second point
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Plane(new Point3D(0, 1, 1), new Point3D(0, 1, 1), new Point3D(1, 1, 1)),
+                "ERROR : first and second point are the same");
+
+        // TC11: Collocated points
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Plane(new Point3D(1, 0, 0), new Point3D(2, 0, 0), new Point3D(3, 0, 0)),
+                "ERROR : all of points are on the same line");
+    }
+
+
+
+    /**
+     * Test method for {@link geometries.Plane#getNormal(Point3D)}
+     */
+    @Test
+    void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
 
         // TCO1 EP : Any Point on the plane, there is a simple single test here
-    void testGetNormal() {
         Point3D p1 = new Point3D(0, 1, 1);
         Point3D p2 = new Point3D(1, 0, 1);
         Point3D p3 = new Point3D(1, 1, 0);
@@ -30,21 +56,6 @@ class PlaneTest {
         assertEquals(normal1, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
         assertEquals(normal2, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
 
-    }
-
-    @Test
-    public void testConstructor() {
-        // TC10: First point = Second point
-        assertThrows(
-
-                IllegalArgumentException.class,
-                () -> new Plane(new Point3D(0, 1, 1), new Point3D(0, 1, 1), new Point3D(1, 1, 1)), "ERROR : first and second point are the same");
-
-        // TC11: Collocated points
-        assertThrows(
-
-                IllegalArgumentException.class,
-                () -> new Plane(new Point3D(1, 0, 0), new Point3D(2, 0, 0), new Point3D(3, 0, 0)), "ERROR : all of points are on the same line");
     }
 
 

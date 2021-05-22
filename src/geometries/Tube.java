@@ -9,8 +9,7 @@ import java.util.List;
 import static primitives.Util.*;
 
 /**
- * Tube class is the basic class representing a tube in 3D Cartesian coordinate
- * system
+ * Tube class is the basic class representing a tube in 3D Cartesian coordinate system
  */
 public class Tube extends Geometry {
 
@@ -18,8 +17,7 @@ public class Tube extends Geometry {
     double _radius;
 
     /**
-     * primary constructor for Tube
-     *
+     * Primary constructor for Tube class
      * @param axisRay Ray
      * @param radius  double
      */
@@ -32,8 +30,7 @@ public class Tube extends Geometry {
     }
 
     /**
-     * Function get,
-     *
+     * Function get
      * @return _axisRay
      */
     public Ray getAxisRay() {
@@ -41,27 +38,19 @@ public class Tube extends Geometry {
     }
 
     /**
-     * Function get,
-     *
+     * Function get
      * @return _radius
      */
     public double getRadius() {
         return _radius;
     }
 
-    @Override
-    public String toString() {
-        return "Tube{" +
-                "_axisRay=" + _axisRay +
-                ", _radius=" + _radius +
-                '}';
-    }
+
 
     /**
-     * Function getNormal override function
-     *
-     * @param p Point3D
-     * @return _radius
+     * Implementation of getNormal from Geometry
+     * @param p of type Point3D
+     * @return Vector : the normal Vector at this point
      */
     @Override
     public Vector getNormal(Point3D p) {
@@ -86,4 +75,11 @@ public class Tube extends Geometry {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Tube{" +
+                "_axisRay=" + _axisRay +
+                ", _radius=" + _radius +
+                '}';
+    }
 }

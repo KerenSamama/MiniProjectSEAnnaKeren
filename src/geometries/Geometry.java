@@ -7,8 +7,8 @@ import primitives.Vector;
 
 
 /**
- * interface Geometry who implements the interface Intersectable
- * with the operation getNormal
+ * Abstract class Geometry for any geometric body
+ * who implements the interface Intersectable
  */
 public abstract class Geometry implements Intersectable {
     protected Color _emission = Color.BLACK;
@@ -33,9 +33,8 @@ public abstract class Geometry implements Intersectable {
     }
 
     /**
-     * Function getNormal who receive a Point3D
+     * Function getNormal who receives a Point3D
      * and returns the normal vector to the geometric shape at this point
-     *
      * @param point
      * @return Vector
      */
