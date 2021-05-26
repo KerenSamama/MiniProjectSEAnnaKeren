@@ -11,13 +11,22 @@ import primitives.Vector;
  * who implements the interface Intersectable
  */
 public abstract class Geometry implements Intersectable {
-    protected Color _emission = Color.BLACK;
-    private Material _material = new Material();
+    protected Color _emission = Color.BLACK; // field for representing geometric body's color
+    private Material _material = new Material(); // field for representing geometric body's material
 
+    /**
+     * Function Getter
+     * @return _emission
+     */
     public Color getEmission() {
         return _emission;
     }
 
+    /**
+     * Setter method as in Builder design template
+     * @param emission of type Color : geometric body's color
+     * @return the Geometry object itself for chaining calls
+     */
     public Geometry  setEmission(Color emission){
         _emission=emission;
         return this;
@@ -27,6 +36,11 @@ public abstract class Geometry implements Intersectable {
         return _material;
     }
 
+    /**
+     * Setter method as in Builder design template
+     * @param material of type Material : geometric body's material
+     * @return the Geometry object itself for chaining calls
+     */
     public Geometry setMaterial(Material material) {
         _material = material;
         return this;
@@ -35,7 +49,7 @@ public abstract class Geometry implements Intersectable {
     /**
      * Function getNormal who receives a Point3D
      * and returns the normal vector to the geometric shape at this point
-     * @param point
+     * @param point of type Point3D
      * @return Vector
      */
     public abstract Vector getNormal(Point3D point);

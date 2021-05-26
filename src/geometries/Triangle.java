@@ -31,7 +31,7 @@ public class Triangle extends Polygon {
      * Fist, we check intersection between the ray and the plane. Then, we check if the intersection point (if they are) is
      * inside the triangle
      * @param ray
-     * @return a list of intersection points or null
+     * @return a list of intersection points of type GeoPoint or null if there are no intersections
      */
 
     @Override

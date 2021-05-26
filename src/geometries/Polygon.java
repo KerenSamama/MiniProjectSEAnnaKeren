@@ -55,7 +55,7 @@ public class Polygon extends Geometry {
             return; // no need for more tests for a Triangle
 
         Vector n = _plane.getNormal(null);
-//        Vector n = _plane.getNormal();
+        // Vector n = _plane.getNormal();
 
         // Subtracting any subsequent points will throw an IllegalArgumentException
         // because of Zero Vector if they are in the same point
@@ -112,10 +112,14 @@ public class Polygon extends Geometry {
     }
 
 
-    // On verifie s'il y a un point d'intersection avec le plan.
-    // Dans le cas ou oui, la fonction nous renvoie un GeoPoint avec le point mais comme geometry = Plane
-    // C'est pourquoi on recupere juste le point et on le place dans notre geometry avec this qui est Polygon
-
+    /**
+     * This function helps to find the intersection between a ray and a polygon.
+     * Fist, we check intersection between the ray and the plane. If there is an intersection point,
+     * we must update the geometry field from the GeoPoint originally received from the plane
+     * to the value "this" related to the polygon
+     * @param ray of type Ray
+     * @return a list of intersection points of type GeoPoint or null if there are no intersections
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         List<GeoPoint> intersections = _plane.findGeoIntersections(ray);
@@ -150,13 +154,7 @@ public class Polygon extends Geometry {
         return List.of(new GeoPoint(this,intersections.get(0).point));
 
     }
-       /*public List<GeoPoint> findGeoIntersections(Ray ray){
-        Point3D planePoint= _plane.findGeoIntersections(ray).get(0).point;
-        if(planePoint==null){
-            return null;
-        }
-        return List.of(new GeoPoint(this,planePoint));
-    }
-     */
+
+
 
 }

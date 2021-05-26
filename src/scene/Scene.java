@@ -15,7 +15,7 @@ public class Scene {
     public Color backGroundColor = Color.BLACK; // the color of the background
     public AmbientLight ambientLight = new AmbientLight(new Color(0,0,0),1.d); // the environmental lighting
     public Geometries geometries=null; // 3D model
-    public List<LightSource> lights = new LinkedList<>();
+    public List<LightSource> lights = new LinkedList<>(); // all the scene's light sources
 
     /**
      * Constructor for Scene who receives the name of the scene and who builts an empty collection of bodies for the 3D model
@@ -56,6 +56,11 @@ public class Scene {
         return this;
     }
 
+    /**
+     * Update methods for lights
+     * @param lights list of all the scene's light sources
+     * @return the Scene object itself for chaining calls
+     */
     public Scene setLights(List<LightSource> lights){
        this.lights=lights;
        return this;

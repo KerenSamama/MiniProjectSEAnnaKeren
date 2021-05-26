@@ -47,9 +47,9 @@ public class Ray {
 
 
     /**
-     * Find the most closest point to the starting point of the ray
+     * Find the most closest point of type Point3D to the starting point of the ray
      * @param intersections a list of Point3D
-     * @return a point who is the closest to _p0
+     * @return a point of type Point3D who is the closest to _p0
      */
     public Point3D getClosestPoint(List<Point3D> intersections) {
         Point3D result = null;
@@ -67,6 +67,12 @@ public class Ray {
         return result;
     }
 
+
+    /**
+     * Find the most closest point of type GeoPoint to the starting point of the ray
+     * @param intersections a list of GeoPoint
+     * @return a point of type GeoPoint who is the closest to _p0
+     */
     public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections){
         GeoPoint result = null;
         if (intersections == null) {

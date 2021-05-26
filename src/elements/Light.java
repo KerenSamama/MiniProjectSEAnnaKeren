@@ -1,7 +1,9 @@
 package elements;
-
 import primitives.Color;
 
+/**
+ * Light Class is an abstract class who represents all type of lights
+ */
 abstract class Light {
 
     /**
@@ -9,12 +11,16 @@ abstract class Light {
      */
     protected final Color _intensity;
 
+    /**
+     * Constructor for Light class
+     * @param intensity of type Color
+     */
     protected Light(Color intensity) {
         _intensity = intensity;
     }
 
-    /**
-     * @return the value of  light intensity
+    /** Getter Method
+     * @return _intensity : the value of  light intensity
      */
     public Color getIntensity() {
         return _intensity;

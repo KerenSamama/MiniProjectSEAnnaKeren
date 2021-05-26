@@ -139,4 +139,52 @@ public class LightsTests {
         render.writeToImage();
     }
 
+
+    /**
+     * Produce a picture of a sphere lighted by a directional, spot, and point light
+     */
+    @Test
+    public void sphereLightsTest() {
+        scene1.geometries.add(sphere);
+        scene1.lights.add(new DirectionalLight(new Color(java.awt.Color.cyan), new Vector(3, 5, -7)));
+        scene1.lights.add(new PointLight(new Color(java.awt.Color.cyan), new Point3D(-15, -20, 80))
+                .setKl(0.001).setKq(0.0001));
+        scene1.lights.add(new SpotLight(new Color(java.awt.Color.cyan), new Point3D(-30, -50, 70), new Vector(3, 5, -7)) //
+                .setKl(0.001).setKq(0.001));
+
+        ImageWriter imageWriter = new ImageWriter("sphereLightsTest", 500, 500);
+        Render render = new Render()//
+                .setImageWriter(imageWriter) //
+                .setCamera(camera1) //
+                .setRayTracer(new RayTracerBasic(scene1));
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    /**
+     * Produce a picture of a two triangles lighted by a directional, point, and spot light
+     */
+    @Test
+    public void trianglesLightsTest() {
+
+        scene2.geometries.add(triangle1.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(300)),
+                triangle2.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(300)));
+
+        scene2.lights.add(new DirectionalLight(new Color(java.awt.Color.cyan), new Vector(-2, -2, -1)));
+        scene2.lights.add(new PointLight(new Color(500, 500, 250), new Point3D(20, -10, -130)) //
+                .setKl(0.0001).setKq(0.00025));
+        scene2.lights.add(new SpotLight(new Color(500, 250, 250), new Point3D(30, -10, -130), new Vector(-2, -2, -1)) //
+                .setKl(0.0003).setKq(0.000007));
+
+        ImageWriter imageWriter = new ImageWriter("trianglesLightsTest", 500, 500);
+        Render render = new Render()//
+                .setImageWriter(imageWriter) //
+                .setCamera(camera2) //
+                .setRayTracer(new RayTracerBasic(scene2));
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+
 }
