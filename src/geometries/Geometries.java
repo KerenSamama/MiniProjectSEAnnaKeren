@@ -65,10 +65,10 @@ public class Geometries implements Intersectable {
      * @return a list of intersection points of type GeoPoint with this ray.
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> result = null;
         for (Intersectable geo : _intersectables) {
-            List<GeoPoint> geoPoints = geo.findGeoIntersections(ray);  // geopoints is temporary intersections points with one geometric body
+            List<GeoPoint> geoPoints = geo.findGeoIntersections(ray,maxDistance);  // geopoints is temporary intersections points with one geometric body
             if (geoPoints != null) {
                 if (result == null) {
                     result = new LinkedList<>();
@@ -78,6 +78,8 @@ public class Geometries implements Intersectable {
         }
         return result;
     }
+
+
 
 
 }

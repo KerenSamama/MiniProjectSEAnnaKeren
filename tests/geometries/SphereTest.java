@@ -22,7 +22,7 @@ class SphereTest {
         // TCO1 EP : Any Point on Sphere, there is a simple single test here
         Point3D o = new Point3D(0, 4, 2);
         Point3D p = new Point3D(0, 2, 2);
-        Sphere s1 = new Sphere(o, 2);
+        Sphere s1 = new Sphere(2, o);
         Vector expectedNormal = (p.subtract(o)).normalize();
         Vector normal = s1.getNormal(p);
 
@@ -34,7 +34,7 @@ class SphereTest {
      */
     @Test
     public void testFindIntersections() {
-        Sphere sphere = new Sphere(new Point3D(1, 0, 0), 1d);
+        Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
 
         // ============ Equivalence Partitions Tests ==============
 

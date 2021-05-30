@@ -1,4 +1,5 @@
 package primitives;
+import elements.LightSource;
 import geometries.Geometry;
 import geometries.Intersectable;
 import static geometries.Intersectable.GeoPoint;
@@ -23,6 +24,21 @@ public class Ray {
     public Ray(Point3D p0, Vector dir) {
         _p0 = p0;
         _dir = dir.normalized();
+    }
+
+    /**
+     * Ray Meyouhad che zaz ktsat meamakor
+     * Special Ray moove a little of origin
+     * @param point
+     * @param lightDirection
+     * @param n
+     * @param delta
+     */
+    public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
+       Vector l= lightSource.getL(point).scale(-1);
+        Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
+        _p0=point.add(teta);
+        _dir=lightSource.getL(point);
     }
 
     /**

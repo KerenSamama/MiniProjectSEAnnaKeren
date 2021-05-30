@@ -15,27 +15,27 @@ public class Triangle extends Polygon {
 
     /**
      * Constructor for Triangle receiving three points and activates the father constructor
+     *
      * @param p1 Point3D value for point p1
      * @param p2 Point3D value for point p2
      * @param p3 Point3D value for point p3
      */
     public Triangle(Point3D p1, Point3D p2, Point3D p3) {
-        super(p1,p2,p3);
+        super(p1, p2, p3);
     }
-
-
 
 
     /**
      * This function helps to find the intersection between a ray and a triangle.
      * Fist, we check intersection between the ray and the plane. Then, we check if the intersection point (if they are) is
      * inside the triangle
+     *
      * @param ray
      * @return a list of intersection points of type GeoPoint or null if there are no intersections
      */
-
+//IL A SUPPRIMER  et a mis return null
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> intersections = _plane.findGeoIntersections(ray);
         if (intersections == null) {
             return null;
@@ -70,5 +70,8 @@ public class Triangle extends Polygon {
 
         }
 
+        //return null;
+
     }
+
 

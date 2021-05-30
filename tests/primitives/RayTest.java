@@ -1,5 +1,4 @@
 package primitives;
-import geometries.Intersectable;
 import static geometries.Intersectable.GeoPoint;
 import geometries.Plane;
 import geometries.Sphere;
@@ -60,7 +59,7 @@ class RayTest {
         Plane plane = new Plane(new Point3D(3, 1, 0), new Point3D(4, 1, 0),
                 new Point3D(3.5, 0, 1));
 
-        Sphere sp = new Sphere(new Point3D(0, -2, 0), 1.0);
+        Sphere sp = new Sphere(1.0, new Point3D(0, -2, 0));
 
         Ray ray = new Ray(new Point3D(0, 1, 0), new Vector(0, 1, 0));
         // ============ Equivalence Partitions Tests ==============

@@ -21,7 +21,7 @@ public class CameraIntegrationTest {
 
     @Test
     void constructRayThroughPixelWithSphere1() {
-        Sphere sph = new Sphere(new Point3D(0.0D, 0.0D, 3.0D), 1.0D);
+        Sphere sph = new Sphere(1.0D, new Point3D(0.0D, 0.0D, 3.0D));
         int count = 0;
         System.out.println("sphere1: ");
 
@@ -41,7 +41,7 @@ public class CameraIntegrationTest {
 
     @Test
     public void cameraRaySphereIntegrationTest2() {
-        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.5D), 2.5D);
+        Sphere sphere = new Sphere(2.5D, new Point3D(0.0D, 0.0D, 2.5D));
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
@@ -62,7 +62,7 @@ public class CameraIntegrationTest {
 
     @Test
     public void cameraRaySphereIntegrationTest3() {
-        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, 2.0D), 2.0D);
+        Sphere sphere = new Sphere(2.0D, new Point3D(0.0D, 0.0D, 2.0D));
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
@@ -84,7 +84,7 @@ public class CameraIntegrationTest {
     @Test
     public void cameraRaySphereIntegrationTest4() {
         Camera cam = (new Camera(new Point3D(2.0D, 2.0D, 2.0D), new Vector(0.0D, 0.0D, 1.0D), new Vector(0.0D, -1.0D, 0.0D))).setDistance(1.0D).setViewPlaneSize(3.0D, 3.0D);
-        Sphere sphere = new Sphere(new Point3D(2.0D, 2.0D, 2.0D), 4.0D);
+        Sphere sphere = new Sphere(4.0D, new Point3D(2.0D, 2.0D, 2.0D));
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 
@@ -105,7 +105,7 @@ public class CameraIntegrationTest {
 
     @Test
     public void cameraRaySphereIntegrationTest5() {
-        Sphere sphere = new Sphere(new Point3D(0.0D, 0.0D, -1.0D), 0.5D);
+        Sphere sphere = new Sphere(0.5D, new Point3D(0.0D, 0.0D, -1.0D));
         List<Point3D> intersections = new ArrayList();
         int count = 0;
 

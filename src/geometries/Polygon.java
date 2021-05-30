@@ -117,15 +117,16 @@ public class Polygon extends Geometry {
      * Fist, we check intersection between the ray and the plane. If there is an intersection point,
      * we must update the geometry field from the GeoPoint originally received from the plane
      * to the value "this" related to the polygon
+     *
      * @param ray of type Ray
      * @return a list of intersection points of type GeoPoint or null if there are no intersections
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
-        List<GeoPoint> intersections = _plane.findGeoIntersections(ray);
-        if (intersections == null){
-         return null;
-         }
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        List<GeoPoint> intersections = _plane.findGeoIntersections(ray, maxDistance);
+        if (intersections == null) {
+            return null;
+        }
 
         Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
@@ -133,9 +134,9 @@ public class Polygon extends Geometry {
         Vector v1 = _vertices.get(1).subtract(p0);
         Vector v2 = _vertices.get(0).subtract(p0);
         double sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
-        if (isZero(sign)){
+        if (isZero(sign)) {
             return null;
-         }
+        }
 
         boolean positive = sign > 0;
 
@@ -143,18 +144,17 @@ public class Polygon extends Geometry {
             v1 = v2;
             v2 = _vertices.get(i).subtract(p0);
             sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
-            if (isZero(sign)){
-             return null;
-             }
-            if (positive != (sign > 0)){
-             return null;
-             }
+            if (isZero(sign)) {
+                return null;
+            }
+            if (positive != (sign > 0)) {
+                return null;
+            }
         }
 
-        return List.of(new GeoPoint(this,intersections.get(0).point));
+        return List.of(new GeoPoint(this, intersections.get(0).point));
 
     }
-
 
 
 }

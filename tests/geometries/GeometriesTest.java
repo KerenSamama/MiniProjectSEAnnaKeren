@@ -22,7 +22,7 @@ class GeometriesTest {
         Plane plane1 = new Plane(new Point3D(3, 1, 0), new Point3D(4, 1, 0),
                 new Point3D(3.5, 0, 1));
 
-        Sphere sp = new Sphere(new Point3D(0, -2, 0), 1.0);
+        Sphere sp = new Sphere(1.0, new Point3D(0, -2, 0));
 
         Geometries geo1 = new Geometries(tr1, plane1, sp);
 

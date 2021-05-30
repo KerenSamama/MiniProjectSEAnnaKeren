@@ -25,10 +25,11 @@ public class Sphere extends Geometry {
 
     /**
      * Constructor for Sphere class receiving a Point3D value for the center and a double value for the radius
-     * @param center of type Point3D
+     *
      * @param radius of type double value
+     * @param center of type Point3D
      */
-    public Sphere(Point3D center, double radius) {
+    public Sphere(double radius, Point3D center) {
         if (radius == 0d) {
             throw new IllegalArgumentException("Sphere radius cannot be 0");
         }
@@ -56,6 +57,7 @@ public class Sphere extends Geometry {
 
     /**
      * Implementation of getNormal from Geometry
+     *
      * @param point of type Point3D
      * @return Vector : the normal Vector at this point
      */
@@ -69,14 +71,14 @@ public class Sphere extends Geometry {
     }
 
 
-
     /**
      * This function helps to find the intersections between a ray and a sphere.
+     *
      * @param ray of type Ray
      * @return A list of intersection points of type GeoPoint or null if there are no intersections
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D p0 = ray.getP0(); // beginning point of the ray
         Vector v = ray.getDir();  // vector direction of the ray
         Point3D O = _center;      // center of the sphere
@@ -95,18 +97,19 @@ public class Sphere extends Geometry {
         }
 
         double th = Math.sqrt(_radius * _radius - d * d); // calculate the side th on the triangle r-d-th
-        double t1 = tm - th; // the distance between p0 and the first intersection point
-        double t2 = tm + th;  // the distance between p0 and the second intersection point
+        double t1 = alignZero(tm - th); // the distance between p0 and the first intersection point
+        double t2 = alignZero(tm + th);  // the distance between p0 and the second intersection point
 
-        if (t1 > 0 && t2 > 0) { // there are two intersections points
+        if (t1 > 0 && t2 > 0 && alignZero(t1 - maxDistance) <= 0 && alignZero(t2 - maxDistance) <= 0) { // there are two intersections points
             return (List.of(new GeoPoint(this, ray.getPoint(t1)), new GeoPoint(this, ray.getPoint(t2))));
         }
 
-        if (t1 > 0) { // there are only one intersection point
+        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) { // there are only one intersection point
+
             return (List.of(new GeoPoint(this, ray.getPoint(t1))));
         }
 
-        if (t2 > 0) { // // there are only one intersection point
+        if (t2 > 0 && alignZero(t2 - maxDistance) <= 0) { // // there are only one intersection point
             return (List.of(new GeoPoint(this, ray.getPoint(t2))));
         }
 

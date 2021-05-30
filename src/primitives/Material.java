@@ -1,10 +1,12 @@
 package primitives;
 
-public class Material {
+public class  Material {
 
     public double Kd =0; // diffuse coefficient
     public double Ks =0; // specular coefficient
     public int nShininess=0; // the object’s shininess
+    public double Kr=0;//  reflective coefficient
+    public double Kt=0;//  transparent coefficient
 
 
     /**
@@ -24,6 +26,26 @@ public class Material {
      */
     public Material setKs(double ks) {
         this.Ks = ks;
+        return this;
+    }
+
+    /**
+     * Update method for Kr
+     * @param kr
+     * @return
+     */
+    public Material setKr(double kr) {
+        Kr = kr;
+        return this;
+    }
+
+    /**
+     * Update method for Kt
+     * @param kt
+     * @return
+     */
+    public Material setKt(double kt) {
+        Kt = kt;
         return this;
     }
 
