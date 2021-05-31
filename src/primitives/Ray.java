@@ -13,6 +13,7 @@ import java.util.List;
 public class Ray {
     final Point3D _p0; // starting point of the ray
     final Vector _dir; // directional vector of the ray
+    private static final double DELTA = 0.1;
 
     /**
      * Primary constructor for Ray receiving a point and a vector
@@ -27,16 +28,24 @@ public class Ray {
     /**
      * Special Ray moove a little of origin
      * @param point
-     * @param lightDirection
+     * @param lightSource
      * @param n
      * @param delta
      */
     public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
-       Vector l= lightSource.getL(point).scale(-1);
-        Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
+       //Vector l= lightSource.getL(point).scale(-1);
+        Vector teta=n.scale(n.dotProduct(lightSource.getL(point))>0? delta : -delta);
         _p0=point.add(teta);
-        _dir=l;
+        _dir=lightSource.getL(point);
     }
+
+    public Ray(Point3D point, Vector direction, Vector n) {
+        //Vector l= lightSource.getL(point).scale(-1);
+        Vector teta=n.scale(n.dotProduct(direction)>0? DELTA : -DELTA);
+        _p0=point.add(teta);
+        _dir=direction.normalized();
+    }
+
 
     /**
      * Getters

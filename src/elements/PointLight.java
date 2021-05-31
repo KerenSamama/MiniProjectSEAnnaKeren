@@ -4,6 +4,8 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+
 /**
  * PointLight class represents a light source of type point. This class inherits from Light class
  * and implements the interface LightSource
@@ -35,7 +37,7 @@ public class PointLight extends  Light implements LightSource{
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double d = _position.distance(p);
+        double d = alignZero(_position.distance(p));
         double attenuation = 1d/(_Kc +_Kl*d+ _Kq *d*d);
         return _intensity.scale(attenuation);
     }

@@ -1,16 +1,17 @@
 package primitives;
 
-public class  Material {
+public class Material {
 
-    public double Kd =0; // diffuse coefficient
-    public double Ks =0; // specular coefficient
-    public int nShininess=0; // the object’s shininess
-    public double Kr=0;//  reflective coefficient
-    public double Kt=0;//  transparent coefficient
+    public double Kd = 0; // diffuse coefficient
+    public double Ks = 0; // specular coefficient
+    public int nShininess = 0; // the object’s shininess
+    public double Kr = 0;//  reflective coefficient
+    public double Kt = 0;//  transparent coefficient
 
 
     /**
      * Update method for Kd
+     *
      * @param kd diffuse coefficient
      * @return the Material object itself for chaining calls
      */
@@ -21,6 +22,7 @@ public class  Material {
 
     /**
      * Update method for Ks
+     *
      * @param ks specular coefficient
      * @return the Material object itself for chaining calls
      */
@@ -31,6 +33,7 @@ public class  Material {
 
     /**
      * Update method for Kr
+     *
      * @param kr
      * @return
      */
@@ -41,6 +44,7 @@ public class  Material {
 
     /**
      * Update method for Kt
+     *
      * @param kt
      * @return
      */
@@ -51,6 +55,7 @@ public class  Material {
 
     /**
      * Update method for nShininess
+     *
      * @param nShininess the object’s shininess
      * @return the Material object itself for chaining calls
      */
@@ -60,4 +65,11 @@ public class  Material {
     }
 
 
+    public double getKd() {
+        return Kt;
+    }
+
+    public double getKs() {
+        return Ks;
+    }
 }
