@@ -4,7 +4,6 @@ import primitives.Ray;
 import primitives.Vector;
 import java.util.List;
 import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
 
 /**
  * Triangle class is the basic class representing a triangle
@@ -36,7 +35,7 @@ public class Triangle extends Polygon {
 //IL A SUPPRIMER  et a mis return null
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
-        List<GeoPoint> intersections = _plane.findGeoIntersections(ray);
+        List<GeoPoint> intersections = _plane.findGeoIntersections(ray,maxDistance);
         if (intersections == null) {
             return null;
         }
@@ -66,7 +65,7 @@ public class Triangle extends Polygon {
         }
 
         return ((s1 > 0 && s2 > 0 && s3 > 0) || (s1 < 0 && s2 < 0 && s3 < 0)) ?
-                List.of(new GeoPoint(this,intersections.get(0).point)) : null;
+                List.of(new GeoPoint(this,intersections.get(0)._point)) : null;
 
         }
 

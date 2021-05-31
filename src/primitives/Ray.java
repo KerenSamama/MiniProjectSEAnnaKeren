@@ -1,10 +1,8 @@
 package primitives;
 import elements.LightSource;
-import geometries.Geometry;
-import geometries.Intersectable;
+
 import static geometries.Intersectable.GeoPoint;
 import java.util.List;
-import static primitives.Point3D.ZERO;
 
 /**
  * Class Ray is the basic class representing a ray of Euclidean geometry in Cartesian
@@ -27,7 +25,6 @@ public class Ray {
     }
 
     /**
-     * Ray Meyouhad che zaz ktsat meamakor
      * Special Ray moove a little of origin
      * @param point
      * @param lightDirection
@@ -38,7 +35,7 @@ public class Ray {
        Vector l= lightSource.getL(point).scale(-1);
         Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
         _p0=point.add(teta);
-        _dir=lightSource.getL(point);
+        _dir=l;
     }
 
     /**
@@ -96,7 +93,7 @@ public class Ray {
         }
         double distance = Double.MAX_VALUE;
         for (GeoPoint geo : intersections) {
-            double newDist = _p0.distance(geo.point);
+            double newDist = _p0.distance(geo._point);
             if (newDist < distance) {
                 distance = newDist;
                 result = geo;

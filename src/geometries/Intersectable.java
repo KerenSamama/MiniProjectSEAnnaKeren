@@ -18,8 +18,8 @@ public interface Intersectable{
      * This class gives us an information on a point but also on the class to which belongs this point
      */
     public static class GeoPoint {
-        public Geometry geometry;
-        public Point3D point;
+        public Geometry _geometry;
+        public Point3D _point;
 
         /**
          * Constructor for GeoPoint class receiving two parameters :
@@ -27,8 +27,8 @@ public interface Intersectable{
          * @param point of type Point3D
          */
         public GeoPoint(Geometry geometry, Point3D point) {
-            this.geometry = geometry;
-            this.point = point;
+            this._geometry = geometry;
+            this._point = point;
         }
 
         /**
@@ -39,7 +39,7 @@ public interface Intersectable{
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             GeoPoint geoPoint = (GeoPoint) o;
-            return geometry.equals(geoPoint.geometry) && point.equals(geoPoint.point);
+            return _geometry.equals(geoPoint._geometry) && _point.equals(geoPoint._point);
         }
 
     }
@@ -70,7 +70,7 @@ public interface Intersectable{
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null
                 : geoList.stream()
-                .map(gp -> gp.point)
+                .map(gp -> gp._point)
                 .collect(Collectors.toList());
     }
 

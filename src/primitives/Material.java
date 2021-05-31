@@ -35,7 +35,7 @@ public class  Material {
      * @return
      */
     public Material setKr(double kr) {
-        Kr = kr;
+        this.Kr = kr;
         return this;
     }
 
@@ -45,7 +45,7 @@ public class  Material {
      * @return
      */
     public Material setKt(double kt) {
-        Kt = kt;
+        this.Kt = kt;
         return this;
     }
 

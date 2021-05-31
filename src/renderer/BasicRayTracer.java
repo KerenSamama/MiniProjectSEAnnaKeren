@@ -77,7 +77,7 @@ public class BasicRayTracer extends RayTracerBase {
     }
 
     private Color calcColor(GeoPoint geoPoint, Ray ray, int level, double k) {
-        Color color = geoPoint.geometry.getEmission();
+        Color color = geoPoint._geometry.getEmission();
         color = color.add(calcLocalEffects(geoPoint, ray));
         return 1 == level ? color : color.add(calcGlobalEffects(geoPoint, ray, level, k));
 
@@ -85,7 +85,7 @@ public class BasicRayTracer extends RayTracerBase {
 
     private Color calcGlobalEffects(GeoPoint geoPoint, Ray ray, int level, double k) {
         Color color = Color.BLACK;
-        Material material = geoPoint.geometry.getMaterial();
+        Material material = geoPoint._geometry.getMaterial();
 
         double kr = material.Kr;
         double kkr = k * kr;
@@ -117,15 +117,15 @@ public class BasicRayTracer extends RayTracerBase {
     }
 
     private Ray constructRefractedRay(GeoPoint geoPoint, Ray ray) {
-        return new Ray(geoPoint.point, ray.getDir());
+        return new Ray(geoPoint._point, ray.getDir());
 
     }
 
     private Ray constructReflectedRay(GeoPoint geoPoint, Ray ray) {
-        Vector n = geoPoint.geometry.getNormal(geoPoint.point);
+        Vector n = geoPoint._geometry.getNormal(geoPoint._point);
         Vector v = ray.getDir();
         Vector r = v.subtract(n.scale(2 * v.dotProduct(n)));
-        return new Ray(geoPoint.point, r);
+        return new Ray(geoPoint._point, r);
     }
 
     /**
@@ -137,22 +137,22 @@ public class BasicRayTracer extends RayTracerBase {
      */
     private Color calcLocalEffects(GeoPoint intersection, Ray ray) {
         Vector v = ray.getDir();
-        Vector n = intersection.geometry.getNormal(intersection.point);
+        Vector n = intersection._geometry.getNormal(intersection._point);
         double nv = alignZero(n.dotProduct(v));
         if (nv == 0) {
             return Color.BLACK;
         }
-        Material material = intersection.geometry.getMaterial();
+        Material material = intersection._geometry.getMaterial();
         int nShininess = material.nShininess;
         double kd = material.Kd;
         double ks = material.Ks;
         Color color = Color.BLACK;
         for (LightSource lightSource : _scene.lights) {
-            Vector l = lightSource.getL(intersection.point);
+            Vector l = lightSource.getL(intersection._point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
                 if (unshaded(lightSource, intersection)) {
-                    Color lightIntensity = lightSource.getIntensity(intersection.point);
+                    Color lightIntensity = lightSource.getIntensity(intersection._point);
                     color = color.add(calcDiffusive(kd, l, n, lightIntensity),
                             calcSpecular(ks, l, n, v, nShininess, lightIntensity));
                 }
@@ -163,9 +163,10 @@ public class BasicRayTracer extends RayTracerBase {
     }
 
     private boolean unshaded(LightSource lightSource, GeoPoint geoPoint) {
-        Point3D point = geoPoint.point;
-        Vector n = geoPoint.geometry.getNormal(point);
+        Point3D point = geoPoint._point;
+        Vector n = geoPoint._geometry.getNormal(point);
         Ray lightRay = new Ray(point, lightSource, n, DELTA);
+
         List<GeoPoint> intersection = _scene.geometries
                 .findGeoIntersections(lightRay, lightSource.getDistance(point));
         return intersection == null;

@@ -94,10 +94,27 @@ public class Plane extends Geometry {
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D p0 = ray.getP0();  // beginning point of the ray
         Vector v = ray.getDir();   // direction vector of the ray
-        Point3D q0 = _q0;          // reference point of the plane
-        Vector n = _normal;         // normal vector of the plane
+        //Point3D q0 = _q0;          // reference point of the plane
+        Vector n = _normal;
+        // normal vector of the plane
+        if (_q0.equals(p0)) {
+            return null;
+        }
+        if (isZero(n.dotProduct(v))) {
+            return null;
+        }
 
-        Vector p0q0;    // Vector from p0 to q0
+        double t = n.dotProduct(_q0.subtract(p0)) / n.dotProduct(v);
+
+        if (t > 0 && alignZero(t - maxDistance) <= 0) {
+            return List.of(new GeoPoint(this, ray.getPoint(t)));
+        }
+        return null;
+
+
+
+
+        /*Vector p0q0;    // Vector from p0 to q0
         try {
             p0q0 = q0.subtract(p0);
         } catch (IllegalArgumentException e) {
@@ -116,7 +133,7 @@ public class Plane extends Geometry {
 
 
          return null;
-
+*/
         //return t <= 0 ? null : List.of(new GeoPoint(this, ray.getPoint(t) )); // we take only t>0
     }
 

@@ -30,8 +30,8 @@ public class Sphere extends Geometry {
      * @param center of type Point3D
      */
     public Sphere(double radius, Point3D center) {
-        if (radius == 0d) {
-            throw new IllegalArgumentException("Sphere radius cannot be 0");
+        if (radius <= 0d) {
+            throw new IllegalArgumentException("Sphere radius cannot be 0 or negative");
         }
         _center = center;
         _radius = radius;
