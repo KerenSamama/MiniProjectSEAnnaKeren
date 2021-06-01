@@ -213,7 +213,7 @@ public class BasicRayTracer extends RayTracerBase {
         }
         return true;
     }
-
+//
     private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Point3D point = geopoint._point;
