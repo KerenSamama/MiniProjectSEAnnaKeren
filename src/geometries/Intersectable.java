@@ -45,7 +45,8 @@ public interface Intersectable{
     }
 
     /**
-     *
+     * She calls the function findGeoIntersections(Ray ray, double maxDistance)
+     * and sends as maxDistance the value : Double.POSITIVE_INFINITY
      * @param ray the method findGeoIntersections receives a ray
      * @return List<GeoPoint> :  returns a list of intersections points of type GeoPoint with this ray
      */
@@ -53,12 +54,15 @@ public interface Intersectable{
          return  findGeoIntersections(ray,Double.POSITIVE_INFINITY);
      }
 
+
+
+
+
     /**
 
-     * max distance where we found intersection
-     * @param ray
-     * @param maxDistance
-     * @return
+     * @param ray of type Ray
+     * @param maxDistance : maximum distance where we found intersection points
+     * @return a list of intersections points of type GeoPoint that are located before this maxDistance
      */
     List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance);
 
@@ -75,3 +79,4 @@ public interface Intersectable{
     }
 
 }
+

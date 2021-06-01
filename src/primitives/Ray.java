@@ -33,14 +33,13 @@ public class Ray {
      * @param delta
      */
     public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
-       //Vector l= lightSource.getL(point).scale(-1);
-        Vector teta=n.scale(n.dotProduct(lightSource.getL(point))>0? delta : -delta);
+       Vector l= lightSource.getL(point).scale(-1);
+        Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
         _p0=point.add(teta);
-        _dir=lightSource.getL(point);
+        _dir=l;
     }
 
     public Ray(Point3D point, Vector direction, Vector n) {
-        //Vector l= lightSource.getL(point).scale(-1);
         Vector teta=n.scale(n.dotProduct(direction)>0? DELTA : -DELTA);
         _p0=point.add(teta);
         _dir=direction.normalized();

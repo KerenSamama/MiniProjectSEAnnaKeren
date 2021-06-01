@@ -5,8 +5,9 @@ public class Material {
     public double Kd = 0; // diffuse coefficient
     public double Ks = 0; // specular coefficient
     public int nShininess = 0; // the object’s shininess
-    public double Kr = 0;//  reflective coefficient
-    public double Kt = 0;//  transparent coefficient
+    public double Kr = 0;//  reflective coefficient, opaque [0.0-1.0]
+    public double Kt = 0;//  transparent coefficient, matt surface [0.0-1.0]
+
 
 
     /**
@@ -65,7 +66,7 @@ public class Material {
     }
 
 
-    public double getKd() {
+    public double getKt() {
         return Kt;
     }
 

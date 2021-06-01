@@ -100,7 +100,7 @@ public class Sphere extends Geometry {
         double t1 = alignZero(tm - th); // the distance between p0 and the first intersection point
         double t2 = alignZero(tm + th);  // the distance between p0 and the second intersection point
 
-        if (alignZero(t1) < 0 && alignZero(t2) < 0) {
+        if (alignZero(t1) <= 0 && alignZero(t2) <= 0) {
             return null;
         }
         if (t1 >0 && t2 > 0) {
@@ -112,24 +112,16 @@ public class Sphere extends Geometry {
             }
 
 
-        } else if (t1 > 0 && alignZero(maxDistance - t1) > 0) {
-            Point3D p1 = p0.add(v.scale(t1));
-            return List.of(new GeoPoint(this, p1));
+        } else if (t1 > 0 && alignZero(maxDistance - t1) > 0) { // there are only one intersection point
 
-        } else if (t2 > 0 && alignZero(maxDistance - t2) > 0) {
-            Point3D p2 = p0.add(v.scale(t2));
-            return List.of(new GeoPoint(this, p2));
+            return List.of(new GeoPoint(this, ray.getPoint(t1)));
+
+        } else if (t2 > 0 && alignZero(maxDistance - t2) > 0) {// there are only one intersection point
+
+            return List.of(new GeoPoint(this, ray.getPoint(t2)));
 
         }
 
-        /*else if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) { // there are only one intersection point
-
-            return (List.of(new GeoPoint(this, ray.getPoint(t1))));
-        }
-
-        else if (t2 > 0 && alignZero(t2 - maxDistance) <= 0) { // // there are only one intersection point
-            return (List.of(new GeoPoint(this, ray.getPoint(t2))));
-        }*/
 
         return null;
 

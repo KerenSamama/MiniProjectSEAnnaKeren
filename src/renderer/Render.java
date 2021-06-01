@@ -77,6 +77,8 @@ public class Render {
     public void printGrid(int interval, Color intervalColor) {
         if(_imageWriter == null){
             throw new MissingResourceException("The fields of ImageWriter are empty","Render","_imageWriter");
+            //----- ImageWriter.class.getName()
+
         }
 
         int nX = _imageWriter.getNx();
