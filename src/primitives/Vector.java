@@ -209,4 +209,45 @@ public class Vector {
 
 
 
+
+
+    public Vector normalToVector()
+    {
+        double coordinate;
+
+        //finding the smallest coordinate of the vector to replace it with 0
+        if(this.getHead().getX()>0)
+        {
+            coordinate = this.getHead().getX();
+        }
+        else {
+            coordinate = -this.getHead().getX();
+        }
+
+        if(Math.abs(this.getHead().getY())<coordinate)
+        {
+            coordinate=1;
+            if(this.getHead().getY()>0)
+                coordinate=this.getHead().getY();
+            else
+                coordinate=-this.getHead().getY();
+        }
+        if(Math.abs(this.getHead().getZ())<coordinate)
+        {
+            coordinate=2;
+            //last coordinate that we are checking so no need to reassign coordinate
+        }
+        if(coordinate==0) {//x is the smallest
+            return new Vector(0, -this.getHead().getZ(), this.getHead().getY()).normalize();
+        }
+        if(coordinate==1) {//y is the smallest
+            return new Vector(-this.getHead().getZ(), 0, this.getHead().getX()).normalize();
+        }
+        //z is the smallest
+        return new Vector(this.getHead().getY(),-this.getHead().getX(),0).normalize();
+    }
+
+
+
+
 }

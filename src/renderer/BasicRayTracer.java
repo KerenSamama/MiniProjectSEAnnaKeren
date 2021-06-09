@@ -7,6 +7,7 @@ import elements.LightSource;
 import primitives.*;
 import scene.Scene;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,6 +18,15 @@ public class BasicRayTracer extends RayTracerBase {
     private static final int MAX_CALC_COLOR_LEVEL = 10;
     private static final double MIN_CALC_COLOR_K = 0.001;
 
+    /**
+     * parameters for ray tracing- glossy surface and diffuse glass - they are in class BasicRayTracer
+     * because this class takes care of ray tracing
+     */
+    private int _numOfRays;
+    private double _radius;
+    private double _rayDistance;
+    /**
+
 
     /**
      * Constructor for BasicRayTracer receiving a scene object and activating the father constructor
@@ -26,6 +36,64 @@ public class BasicRayTracer extends RayTracerBase {
     public BasicRayTracer(Scene scene) {
         super(scene);
     }
+
+
+
+
+    /**
+     * Gets the distance we want between the ray point and the circle
+     * @return double - distance
+     */
+    public double get_rayDistance() {
+        return _rayDistance;
+    }
+
+    /**
+     * sets the distance between the ray point and the circle
+     * @param _rayDistance
+     */
+    public void set_rayDistance(double _rayDistance) {
+        if (_rayDistance < 0)
+            throw new IllegalArgumentException("Distance cannot be negative");
+        this._rayDistance = _rayDistance;
+    }
+
+    /**
+     * get number of rays function
+     * @return number of rays that will be part of the beam
+     */
+    public int get_numOfRays() {
+        return _numOfRays;
+    }
+
+    /**
+     * sets the number of rays that will be part of the beam
+     * @param _numOfRays int - amount of rays that will be part of the beam
+     */
+    public void set_numOfRays(int _numOfRays) {
+        if (_numOfRays < 1)
+            throw new IllegalArgumentException("There has to be at least one ray");
+        this._numOfRays = _numOfRays;
+    }
+
+    /**
+     * returns the size of the radius
+     * @return double - Radius
+     */
+    public double getRadius() {
+        return _radius;
+    }
+
+    /**
+     * sets the value or the radius for the circle to create a beam
+     * @param radius double - the radius of the circle we are using to create a beam
+     */
+    public void setRadius(double radius) {
+        if (radius < 0)
+            throw new IllegalArgumentException("radius can't be negative");
+        this._radius = radius;
+    }
+
 
 
     /**
@@ -94,14 +162,29 @@ public class BasicRayTracer extends RayTracerBase {
      * @param k
      * @return
      */
-    private Color calcGlobalEffects(GeoPoint geoPoint, Vector v, int level, double k) {
+    private Color calcGlobalEffects(GeoPoint geoPoint, Vector v, int level, double k) { // v= direction ray
         Color color = Color.BLACK;
+        Color colorReflection = Color.BLACK;
         Vector n = geoPoint._geometry.getNormal(geoPoint._point);
         Material material = geoPoint._geometry.getMaterial();
         double kkr = k * material.Kr;
+        List<Ray>beam=new LinkedList<>();
 
         if (kkr > MIN_CALC_COLOR_K) {
-            color = calcGlobalEffects(constructReflectedRay(geoPoint, v), level, material.Kr, kkr);
+            Ray reflectedRay = constructReflectedRay(geoPoint, v);
+            if(_numOfRays==0 || _rayDistance<0){
+                beam.add(reflectedRay);
+            }
+            else{
+                beam= reflectedRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point),this.get_rayDistance(),this._numOfRays);
+            }
+            for(Ray r : beam) // r = reflectedRay
+            {
+                colorReflection = colorReflection.add(calcGlobalEffects(r, level, material.Kr, kkr));
+            }
+
+            color = color.add(colorReflection.reduce(beam.size()));
+
         }
 
         double kkt = k * material.Kt;
@@ -145,6 +228,7 @@ public class BasicRayTracer extends RayTracerBase {
         return new Ray(geoPoint._point, r, n);
     }
 
+    // ray : rayon depuis camera vers le point GeoPoint intersection
     /**
      * Method calcLocalEffects for adding diffusion/specular calculation
      *
@@ -165,7 +249,7 @@ public class BasicRayTracer extends RayTracerBase {
         double ks = material.Ks;
         Color color = Color.BLACK;
         for (LightSource lightSource : _scene.lights) {
-            Vector l = lightSource.getL(intersection._point);
+            Vector l = lightSource.getL(intersection._point); // from lightSource to point
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
                 // if (unshaded(lightSource,l,n, intersection)) {
@@ -264,5 +348,79 @@ public class BasicRayTracer extends RayTracerBase {
         double ln = Math.abs(l.dotProduct(n));
         return lightIntensity.scale(kd * ln);
     }
+
+    /**
+     *  private primitives.Color calcColor(Intersectable.GeoPoint gp,Ray in,int level,double k) {
+     *         if (level == 1 || k < MIN_CALC_COLOR_K)
+     *             return primitives.Color.BLACK;
+     *         primitives.Color color = gp.getGeometry().get_emission();//the geometries emssion light
+     *         Vector v = gp.point.subtract(_scene.getCamera().get_p0()).normalize();//subtracts the camera starting point from the geopoint and normalizes the vector
+     *
+     *         double nDotV =alignZero(  gp.geometry.getNormal(gp.getPoint()).dotProduct(v));//n dot product v
+     *         if (nDotV == 0) {
+     *             return color;
+     *         }
+     *         int nShininess = gp.geometry.get_material().getnShininess();//the geopoint's shininess
+     *         double kd = gp.geometry.get_material().getKd();//geopoint diffuse
+     *         double ks = gp.geometry.get_material().getKs();//geopoint specular
+     *         double kr = k * gp.getGeometry().get_material().get_kR();//reflection
+     *         double kt = k * gp.getGeometry().get_material().get_kT();//refraction
+     *         double transparencyAmount=0;//transparency
+     *         for (LightSource lightSource : _scene.getLightSources())//for each light source in the scene's light sources
+     *         {
+     *             Vector l = lightSource.getL(gp.point);//the lights direction from geopoint
+     *             if (alignZero( gp.geometry.getNormal(gp.getPoint()).dotProduct(l)) * alignZero( gp.geometry.getNormal(gp.getPoint()).dotProduct(v)) > 0)//if the dot proudct between the normal and the light direction times the dot product btween the normal and the normal vector between the camera and geopoint
+     *             {
+     *                 //   if (unshaded(lightSource, l, n, gp))//if the geopoint isnt shaded by the light
+     *                 transparencyAmount = transparency(lightSource, l,  gp.geometry.getNormal(gp.getPoint()), gp);
+     *                 if (transparencyAmount * k > MIN_CALC_COLOR_K) {
+     *                     primitives.Color lightIntensity = lightSource.getIntensity(gp.point).scale(transparencyAmount);//intensity color of the geopoint
+     *                     color = color.add(calcDiffusive(kd, l.dotProduct( gp.geometry.getNormal(gp.getPoint())), lightIntensity),
+     *                             calcSpecular(ks, l,  gp.geometry.getNormal(gp.getPoint()), l.dotProduct( gp.geometry.getNormal(gp.getPoint())), v, nShininess, lightIntensity))
+     *                     ;//adds the specular and diffuse lights to the color
+     *                 }
+     *             }
+     *         }
+     *
+     *         if (kr > MIN_CALC_COLOR_K)//if the reflection is bigger than the minimum of calc color
+     *         {
+     *             List<Ray>beam=new LinkedList<>();
+     *             if(this._numOfRays==0 ||this._radius<0||this._rayDistance<0)
+     *                 beam.add(in);
+     *             else
+     *                 beam=  in.createBeamOfRays(gp.getGeometry().getNormal(gp.getPoint()),this.getRadius(),this._scene.getDistance(),this.get_numOfRays());
+     *           for(Ray r :beam)
+     *           {
+     *               Ray reflection= constructReflectedRay(gp.getGeometry().getNormal(gp.getPoint()), gp.getPoint(), r);
+     *               Intersectable.GeoPoint reflectedGp = findClosestIntersection(reflection);//find the closest point to the reflection ray's p0
+     *               if (reflectedGp != null)//if such a point exists
+     *               {
+     *                   color = color.add(calcColor(reflectedGp, reflection, level - 1, kr).scale(kr));//calls the recursion th find the rest of the color and then scales it with the reflection
+     *               }
+     *           }
+     *
+     *
+     *         }
+     *
+     *         if (kt > MIN_CALC_COLOR_K)//if the refraction is bigger than the minimum of calc color
+     *         {
+     *             List<Ray>beam=new LinkedList<>();
+     *             if(this._numOfRays==0 ||this._radius<0||this._rayDistance<0)
+     *                 beam.add(in);
+     *             else
+     *                 beam=  in.createBeamOfRays(gp.getGeometry().getNormal(gp.getPoint()),this.getRadius(),this._scene.getDistance(),this.get_numOfRays());
+     *
+     *             for(Ray r :beam) {
+     *                 Ray refraction = constructRefractedRay(gp.getPoint(), r, gp.getGeometry().getNormal(gp.getPoint()));//constructs a refracted ray
+     *                 Intersectable.GeoPoint refractedGp = findClosestIntersection(refraction);//find the closest point to the refracted ray's p0
+     *                 if (refractedGp != null)//if such a point exists
+     *                 {
+     *                     color = color.add(calcColor(refractedGp, refraction, level - 1, kt).scale(kt));//calls the recursion th find the rest of the color and then scales it with the refracted
+     *                 }
+     *             }
+     *         }
+     *         return color;
+     *     }
+     */
 
 }

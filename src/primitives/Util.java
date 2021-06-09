@@ -59,12 +59,16 @@ public abstract class Util {
 
     /**
      * Provide a real random number in range between min and max
-     * @param min
-     * @param max
+     * @param min the minimum number
+     * @param max the maximum number
      * @return the random value
      */
     public static double random(double min, double max) {
         return Math.random() * (max - min) + min;
     }
+
+
+
+
 
 }
