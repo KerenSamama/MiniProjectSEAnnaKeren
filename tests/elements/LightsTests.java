@@ -65,6 +65,7 @@ public class LightsTests {
         render.writeToImage();
     }
 
+
     /**
      * Produce a picture of a sphere lighted by a spot light
      */

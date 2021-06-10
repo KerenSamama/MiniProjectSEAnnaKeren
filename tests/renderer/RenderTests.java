@@ -69,6 +69,7 @@ public class RenderTests {
     }*/
 
     // For stage 6 - please disregard in stage 5
+
     /**
      * Produce a scene with basic 3D model - including individual lights of the bodies
      * and render it into a png image with a grid
@@ -98,4 +99,94 @@ public class RenderTests {
         render.printGrid(100, new Color(java.awt.Color.WHITE));
         render.writeToImage();
     }
+
+    private Camera camera2 = new Camera((new Point3D(0, 0, +1000)), new Vector(0, 0, -1), new Vector(0, +1, 0))
+            .setDistance(500) //
+            .setViewPlaneSize(200, 200)
+            ;
+
+    Geometry sphere = new Sphere(50, new Point3D(0, 0, -50)) //
+            .setEmission(new Color(java.awt.Color.BLUE)) //
+            .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100));
+
+    @Test
+
+    public void rayTracingTest2() {
+
+        Scene scene2 = new Scene("Test scene")//
+                .setAmbientLight(new AmbientLight(new Color(255, 191, 191), 0.5)) //
+                .setBackground(new Color(100,10,1));
+
+
+        // (double _kD, double _kS, int _nShininess, double _kT, double _kR)
+
+    /*    Geometry sphere = new Sphere(50, new Point3D(0, 0, -50)) //
+                .setEmission(new Color(java.awt.Color.BLUE)) //
+                .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100));*/
+
+        scene2.geometries.add(new Sphere(20, new Point3D(75, -120, +75))//
+                .setEmission(new Color(212, 175, 55))
+                .setMaterial(new Material().setKd(0.3).setKs(0.4).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Sphere(15, new Point3D(160, -165, -100))//
+                .setEmission(new Color(53, 187, 202))
+                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5)));
+
+        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, -90))//
+                .setEmission(new Color(255, 99, 71))
+                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKr(1)));
+
+
+        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, +60))//
+                .setEmission(new Color(255, 164, 71))
+                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKr(1)));
+
+        scene2.geometries.add(new Sphere(50,new Point3D(-75, +50, -80))//
+                .setEmission(new Color(0, 128, 85))
+                .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKr(1)));
+
+
+        scene2.geometries.add(new Sphere(50, new Point3D(75, 50, -80))//
+                .setEmission(new Color(0, 128, 128))
+                .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKr(1)));
+
+
+
+        scene2.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, -1, 0)));
+       // scene2.lights.add(new PointLight(new Color(230, 230, 250), new Point3D(-160, -165, -100)));
+        scene2.lights.add(new PointLight(new Color(230, 230, 250), new Point3D(160, -165, -100)));
+
+        scene2.geometries.add(sphere);//
+       // scene2.lights.add(new DirectionalLight(new Color(java.awt.Color.cyan), new Vector(3, 5, -7)));
+       // scene2.lights.add(new PointLight(new Color(java.awt.Color.cyan), new Point3D(-15, -20, 80))
+              //  .setKl(0.001).setKq(0.0001));
+        scene2.lights.add(new SpotLight(new Color(java.awt.Color.cyan), new Point3D(-30, -50, 70), new Vector(3, 5, -7)) //
+                .setKl(0.001).setKq(0.001));
+
+
+//                new SpotLight(new Color(130, 100, 130),new Point3D(0, 30, -50),
+//                        new Vector(0,-1,0),1, 4E-5, 2E-7)
+
+        ImageWriter imageWriter = new ImageWriter("ray tracing 2", 1000, 1000);
+        Render render = new Render() //
+                .setImageWriter(imageWriter) //
+                .setCamera(camera2) //
+                .setRayTracer(new BasicRayTracer(scene2).set_numOfRays(5).setRadius(40).set_rayDistance(5));
+
+        render.renderImage();
+        render.writeToImage();
+
+
+
+        //ImageWriter imageWriter = new ImageWriter("sphereLightsTest", 500, 500);
+        /*Render render = new Render()//
+                .setImageWriter(imageWriter) //
+                .setCamera(camera1) //
+                .setRayTracer(new BasicRayTracer(scene1));*/
+
+
+
+    }
+
+
 }

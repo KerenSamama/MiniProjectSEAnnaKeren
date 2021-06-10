@@ -141,10 +141,10 @@ public class Ray {
      * @param num      int - the number of rays that will be in the beam
      * @return list that includes all the rays that make up the beam
      */
-    public List<Ray> createBeamOfRays(Vector n, double distance, int num) {
+    public List<Ray> createBeamOfRays(Vector n,double r, double distance, int num) {
         List<Ray> beam = new LinkedList<Ray>();
         beam.add(this);//the original ray that calls the function - there has to be at least one beam
-        if (num == 1)//if no additional rays were requested here  there is nothing else to do in this function
+        if (num == 1 || r==0)//if no additional rays were requested here  there is nothing else to do in this function
             return beam;
         Vector w = this.getDir().normalToVector();//finds a vector that is normal to the direction on the ray
         Vector v = this.getDir().crossProduct(w).normalize();//the cross product between the normal and the direction
@@ -153,16 +153,15 @@ public class Ray {
         Point3D randomP = Point3D.ZERO;
         double xRandom, yRandom, random;
         double nDotDirection = alignZero(n.dotProduct(this.getDir()));
-        double r = Math.abs(Math.tan(Math.acos(w.dotProduct(v))));
         for (int i = 1; i < num; i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
         {
             xRandom = random(-1, 1);//random number [-1,1)
             yRandom = Math.sqrt(1 - Math.pow(xRandom, 2));
             random = random(-r, r);//random number[-r,r)
             if (xRandom != 0)//vector cannot be scaled with zero
-                randomP = center.add(w.scale(random));
+                randomP = center.add(w.scale(xRandom));
             if (yRandom != 0)//vector cannot be scaled with zero
-                randomP = center.add(v.scale(random));
+                randomP = center.add(w.scale(yRandom));
             Vector t = randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
             double normalDotT = alignZero(n.dotProduct(t));
             if (nDotDirection * normalDotT > 0)//if they are both positive or both negative then we need to create a ray with the original p0 and t

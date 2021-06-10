@@ -248,6 +248,13 @@ public class Vector {
     }
 
 
+ /*   public Vector findNormal() {
+            Vector b = new Vector(
+                     1/this.getHead().getX(),
+                    1 / this.getHead().getY(),
+                    -2 * 1 / this.getHead().getZ())
+            ;
+            return b.normalized();
+        }*/
+    }
 
-
-}
