@@ -262,52 +262,365 @@ public class RenderTests {
 
         // (double _kD, double _kS, int _nShininess, double _kT, double _kR)
 
-        scene2.geometries.add(new Sphere(20, new Point3D(75, -120, +75))// GOLD
-                .setEmission(new Color(212, 175, 55))
+        scene2.geometries.add(new Sphere(20, new Point3D(125, -36, 50))// violet
+                .setEmission(new Color(108, 2, 119))
                 .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
 
-        scene2.geometries.add(new Sphere(15, new Point3D(160, -165, -100))// BLUE
-                .setEmission(new Color(53, 187, 202))
+        scene2.geometries.add(new Sphere(20, new Point3D(125, 100, 50))// BLUE
+                .setEmission(new Color(15, 5, 107))
                 .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKt(0.22).setKr(0)));
 
-        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, -90))// RED
-                .setEmission(new Color(255, 99, 71))
-                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKt(0).setKr(0.4)));
-
-
-        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, +60))//ORANGE
-                .setEmission(new Color(255, 164, 71))
-                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKt(0).setKr(0.4)));
-
-        scene2.geometries.add(new Sphere(50, new Point3D(-53, +50, -200))//BIG BLUE
-                .setEmission(new Color(0, 128, 85))
-                .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0).setKr(0.1)));
-
-
-        scene2.geometries.add(new Sphere(50, new Point3D(53, 50, -200))//
+        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, -90))// milieu en bas
                 .setEmission(new Color(0, 128, 128))
+                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKt(0).setKr(0.4)));
+
+
+        scene2.geometries.add(new Sphere(25, new Point3D(0, -130, +90))//vert dessus
+                .setEmission(new Color(0, 128, 85)) //0 128 85
+                .setMaterial(new Material().setKd(0.25).setKs(0.3).setShininess(5).setKt(0).setKr(0.4)));
+
+        scene2.geometries.add(new Sphere(50, new Point3D(-63, +30, -200))//BIG BLUE
+                .setEmission(new Color(231, 62, 1))
                 .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0).setKr(0.1)));
 
-        scene2.geometries.add(new Sphere(20, new Point3D(-75, -120, 75))// SILVER
-                .setEmission(new Color(170, 169, 173))
+
+        scene2.geometries.add(new Sphere(50, new Point3D(48, 30, -200))//
+                .setEmission(new Color(212, 175, 55))
+                .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0).setKr(0.1)));
+
+        scene2.geometries.add(new Sphere(20, new Point3D(-180, 90, -70))// red
+                .setEmission(new Color(255, 0, 0))
                 .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKr(0.4)));
 
-        scene2.geometries.add(new Sphere(15, new Point3D(-160, -165, -100))// GREEN
-                .setEmission(new Color(53, 202, 93))
+        scene2.geometries.add(new Sphere(20, new Point3D(-180, -36, -70))// GREEN
+                .setEmission(new Color(34, 80, 30))
                 .setMaterial(new Material().setKd(0.3).setKs(0.4).setShininess(5).setKt(0.22).setKr(0)));
 
         /*scene2.geometries.add(new Plane(new Point3D(0,0,-210),new Vector(0,0,1))
                 .setEmission(new Color(20, 20, 20)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
 */
-      scene2.geometries.add(new Polygon(new Point3D(250,250,-250),new Point3D(400,-400,-400),
-             new Point3D(-400,-400,-400),new Point3D(-400,400,-400))
+      //en haut a droite
+        scene2.geometries.add(new Polygon(new Point3D(250,250,-250),new Point3D(187.5,250,-250),
+             new Point3D(187.5,187.5,-250),new Point3D(250,187.5,-250))
               .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,250,-250),new Point3D(125,250,-250),
+                new Point3D(125,187.5,-250),new Point3D(187.5,187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,250,-250),new Point3D(62.5,250,-250),
+                new Point3D(62.5,187.5,-250),new Point3D(125,187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,250,-250),new Point3D(0,250,-250),
+                new Point3D(0,187.5,-250),new Point3D(62.5,187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,250,-250),new Point3D(-62.5,250,-250),
+                new Point3D(-62.5,187.5,-250),new Point3D(0,187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,250,-250),new Point3D(-125,250,-250),
+                new Point3D(-125,187.5,-250),new Point3D(-62.5,187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,250,-250),new Point3D(-187.5,250,-250),
+                new Point3D(-187.5,187.5,-250),new Point3D(-125,187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,250,-250),new Point3D(-250,250,-250),
+                new Point3D(-250,187.5,-250),new Point3D(-187.5,187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+ //second line
+        scene2.geometries.add(new Polygon(new Point3D(250,187.5,-250),new Point3D(187.5,187.5,-250),
+                new Point3D(187.5,125,-250),new Point3D(250,125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+        scene2.geometries.add(new Polygon(new Point3D(187.5,187.5,-250),new Point3D(125,187.5,-250),
+                new Point3D(125,125,-250),new Point3D(187.5,125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,187.5,-250),new Point3D(62.5,187.5,-250),
+                new Point3D(62.5,125,-250),new Point3D(125,125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,187.5,-250),new Point3D(0,187.5,-250),
+                new Point3D(0,125,-250),new Point3D(62.5,125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,187.5,-250),new Point3D(-62.5,187.5,-250),
+                new Point3D(-62.5,125,-250),new Point3D(0,125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,187.5,-250),new Point3D(-125,187.5,-250),
+                new Point3D(-125,125,-250),new Point3D(-62.5,125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,187.5,-250),new Point3D(-187.5,187.5,-250),
+                new Point3D(-187.5,125,-250),new Point3D(-125,125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,187.5,-250),new Point3D(-250,187.5,-250),
+                new Point3D(-250,125,-250),new Point3D(-187.5,125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        //ligne 3
+
+        scene2.geometries.add(new Polygon(new Point3D(250,125,-250),new Point3D(187.5,125,-250),
+                new Point3D(187.5,62.5,-250),new Point3D(250,62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,125,-250),new Point3D(125,125,-250),
+                new Point3D(125,62.5,-250),new Point3D(187.5,62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(125,125,-250),new Point3D(62.5,125,-250),
+                new Point3D(62.5,62.5,-250),new Point3D(125,62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,125,-250),new Point3D(0,125,-250),
+                new Point3D(0,62.5,-250),new Point3D(62.5,62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,125,-250),new Point3D(-62.5,125,-250),
+                new Point3D(-62.5,62.5,-250),new Point3D(0,62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,125,-250),new Point3D(-125,125,-250),
+                new Point3D(-125,62.5,-250),new Point3D(-62.5,62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,125,-250),new Point3D(-187.5,125,-250),
+                new Point3D(-187.5,62.5,-250),new Point3D(-125,62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,125,-250),new Point3D(-250,125,-250),
+                new Point3D(-250,62.5,-250),new Point3D(-187.5,62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        //ligne 4
+       scene2.geometries.add(new Polygon(new Point3D(250,62.5,-250),new Point3D(187.5,62.5,-250),
+                new Point3D(187.5,0,-250),new Point3D(250,0,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,62.5,-250),new Point3D(125,62.5,-250),
+                new Point3D(125,0,-250),new Point3D(187.5,0,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,62.5,-250),new Point3D(62.5,62.5,-250),
+                new Point3D(62.5,0,-250),new Point3D(125,0,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,62.5,-250),new Point3D(0,62.5,-250),
+                new Point3D(0,0,-250),new Point3D(62.5,0,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,62.5,-250),new Point3D(-62.5,62.5,-250),
+                new Point3D(-62.5,0,-250),new Point3D(0,0,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,62.5,-250),new Point3D(-125,62.5,-250),
+                new Point3D(-125,0,-250),new Point3D(-62.5,0,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,62.5,-250),new Point3D(-187.5,62.5,-250),
+                new Point3D(-187.5,0,-250),new Point3D(-125,0,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,62.5,-250),new Point3D(-250,62.5,-250),
+                new Point3D(-250,0,-250),new Point3D(-187.5,0,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+//ligne 5
+
+        scene2.geometries.add(new Polygon(new Point3D(250,0,-250),new Point3D(187.5,0,-250),
+                new Point3D(187.5,-62.5,-250),new Point3D(250,-62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,0,-250),new Point3D(125,0,-250),
+                new Point3D(125,-62.5,-250),new Point3D(187.5,-62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,0,-250),new Point3D(62.5,0,-250),
+                new Point3D(62.5,-62.5,-250),new Point3D(125,-62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,0,-250),new Point3D(0,0,-250),
+                new Point3D(0,-62.5,-250),new Point3D(62.5,-62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,0,-250),new Point3D(-62.5,0,-250),
+                new Point3D(-62.5,-62.5,-250),new Point3D(0,-62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,0,-250),new Point3D(-125,0,-250),
+                new Point3D(-125,-62.5,-250),new Point3D(-62.5,-62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,0,-250),new Point3D(-187.5,0,-250),
+                new Point3D(-187.5,-62.5,-250),new Point3D(-125,-62.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,0,-250),new Point3D(-250,0,-250),
+                new Point3D(-250,-62.5,-250),new Point3D(-187.5,-62.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+    //ligne 6
+
+        scene2.geometries.add(new Polygon(new Point3D(250,-62.5,-250),new Point3D(187.5,-62.5,-250),
+                new Point3D(187.5,-125,-250),new Point3D(250,-125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.7)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,-62.5,-250),new Point3D(125,-62.5,-250),
+                new Point3D(125,-125,-250),new Point3D(187.5,-125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,-62.5,-250),new Point3D(62.5,-62.5,-250),
+                new Point3D(62.5,-125,-250),new Point3D(125,-125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.7)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,-62.5,-250),new Point3D(0,-62.5,-250),
+                new Point3D(0,-125,-250),new Point3D(62.5,-125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(0,-62.5,-250),new Point3D(-62.5,-62.5,-250),
+                new Point3D(-62.5,-125,-250),new Point3D(0,-125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.7)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,-62.5,-250),new Point3D(-125,-62.5,-250),
+                new Point3D(-125,-125,-250),new Point3D(-62.5,-125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,-62.5,-250),new Point3D(-187.5,-62.5,-250),
+                new Point3D(-187.5,-125,-250),new Point3D(-125,-125,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.7)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,-62.5,-250),new Point3D(-250,-62.5,-250),
+                new Point3D(-250,-125,-250),new Point3D(-187.5,-125,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        //ligne 7
+        scene2.geometries.add(new Polygon(new Point3D(250,-125,-250),new Point3D(187.5,-125,-250),
+                new Point3D(187.5,-187.5,-250),new Point3D(250,-187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,-125,-250),new Point3D(125,-125,-250),
+                new Point3D(125,-187.5,-250),new Point3D(187.5,-187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,-125,-250),new Point3D(62.5,-125,-250),
+                new Point3D(62.5,-187.5,-250),new Point3D(125,-187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,-125,-250),new Point3D(0,-125,-250),
+                new Point3D(0,-187.5,-250),new Point3D(62.5,-187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(0,-125,-250),new Point3D(-62.5,-125,-250),
+                new Point3D(-62.5,-187.5,-250),new Point3D(0,-187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,-125,-250),new Point3D(-125,-125,-250),
+                new Point3D(-125,-187.5,-250),new Point3D(-62.5,-187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,-125,-250),new Point3D(-187.5,-125,-250),
+                new Point3D(-187.5,-187.5,-250),new Point3D(-125,-187.5,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,-125,-250),new Point3D(-250,-125,-250),
+                new Point3D(-250,-187.5,-250),new Point3D(-187.5,-187.5,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+//ligne8
+
+        scene2.geometries.add(new Polygon(new Point3D(250,-187.5,-250),new Point3D(187.5,-187.5,-250),
+                new Point3D(187.5,-250,-250),new Point3D(250,-250,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(187.5,-187.5,-250),new Point3D(125,-187.5,-250),
+                new Point3D(125,-250,-250),new Point3D(187.5,-250,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(125,-187.5,-250),new Point3D(62.5,-187.5,-250),
+                new Point3D(62.5,-250,-250),new Point3D(125,-250,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(62.5,-187.5,-250),new Point3D(0,-187.5,-250),
+                new Point3D(0,-250,-250),new Point3D(62.5,-250,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(0,-187.5,-250),new Point3D(-62.5,-187.5,-250),
+                new Point3D(-62.5,-250,-250),new Point3D(0,-250,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(-62.5,-187.5,-250),new Point3D(-125,-187.5,-250),
+                new Point3D(-125,-250,-250),new Point3D(-62.5,-250,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+        scene2.geometries.add(new Polygon(new Point3D(-125,-187.5,-250),new Point3D(-187.5,-187.5,-250),
+                new Point3D(-187.5,-250,-250),new Point3D(-125,-250,-250))
+                .setEmission(new Color(96, 96, 96)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+        scene2.geometries.add(new Polygon(new Point3D(-187.5,-187.5,-250),new Point3D(-250,-187.5,-250),
+                new Point3D(-250,-250,-250),new Point3D(-187.5,-250,-250))
+                .setEmission(new Color(0, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+        scene2.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, -1, 0)));
+        scene2.lights.add(new PointLight(new Color(230, 230, 250), new Point3D(-160, -165, -100)));
+        scene2.lights.add(new PointLight(new Color(230, 230, 250), new Point3D(160, -165, -100)));
+        scene2.lights.add(new SpotLight(new Color(130,100,130), new Point3D(0, -30, 50), new Vector(0, 1, 0)) //
+                .setKl(4E-5).setKq(2E-7));*/
+
+
 
 
         scene2.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, -1, 0)));
-        scene2.lights.add(new PointLight(new Color(230, 230, 215), new Point3D(-160, -165, -100)));
-        scene2.lights.add(new PointLight(new Color(230, 230, 215), new Point3D(160, -165, -100)));
-        scene2.lights.add(new SpotLight(new Color(130,100,130), new Point3D(0, -30, 50), new Vector(0, 1, 0)) //
+        scene2.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50, -50, -50)));
+        scene2.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, -50, -50)));
+        scene2.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0, -30, 50), new Vector(0, 1, 0)) //
                 .setKl(4E-5).setKq(2E-7));
 
 
