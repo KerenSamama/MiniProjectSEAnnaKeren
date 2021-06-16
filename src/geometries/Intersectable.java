@@ -54,10 +54,6 @@ public interface Intersectable{
          return  findGeoIntersections(ray,Double.POSITIVE_INFINITY);
      }
 
-
-
-
-
     /**
 
      * @param ray of type Ray
