@@ -620,7 +620,7 @@ public class RenderTests {
         scene2.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, -1, 0)));
         scene2.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50, -50, -50)));
         scene2.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, -50, -50)));
-        scene2.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0, -30, 50), new Vector(0, 1, 0)) //
+        scene2.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0, -30, -100), new Vector(0, 1, 0)) //
                 .setKl(4E-5).setKq(2E-7));
 
 
