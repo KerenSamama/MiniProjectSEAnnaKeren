@@ -629,7 +629,7 @@ public class RenderTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //
-                .setRayTracer(new BasicRayTracer(scene2)); //.set_numOfRays(5).setRadius(40).set_rayDistance(5));
+                .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(10)); //.set_numOfRays(5).setRadius(40).set_rayDistance(5));
 
         render.renderImage();
         render.writeToImage();

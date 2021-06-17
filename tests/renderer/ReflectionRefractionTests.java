@@ -118,7 +118,7 @@ public class ReflectionRefractionTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
-                .setRayTracer(new BasicRayTracer(scene).set_numOfRays(5).setRadius(2).set_rayDistance(2));
+                .setRayTracer(new BasicRayTracer(scene).set_numOfRays(5).set_rayDistance(1));
 
         render.renderImage();
         render.writeToImage();

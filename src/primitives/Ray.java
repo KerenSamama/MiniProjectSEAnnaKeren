@@ -136,38 +136,45 @@ public class Ray {
     /**
      * creates a beam of rays(in a list of rays)
      *
-     * @param n        Vector - normal vector where the rays start
+     * @param normal        Vector - normal vector where the rays start
      * @param distance double - the distance between the  point and the circle we are creating to find the beam
-     * @param num      int - the number of rays that will be in the beam
+     * @param numOfRays     int - the number of rays that will be in the beam
      * @return list that includes all the rays that make up the beam
      */
-    public List<Ray> createBeamOfRays(Vector n,double r, double distance, int num) {
-        List<Ray> beam = new LinkedList<Ray>();
+    public List<Ray>createBeamOfRays(Vector normal,double distance,int numOfRays)
+    {
+        List<Ray> beam=new LinkedList<Ray>();
         beam.add(this);//the original ray that calls the function - there has to be at least one beam
-        if (num == 1 || r==0)//if no additional rays were requested here  there is nothing else to do in this function
+        if(numOfRays==1)//if no additional rays were requested here  there is nothing else to do in this function
             return beam;
-        Vector w = this.getDir().normalToVector();//finds a vector that is normal to the direction on the ray
-        Vector v = this.getDir().crossProduct(w).normalize();//the cross product between the normal and the direction
 
-        Point3D center = this.getPoint(distance);//the center of our circle is the distance requested from p0
-        Point3D randomP = Point3D.ZERO;
-        double xRandom, yRandom, random;
-        double nDotDirection = alignZero(n.dotProduct(this.getDir()));
-        for (int i = 1; i < num; i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
+        Vector w=this.getDir().normalToVector();//finds a vector that is normal to the direction on the ray
+        Vector v=this.getDir().crossProduct(w).normalize();//the cross product between the normal and the direction
+
+        Point3D center=this.getPoint(distance);//the center of our circle is the distance requested from p0
+        Point3D randomP=Point3D.ZERO;
+        double xRandom,yRandom,random;
+        double randomRadiusValue = random(3.0 , 6.0); // the radius will be in range: 3 < r < 6, and will have double values
+
+
+        for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
         {
-            xRandom = random(-1, 1);//random number [-1,1)
-            yRandom = Math.sqrt(1 - Math.pow(xRandom, 2));
-            random = random(-r, r);//random number[-r,r)
-            if (xRandom != 0)//vector cannot be scaled with zero
-                randomP = center.add(w.scale(xRandom));
-            if (yRandom != 0)//vector cannot be scaled with zero
-                randomP = center.add(w.scale(yRandom));
-            Vector t = randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
-            double normalDotT = alignZero(n.dotProduct(t));
-            if (nDotDirection * normalDotT > 0)//if they are both positive or both negative then we need to create a ray with the original p0 and t
-                beam.add(new Ray(this.getP0(), t));
+            xRandom=random(-1,1);//random number [-1,1)
+            yRandom=Math.sqrt(1-Math.pow(xRandom,2)); // toujours entre 0 et 1
+            random=random(-randomRadiusValue,randomRadiusValue);
+
+            if(xRandom!=0)//vector cannot be scaled with zero
+                randomP=center.add(w.scale(xRandom*random));
+            if(yRandom!=0)//vector cannot be scaled with zero
+                randomP=center.add(v.scale(yRandom*random));
+
+            Vector t= randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
+
+            double normalDotDir=alignZero(normal.dotProduct(this.getDir()));
+            double normalDotT=alignZero(normal.dotProduct(t));
+            if(normalDotDir*normalDotT>0)//if they are both positive or both negative then we need to create a ray with the original p0 and t
+                beam.add(new Ray(this.getP0(),t));
         }
         return beam;
     }
-
 }
