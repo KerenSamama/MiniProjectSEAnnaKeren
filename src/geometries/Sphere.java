@@ -35,6 +35,16 @@ public class Sphere extends Geometry {
         }
         _center = center;
         _radius = radius;
+
+        //sets the bounding box parameters for BVH
+        if(this._setBoundingBoxes  ==true) {
+            this.box._minX = center.getX() - radius; // x min
+            this.box._maxX = center.getX() + radius; //x max
+            this.box._minY = center.getY() - radius; // y min
+            this.box._maxY = center.getY() + radius; // y max
+            this.box._minZ = center.getZ() - radius; // z min
+            this.box._maxZ = center.getZ() + radius; // z max
+        }
     }
 
     /**

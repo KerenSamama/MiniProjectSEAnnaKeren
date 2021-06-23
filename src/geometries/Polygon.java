@@ -81,6 +81,31 @@ public class Polygon extends Geometry {
             edge2 = vertices[i].subtract(vertices[i - 1]);
             if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
+
+            if (_setBoundingBoxes == true) {
+                //starting points
+                box._minX = this._vertices.get(0).getX();
+                box._maxX = this._vertices.get(0).getX();
+                box._minY = this._vertices.get(0).getY();
+                box._maxY = this._vertices.get(0).getY();
+                box._minZ = this._vertices.get(0).getZ();
+                box._maxZ = this._vertices.get(0).getZ();
+
+                for (int j = 1; j < this._vertices.size(); j++) {
+                    if (this._vertices.get(j).getX() < box._minX)//checks for min x
+                        box._minX = this._vertices.get(j).getX();
+                    if (this._vertices.get(j).getY() < box._minY)//checks for min y
+                        box._minY = this._vertices.get(j).getY();
+                    if (this._vertices.get(j).getZ() < box._minZ)//checks for min z
+                        box._minZ = this._vertices.get(j).getZ();
+                    if (this._vertices.get(j).getX() > box._maxX)//checks for max x
+                        box._maxX = this._vertices.get(j).getX();
+                    if (this._vertices.get(j).getY() > box._maxY)//checks for max y
+                        box._maxY = this._vertices.get(j).getY();
+                    if (this._vertices.get(j).getZ() > box._maxZ)//checks for max z
+                        box._maxZ = this._vertices.get(j).getZ();
+                }
+            }
         }
     }
 

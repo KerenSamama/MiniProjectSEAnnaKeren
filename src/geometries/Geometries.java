@@ -12,20 +12,28 @@ import java.util.List;
  * Geometries class implements the interface Intersectable according to composite design template.
  */
 
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
 
 
     private List<Intersectable> _intersectables = null; // list of geometric bodies
+    private  List<Geometries> _geos=new ArrayList<>();
 
 
     /**
      * Default constructor for Geometries class who initializes with an empty list
      */
-    public Geometries(){
+
+    public Geometries() {
+
+        this.box._maxX = Double.NEGATIVE_INFINITY;
+        this.box._minX = Double.POSITIVE_INFINITY;
+        this.box._maxY= Double.NEGATIVE_INFINITY;
+        this.box._minY = Double.POSITIVE_INFINITY;
+        this.box._maxZ = Double.NEGATIVE_INFINITY;
+        this.box._minZ = Double.POSITIVE_INFINITY;
         _intersectables = new ArrayList<Intersectable>();
         // ArrayList choice because run time of insert and remove is quick because we can use an index
     }
-
 
     /**
      * Geometries constructor who receives :
@@ -48,12 +56,29 @@ public class Geometries implements Intersectable {
      * @param geometries list of objects who implement the interface Intersectable
      */
     public void add(Intersectable... geometries) {
-        Collections.addAll(_intersectables, geometries);
+      // Collections.addAll(_intersectables, geometries);
 
        /* for(int i =0; i<geometries.length ; i++)
         {
             _intersectables.add(_intersectables.size() + i ,geometries[i]);
         }*/
+
+        for (Intersectable geo : geometries) {
+            _intersectables.add(geo);
+            if (geo.box._maxX > this.box._maxX)
+                this.box._maxX = geo.box._maxX;
+            if (geo.box._minX< this.box._minX)
+                this.box._minX = geo.box._minX;
+            if (geo.box._maxY > this.box._maxY)
+                this.box._maxY = geo.box._maxY;
+            if (geo.box._minY < this.box._minY)
+                this.box._minY = geo.box._minY;
+            if (geo.box._maxZ > this.box._maxZ)
+                this.box._maxZ = geo.box._maxZ;
+            if (geo.box._minZ < this.box._minZ)
+                this.box._minZ = geo.box._minZ;
+        }
+
     }
 
 
@@ -79,7 +104,21 @@ public class Geometries implements Intersectable {
         return result;
     }
 
+    public List<GeoPoint> treeGeometries(Ray ray,double max){
+        if(this._geos.size()==0)
+        {
+            return this.findGeoIntersections(ray,max);
+        }
+        else {
+            if (this.isIntersectionWithBox(ray)) {
 
+                for (Geometries g : _geos) {
+                    g.treeGeometries(ray, max);
+                }
+            }
+        }
+        return null;
+    }
 
 
 }

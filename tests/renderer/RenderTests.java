@@ -625,7 +625,8 @@ public class RenderTests {
 
 
 
-        ImageWriter imageWriter = new ImageWriter("ray tracing 4", 700, 700);
+        ImageWriter imageWriter = new ImageWriter("ray tracing 4", 600, 600);
+
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //

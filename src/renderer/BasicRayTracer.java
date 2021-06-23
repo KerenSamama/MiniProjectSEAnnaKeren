@@ -152,7 +152,7 @@ public class BasicRayTracer extends RayTracerBase {
 
         if (kkr > MIN_CALC_COLOR_K) {
             Ray reflectionRay = constructReflectedRay(geoPoint,ray.getDir());
-            if(_numOfRays==0  || _rayDistance<=0){
+            if(this._numOfRays==0  || this._rayDistance<=0){
                 beam.add(reflectionRay);
 
             }

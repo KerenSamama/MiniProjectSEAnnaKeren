@@ -10,7 +10,7 @@ import primitives.Vector;
  * Abstract class Geometry for any geometric body
  * who implements the interface Intersectable
  */
-public abstract class Geometry implements Intersectable {
+public abstract class Geometry extends Intersectable {
     protected Color _emission = Color.BLACK; // field for representing geometric body's color
     private Material _material = new Material(); // field for representing geometric body's material
 

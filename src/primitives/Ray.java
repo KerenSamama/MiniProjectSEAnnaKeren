@@ -154,7 +154,7 @@ public class Ray {
         Point3D center=this.getPoint(distance);//the center of our circle is the distance requested from p0
         Point3D randomP=Point3D.ZERO;
         double xRandom,yRandom,random;
-        double randomRadiusValue = random(3.0 , 6.0); // the radius will be in range: 3 < r < 6, and will have double values
+        double randomRadiusValue = random(50.0 , 100.0); // the radius will be in range: 3 < r < 6, and will have double values
 
 
         for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
@@ -164,9 +164,9 @@ public class Ray {
             random=random(-randomRadiusValue,randomRadiusValue);
 
             if(xRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(w.scale(xRandom*random));
+                randomP=center.add(w.scale(random));
             if(yRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(v.scale(yRandom*random));
+                randomP=center.add(v.scale(random));
 
             Vector t= randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
 
