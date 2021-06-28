@@ -134,6 +134,7 @@ public class Ray {
 
 
     /**
+
      * creates a beam of rays(in a list of rays)
      *
      * @param normal        Vector - normal vector where the rays start
@@ -154,7 +155,8 @@ public class Ray {
         Point3D center=this.getPoint(distance);//the center of our circle is the distance requested from p0
         Point3D randomP=Point3D.ZERO;
         double xRandom,yRandom,random;
-        double randomRadiusValue = random(50.0 , 100.0); // the radius will be in range: 3 < r < 6, and will have double values
+        //double r=Math.abs(Math.tan(Math.acos(w.dotProduct(v))));
+        double randomRadiusValue = random(3 , 6); // the radius will be in range: 3 < r < 6, and will have double values
 
 
         for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
@@ -162,11 +164,12 @@ public class Ray {
             xRandom=random(-1,1);//random number [-1,1)
             yRandom=Math.sqrt(1-Math.pow(xRandom,2)); // toujours entre 0 et 1
             random=random(-randomRadiusValue,randomRadiusValue);
+            //random=random(-r,r);
 
-            if(xRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(w.scale(random));
+            if(xRandom!=0)//vector cannot be sca2led with zero
+                randomP=center.add(w.scale(randomRadiusValue));//
             if(yRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(v.scale(random));
+                randomP=center.add(v.scale(randomRadiusValue));//yRandom*
 
             Vector t= randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
 
@@ -177,4 +180,5 @@ public class Ray {
         }
         return beam;
     }
+
 }

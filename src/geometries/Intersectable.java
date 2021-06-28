@@ -115,7 +115,7 @@ public abstract class Intersectable{
      * She calls the function findGeoIntersections that returns a list of GeoPoints and recovers the field point of each GeoPoint
      * to create a list of intersection points of type Point3D
      */
-    List<Point3D> findIntersections(Ray ray) {
+    public List<Point3D> findIntersections(Ray ray) {
 
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null
