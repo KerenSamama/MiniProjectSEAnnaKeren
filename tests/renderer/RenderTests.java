@@ -840,8 +840,30 @@ public class RenderTests {
         scene3.geometries.add(new Sphere(7, new Point3D(150, -100, 482.5))// violet
                 .setEmission(new Color(200, 200, 200))
                 .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
+        //oreilles
+
+        scene3.geometries.add(new Polygon(new Point3D(-70,-100,644),new Point3D(-75,-100,680),
+                new Point3D(-45,-100,668))
+                .setEmission(new Color(200, 200, 200)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 
 
+
+        scene3.geometries.add(new Polygon(new Point3D(70,-100,644),new Point3D(75,-100,680),
+                new Point3D(45,-100,668))
+                .setEmission(new Color(200, 200, 200)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
+
+        scene3.geometries.add(new Polygon(new Point3D(-65,-100,650),new Point3D(-69,-110,670),
+                new Point3D(-50,-100,664))
+                .setEmission(new Color(200, 150, 150)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
+
+        scene3.geometries.add(new Polygon(new Point3D(65,-100,650),new Point3D(69,-110,670),
+                new Point3D(50,-100,664))
+                .setEmission(new Color(200, 150, 150)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
+
+      /*  scene3.geometries.add(new Polygon(new Point3D(70,-100,644),new Point3D(75,-100,680),
+                new Point3D(45,-100,668))
+                .setEmission(new Color(200, 200, 200)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
+*/
 
         ImageWriter imageWriter = new ImageWriter("finalProject", 1500, 1500);
 
