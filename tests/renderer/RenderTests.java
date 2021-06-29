@@ -720,9 +720,11 @@ public class RenderTests {
 
     @Test
     public void FinalProject() {
+
+
         Scene scene3 = new Scene("Test scene")//
-                .setAmbientLight(new AmbientLight(new Color(100, 100, 100), 0.1)) //
-                .setBackground(new Color(255, 255, 255));
+                .setAmbientLight(new AmbientLight(new Color(0, 0, 0), 0.1)) //
+                .setBackground(new Color(0, 0, 0));
 
         scene3.geometries.add(
                 new Polygon(new Point3D(-200,0,300),new Point3D(200,0,300),
@@ -861,7 +863,6 @@ public class RenderTests {
                 .setEmission(new Color(200, 150, 150)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 
         //nez
-
         scene3.geometries.add(new Polygon(new Point3D(10,-200,600),new Point3D(0,-200,590),
                 new Point3D(-10,-200,600))
                 .setEmission(new Color(00, 00, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
@@ -869,7 +870,7 @@ public class RenderTests {
         scene3.geometries.add(new Polygon(new Point3D(-0.5,-200,590),new Point3D(0.5,-200,590),
                 new Point3D(0.5,-200,570),new Point3D(-0.5,-200,570))
                 .setEmission(new Color(00, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
-//bouche
+        //bouche
         scene3.geometries.add(new Polygon(new Point3D(10,-200,560),new Point3D(0,-200,575),
                 new Point3D(-10,-200,560))
                 .setEmission(new Color(0, 00, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
@@ -908,7 +909,7 @@ public class RenderTests {
                 new Point3D(40,-200,660))
                 .setEmission(new Color(200, 10, 150)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 
-        // moustaches
+        // moustaches gauche
         scene3.geometries.add(new Polygon(new Point3D(-10,-250,582),new Point3D(-100,-250,585),
                 new Point3D(-100,-250,580))
                 .setEmission(new Color(00, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
@@ -921,7 +922,7 @@ public class RenderTests {
                 new Point3D(-100,-250,540))
                 .setEmission(new Color(00, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 
-//moustache droite
+        //moustache droite
         scene3.geometries.add(new Polygon(new Point3D(10,-250,582),new Point3D(100,-250,585),
                 new Point3D(100,-250,580))
                 .setEmission(new Color(00, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
@@ -937,9 +938,20 @@ public class RenderTests {
 
         //boule cristale
 
-        scene3.geometries.add(new Sphere(400, new Point3D(0, 400, 600))// violet
+        /*scene3.geometries.add(new Sphere(400, new Point3D(0, 400, 600))// violet
                 .setEmission(new Color(00255, 00255, 00255))
-                .setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.2)));
+                .setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.2)));*/
+
+        scene3.geometries.add(new Sphere(350, new Point3D(0, -200, 590))
+                .setEmission(new Color(java.awt.Color.BLUE))
+                .setMaterial(new Material().setKd(0).setKs(0).setShininess(100).setKt(1).setKr(0)));
+
+        scene3.lights.add(new SpotLight(new Color(1020,400,400), new Point3D(0, -200, 1200), new Vector(0, 0, -1)) //
+                .setKl(0.0001).setKq(0.000005));
+        scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(400,     0, 500)));
+        scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-400, 0, 500)));
+
+
 
 
       /*  scene3.geometries.add(new Polygon(new Point3D(70,-100,644),new Point3D(75,-100,680),
@@ -947,10 +959,10 @@ public class RenderTests {
                 .setEmission(new Color(200, 200, 200)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 */
        // scene3.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, 1, 0)));
-       scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50,     150, 100)));
-     scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, 150, 100)));
-//        scene3.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0,  130, -1000), new Vector(0, 1, 0)) //
-                //.setKl(4E-5).setKq(2E-7));
+      // scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50,     150, 100)));
+       //scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, 150, 100)));
+       // scene3.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0,  130, -1000), new Vector(0, 1, 0)) //
+        // .setKl(4E-5).setKq(2E-7));
 
         ImageWriter imageWriter = new ImageWriter("finalProject", 1500, 1500);
 
@@ -958,7 +970,7 @@ public class RenderTests {
                 .setImageWriter(imageWriter) //
                 .setCamera(camera3) //
                 .setMultithreading(4)
-                .setRayTracer(new BasicRayTracer(scene3).set_rayDistance(1).set_numOfRays(1)); //.set_numOfRays(5).setRadius(40).set_rayDistance(5));
+                .setRayTracer(new BasicRayTracer(scene3)); //.set_numOfRays(1).set_rayDistance(1));
 
         render.renderImage();
         render.writeToImage();
