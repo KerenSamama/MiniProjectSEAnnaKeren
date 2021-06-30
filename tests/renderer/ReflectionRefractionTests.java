@@ -81,7 +81,7 @@ public class ReflectionRefractionTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
-                .setRayTracer(new BasicRayTracer(scene));
+                .setRayTracer(new BasicRayTracer(scene).set_numOfRays(0));
 
         render.renderImage();
         render.writeToImage();
@@ -119,7 +119,7 @@ public class ReflectionRefractionTests {
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setMultithreading(3)
-                .setRayTracer(new BasicRayTracer(scene).set_numOfRays(10).set_rayDistance(5));
+                .setRayTracer(new BasicRayTracer(scene).set_numOfRays(5).set_rayDistance(1));
 
 
         render.renderImage();
@@ -139,7 +139,7 @@ public class ReflectionRefractionTests {
         Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setViewPlaneSize(200, 200).setDistance(1000);
 
-        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+        //scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
 
         scene.geometries.add( //
                 new Triangle(new Point3D(-150, -150, -115), new Point3D(150, -150, -135), new Point3D(75, 75, -150)) //

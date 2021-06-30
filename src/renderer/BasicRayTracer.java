@@ -128,7 +128,6 @@ public class BasicRayTracer extends RayTracerBase {
         Color color = intersection._geometry.getEmission();
         color = color.add(calcLocalEffects(intersection, ray, k));
         return 1 == level ? color : color.add(calcGlobalEffects(intersection, ray, level, k));
-
     }
 
     /**
@@ -138,7 +137,7 @@ public class BasicRayTracer extends RayTracerBase {
      * @param k
      * @return
      */
-    private Color calcGlobalEffects(GeoPoint geoPoint, Ray ray, int level, double k) { // v= direction ray
+   /* private Color calcGlobalEffects(GeoPoint geoPoint, Ray ray, int level, double k) { // v= direction ray
         Color color = Color.BLACK;
         Color ReflectedColor = Color.BLACK;
         Color RefractedColor = Color.BLACK;
@@ -147,50 +146,132 @@ public class BasicRayTracer extends RayTracerBase {
         Material material = geoPoint._geometry.getMaterial();
         double kkr = k * material.Kr;
         List<Ray> beam =new LinkedList<>();;
-        List<Ray>beam1=new LinkedList<>();
-        List<Ray>beam2=new LinkedList<>();
+        //List<Ray>beam1=new LinkedList<>();
+        //List<Ray>beam2=new LinkedList<>();
 
         if (kkr > MIN_CALC_COLOR_K) {
-            Ray reflectionRay = constructReflectedRay(geoPoint,ray.getDir());
-            if(this._numOfRays==0  || this._rayDistance<=0){
-                beam.add(reflectionRay);
 
-            }
-            else {
-                beam= reflectionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(),this.get_numOfRays());
-            }
-            for(Ray r : beam) // r = reflectedRay
-            {
-               ReflectedColor = ReflectedColor.add(calcGlobalEffects(r, level, material.Kr, kkr));
-            }
+            Ray reflectionRay = constructReflectedRay(geoPoint, ray.getDir());
+            color = calcGlobalEffects(reflectionRay, level, material.Kr, kkr);
+            if (this._numOfRays >1 || this._rayDistance > 0) {
 
-            color = color.add( ReflectedColor.reduce(beam.size()));
+                beam = reflectionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(), this.get_numOfRays());
 
+                for (Ray r : beam) // r = reflectedRay
+                {
+                    ReflectedColor = ReflectedColor.add(calcGlobalEffects(r, level, material.Kr, kkr));
+                }
+            }
         }
+
+        if(beam.size()>0) {
+            color = color.add(ReflectedColor.reduce(beam.size()));
+        }
+
+
 
         double kkt = k * material.Kt;
         if (kkt > MIN_CALC_COLOR_K) {
-            Ray refractionRay = constructRefractedRay(geoPoint,ray.getDir());
-            if(this._numOfRays==0 ||this._rayDistance<=0)
-                beam.add(refractionRay);
-            else{
-                beam= refractionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(),this.get_numOfRays());
-            }
-            for(Ray r : beam) // r = refractedRay
-            {
-                RefractedColor = RefractedColor.add(calcGlobalEffects(r, level, material.Kr, kkr));
-            }
+            Ray refractionRay = constructRefractedRay(geoPoint, ray.getDir());
+            color = color.add(
+                    calcGlobalEffects(refractionRay, level, material.Kt, kkt));
+            if (this._numOfRays > 1 || this._rayDistance > 0) {
 
-            color =color.add(RefractedColor.reduce(beam.size()));
+                beam = refractionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(), this.get_numOfRays());
+            }
+            for (Ray r : beam) // r = refractedRay
+            {
+                RefractedColor = RefractedColor.add(calcGlobalEffects(r, level, material.Kt, kkt));
+            }
         }
+
+        if(beam.size()>0) {
+            color = color.add(RefractedColor.reduce(beam.size()));
+        }
+
         //out.println(beam.size());
         //out.println(beam2.size());
         //color = color.add(tempColorRefraction.reduce(beam.size()));
         return color; //= color.add(((ReflectedColor.add(RefractedColor)))); //.scale(beam2.size()))).reduce(beam1.size()+beam2.size()));//.reduce(2);
 
-       // return color;
+
+    }*/
+
+
+
+
+
+    private Color calcGlobalEffects(GeoPoint geoPoint, Ray ray, int level, double k) { // v= direction ray
+        Color color = Color.BLACK;
+        Color ReflectedColor = Color.BLACK;
+        Color RefractedColor = Color.BLACK;
+        Vector n = geoPoint._geometry.getNormal(geoPoint._point);
+        Material material = geoPoint._geometry.getMaterial();
+        double kkr = k * material.Kr;
+        List<Ray> beam =new LinkedList<>();;
+        List<Ray>beam1=new LinkedList<>();
+        List<Ray>beam2=new LinkedList<>();
+
+        if (kkr > MIN_CALC_COLOR_K) {
+
+            Ray reflectionRay = constructReflectedRay(geoPoint,ray.getDir());
+            //color = calcGlobalEffects(reflectionRay, level, material.Kr, kkr);
+            if(this._numOfRays==0  || this._rayDistance<=0){
+                beam1.add(reflectionRay);
+            }
+            else {
+                beam1= reflectionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(),this.get_numOfRays());
+            }
+            for(Ray r : beam1) // r = reflectedRay
+            {
+                ReflectedColor = ReflectedColor.add(calcGlobalEffects(r, level, material.Kr, kkr));
+            }
+            if(beam1.size()>0) {
+                color = color.add(ReflectedColor.reduce(beam1.size()));
+            }
+        }
+
+        double kkt = k * material.Kt;
+        if (kkt > MIN_CALC_COLOR_K) {
+            Ray refractionRay = constructRefractedRay(geoPoint,ray.getDir());
+            //color = color.add(
+                  // calcGlobalEffects(refractionRay, level, material.Kt, kkt));
+
+            if(this._numOfRays==0 ||this._rayDistance<=0)
+                beam2.add(refractionRay);
+            else{
+                beam2= refractionRay.createBeamOfRays(geoPoint._geometry.getNormal(geoPoint._point), this.get_rayDistance(),this.get_numOfRays());
+            }
+            for(Ray r : beam2) // r = refractedRay
+            {
+                RefractedColor = RefractedColor.add(calcGlobalEffects(r, level, material.Kt,kkt));
+            }
+
+            if(beam2.size()>0) {
+                color = color.add(RefractedColor.reduce(beam2.size()));
+            }
+        }
+
+        return color; //= color.add(((ReflectedColor.add(RefractedColor)))); //.scale(beam2.size()))).reduce(beam1.size()+beam2.size()));//.reduce(2);
+
+        // return color;
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private Color calcGlobalEffects(Ray ray, int level, double kx, double kkx) {
         GeoPoint gp = ray.findClosestGeoPoint(_scene.geometries.findGeoIntersections(ray));
@@ -295,7 +376,7 @@ public class BasicRayTracer extends RayTracerBase {
         return true;
     }
 //
-    private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
+   /* private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Point3D point = geopoint._point;
         Ray lightRay = new Ray(point, lightDirection, n);
@@ -309,8 +390,26 @@ public class BasicRayTracer extends RayTracerBase {
             if (ktr < MIN_CALC_COLOR_K) return 0.0;
         }
         return ktr;
-    }
+    }*/
 
+    private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Point3D point = geopoint._point;
+        Ray lightRay = new Ray(point, lightDirection, n);
+        double lightDistance = light.getDistance(point);
+        var intersections = _scene.geometries.findGeoIntersections(lightRay);
+        if (intersections == null) return 1.0;
+        double ktr = 1.0;
+        for (GeoPoint gp : intersections) {
+            if (alignZero((gp._point.distance(geopoint._point))- lightDistance) <= 0) {
+                ktr *= gp._geometry.getMaterial().getKt();
+                if (ktr < MIN_CALC_COLOR_K) return 0.0;
+            }
+        }
+        return ktr;
+
+
+    }
 
     /**
      * Method calcSpecular to calculate the specular light
