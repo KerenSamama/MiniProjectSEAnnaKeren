@@ -723,13 +723,13 @@ public class RenderTests {
 
 
         Scene scene3 = new Scene("Test scene")//
-                .setAmbientLight(new AmbientLight(new Color(0, 0, 0), 0.1)) //
-                .setBackground(new Color(0, 0, 0));
+                .setAmbientLight(new AmbientLight(new Color(254, 150, 160), 0.15)) //
+                .setBackground(new Color(200, 200, 226));
 
         scene3.geometries.add(
                 new Polygon(new Point3D(-200,0,300),new Point3D(200,0,300),
                         new Point3D(400,0,0),new Point3D(-400,0,0))
-                        .setEmission(new Color(200, 10, 50)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+                        .setEmission(new Color(255, 0, 0)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
 
 
         //pieds
@@ -942,14 +942,25 @@ public class RenderTests {
                 .setEmission(new Color(00255, 00255, 00255))
                 .setMaterial(new Material().setKd(0.1).setKs(0.1).setShininess(5).setKt(0).setKr(0.2)));*/
 
-        scene3.geometries.add(new Sphere(350, new Point3D(0, -200, 590))
-                .setEmission(new Color(java.awt.Color.BLUE))
-                .setMaterial(new Material().setKd(0).setKs(0).setShininess(100).setKt(1).setKr(0)));
+        scene3.geometries.add(new Sphere(300, new Point3D(0, -200, 590))
+                .setEmission(new Color(80, 80, 80))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.6).setKr(0)));
 
-        scene3.lights.add(new SpotLight(new Color(1020,400,400), new Point3D(0, -200, 1200), new Vector(0, 0, -1)) //
-                .setKl(0.0001).setKq(0.000005));
-        scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(400,     0, 500)));
-        scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-400, 0, 500)));
+
+//essaie
+
+/*        scene3.geometries.add(new Sphere(20, new Point3D(-40, -25, 400))// violet
+                .setEmission(new Color(200, 200, 200))
+                .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));*/
+
+
+
+//        scene3.lights.add(new SpotLight(new Color(0,0,0), new Point3D(0, -1200, 1200), new Vector(0, 1, -1)) //
+//                .setKl(0.0001).setKq(0.000005));
+
+        scene3.lights.add(new PointLight(new Color(100, 139, 154), new Point3D(1000,100, 500)));
+        //scene3.lights.add(new PointLight(new Color(255,255,255), new Point3D(-1000, 0, 500)));
+
 
 
 
@@ -958,16 +969,17 @@ public class RenderTests {
                 new Point3D(45,-100,668))
                 .setEmission(new Color(200, 200, 200)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.3).setKr(0)));
 */
-       // scene3.lights.add(new DirectionalLight(new Color(240, 240, 240), new Vector(0, 1, 0)));
-      // scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50,     150, 100)));
-       //scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, 150, 100)));
-       // scene3.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0,  130, -1000), new Vector(0, 1, 0)) //
-        // .setKl(4E-5).setKq(2E-7));
+       scene3.lights.add(new DirectionalLight(new Color(100, 100, 100), new Vector(0, 0, -1)));
+       //scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(-50,     150, 100)));
+      // scene3.lights.add(new PointLight(new Color(170, 170, 170), new Point3D(50, 150, 100)));
+//        scene3.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0,  150, 100), new Vector(0, 1, 0))
+//         .setKl(4E-5).setKq(2E-7));
 
         ImageWriter imageWriter = new ImageWriter("finalProject", 1500, 1500);
 
         Render render = new Render() //
-                .setImageWriter(imageWriter) //
+                .setImageWriter(imageWriter)
+                //
                 .setCamera(camera3) //
                 .setMultithreading(4)
                 .setRayTracer(new BasicRayTracer(scene3)); //.set_numOfRays(1).set_rayDistance(1));

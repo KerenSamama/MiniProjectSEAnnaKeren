@@ -15,9 +15,9 @@ public class PointLight extends  Light implements LightSource{
     // _position is a point of type Point3D who represents the light's position
     private final Point3D _position;
     // coefficients of attenuation of  PointLight
-    private double _Kc = 1;
-    private double _Kl = 0;
-    private double _Kq = 0;
+    private double _Kc = 1d;
+    private double _Kl = 0d;
+    private double _Kq = 0d;
 
 
     /**
