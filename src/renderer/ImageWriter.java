@@ -18,8 +18,8 @@ import javax.imageio.*;
  * @author Dan
  */
 public class ImageWriter {
-    private int nX;
-    private int nY;
+    private int nX; // number of pixels for X axis
+    private int nY; // number of pixels for X axis
 
     private static final String FOLDER_PATH = System.getProperty("user.dir") + "/images";
 

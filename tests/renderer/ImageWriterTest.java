@@ -3,11 +3,15 @@ package renderer;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ImageWriterTest {
 
+    /**
+     * Test method for {@link ImageWriter#writeToImage()}
+     */
     @Test
     public void writeToImage()
     {

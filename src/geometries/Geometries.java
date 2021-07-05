@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Geometries class is the class representing a collection of geometric bodies.
- * Geometries class implements the interface Intersectable according to composite design template.
+ * Geometries class inherits from Intersectable class according to composite design template.
  */
 
 public class Geometries extends Intersectable {
@@ -31,8 +31,8 @@ public class Geometries extends Intersectable {
         this.box._minY = Double.POSITIVE_INFINITY;
         this.box._maxZ = Double.NEGATIVE_INFINITY;
         this.box._minZ = Double.POSITIVE_INFINITY;
-        _intersectables = new ArrayList<Intersectable>();
-        // ArrayList choice because run time of insert and remove is quick because we can use an index
+        _intersectables = new LinkedList<Intersectable>();
+
     }
 
     /**
@@ -40,7 +40,7 @@ public class Geometries extends Intersectable {
      * @param geometries list of objects who implement the interface Intersectable
      */
     public Geometries(Intersectable... geometries) {
-        _intersectables = new ArrayList<Intersectable>();
+        _intersectables = new LinkedList<Intersectable>();
         add(geometries);
 
         /*  for(int i = 0 ; i< geometries.length ; i++)

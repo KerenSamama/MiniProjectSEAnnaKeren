@@ -57,15 +57,15 @@ public class Tube extends Geometry {
         Point3D P0 = _axisRay.getP0();
         Vector v = _axisRay.getDir();
 
-        Vector P0_P = p.subtract(P0);
+        Vector P0_P = p.subtract(P0); // Vector from P towards P0
 
-        double t = alignZero(P0_P.dotProduct(v));
+        double t = alignZero(P0_P.dotProduct(v)); // distance between the projection of p on the axis and P0
         if (isZero(t)) {
             return P0_P.normalize();
         }
 
-        Point3D O = P0.add(v.scale(t));
-        Vector O_P = p.subtract(O);
+        Point3D O = P0.add(v.scale(t)); // O represents the center of the section of the tube by an orthogonal plane containing the point P
+        Vector O_P = p.subtract(O); // Vector from O towards P
 
         return O_P.normalize();
     }

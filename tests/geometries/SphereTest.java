@@ -25,6 +25,7 @@ class SphereTest {
         Sphere s1 = new Sphere(2, o);
         Vector expectedNormal = (p.subtract(o)).normalize();
         Vector normal = s1.getNormal(p);
+        assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() for Sphere wrong result");
 
 
     }

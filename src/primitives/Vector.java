@@ -160,7 +160,7 @@ public class Vector {
 
     /**
      * Function normalize who change the original vector to a unit vector
-     * @return Vector
+     * @return this who is the original Vector
      */
     public Vector normalize() {
 

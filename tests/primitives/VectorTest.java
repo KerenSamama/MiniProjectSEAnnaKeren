@@ -9,14 +9,14 @@ import static primitives.Util.isZero;
 /**
  * Unit tests for primitives.Vector class
  *
- * @author Anna Keren
+ * @author Anna & Keren
  */
 
 class VectorTest {
 
 
     /**
-     * Test method for
+     * Test method for {@link primitives.Vector#scale(double)}
      */
     @Test
     void testScale() {
@@ -25,8 +25,6 @@ class VectorTest {
         Vector v2 = new Vector(2.5, 5, 7.5);
         Vector v3 = v1.scale(d);
         assertEquals(v2, v3, "ERROR : scale() wrong result");
-
-
     }
 
     /**
@@ -36,7 +34,6 @@ class VectorTest {
     void testCrossProduct() {
 
         Vector v1 = new Vector(1, 2, 3);
-
 
         // ============ Equivalence Partitions Tests ==============
         Vector v2 = new Vector(0, 3, -2);
@@ -62,7 +59,7 @@ class VectorTest {
     }
 
     /**
-     *
+     * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}
      */
     @Test
     void testDotProduct() {
@@ -72,38 +69,36 @@ class VectorTest {
         assertTrue(isZero(v1.dotProduct(v3)), "ERROR: dotProduct() for orthogonal vectors is not zero");
         assertTrue(isZero(v1.dotProduct(v2) + 28), "ERROR: dotProduct() wrong value");
 
-        if (!isZero(v1.dotProduct(v2) + 28))
-            out.println("ERROR: dotProduct() wrong value");
     }
 
     /**
-     *
+     * Test method for {@link primitives.Vector#add(primitives.Vector)}
      */
     @Test
     void testAdd() {
         Vector v1 = new Vector(1, 2, 3);
         Vector v2 = new Vector(0, 3, -2);
-        Vector va;
+        Vector va = v1.add(v2);
         Vector v3 = new Vector(1, 5, 1);
-        va = v1.add(v2);
+
         assertEquals(v3, va, "ERROR: Add() wrong result ");
     }
 
     /**
-     *
+     * Test method for {@link primitives.Vector#subtract(primitives.Vector)}
      */
     @Test
     void testSubtract() {
         Vector v1 = new Vector(1, 2, 3);
         Vector v2 = new Vector(0, 3, -2);
-        Vector vs;
+        Vector vs = v1.subtract(v2);
         Vector v3 = new Vector(1, -1, 5);
-        vs = v1.subtract(v2);
+
         assertEquals(v3, vs, "ERROR: Substract() wrong result ");
     }
 
     /**
-     *
+     * Test method for {@link Vector#lengthSquared()}
      */
     @Test
     void testLengthSquared() {
@@ -112,17 +107,16 @@ class VectorTest {
     }
 
     /**
-     *
+     * Test method for {@link Vector#length()}
      */
     @Test
     void testLength() {
         Vector v1 = new Vector(0, 3, 4);
         assertTrue(isZero(v1.length() - 5), "ERROR: length() wrong value");
-
     }
 
     /**
-     *
+     * Test method for {@link Vector#normalize()}
      */
     @Test
     void testNormalize() {
@@ -135,7 +129,7 @@ class VectorTest {
     }
 
     /**
-     *
+     * Test method for {@link Vector#normalized()}
      */
     @Test
     void testNormalized() {
@@ -143,9 +137,9 @@ class VectorTest {
         Vector u = v.normalized();
 
         assertNotEquals(u, v, "ERROR: normalizated() function does not create a new vector");
+        assertTrue(isZero(u.length() - 1), "ERROR: normalized() result is not a unit vector");
 
     }
-
 
 }
 

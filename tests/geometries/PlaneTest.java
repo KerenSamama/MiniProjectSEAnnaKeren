@@ -23,13 +23,13 @@ class PlaneTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Plane(new Point3D(0, 1, 1), new Point3D(0, 1, 1), new Point3D(1, 1, 1)),
-                "ERROR : first and second point are the same");
+                "ERROR : First and second point are the same for Plane Constructor Test");
 
         // TC11: Collocated points
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Plane(new Point3D(1, 0, 0), new Point3D(2, 0, 0), new Point3D(3, 0, 0)),
-                "ERROR : all of points are on the same line");
+                "ERROR : All of points are on the same line for Plane Constructor Test");
     }
 
 
@@ -53,8 +53,8 @@ class PlaneTest {
         Vector expectedNormal = cp.normalize();
         Vector normal1 = pl1.getNormal(p1);
         Vector normal2 = pl1.getNormal(null);
-        assertEquals(normal1, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
-        assertEquals(normal2, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
+        assertEquals(normal1, expectedNormal, "ERROR: Not the same : getNormal() for Plane wrong result");
+        assertEquals(normal2, expectedNormal, "ERROR: Not the same : getNormal() for Plane wrong result");
 
     }
 

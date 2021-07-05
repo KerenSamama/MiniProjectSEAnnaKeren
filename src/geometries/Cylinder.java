@@ -46,16 +46,16 @@ public class Cylinder extends Tube{
         Point3D P0 = _axisRay.getP0();
         Vector v = _axisRay.getDir();
 
-        Vector P0_P = point.subtract(P0);
+        Vector P0_P = point.subtract(P0); // Vector from P towards P0
 
-        double t = alignZero(P0_P.dotProduct(v));
-        if (isZero(t)||t==_height) {
+        double t = alignZero(P0_P.dotProduct(v)); // distance between the projection of p on the axis and P0
+        if (isZero(t)||t==_height) { // The normal at a base will be simply equal to central ray's direction vector
             return v.normalize();
         }
         else
         {
-            Point3D O = P0.add(v.scale(t));
-            Vector O_P = point.subtract(O);
+            Point3D O = P0.add(v.scale(t)); // // O represents the center of the section of the cylinder by an orthogonal plane containing the point P
+            Vector O_P = point.subtract(O); // // Vector from O towards P
             return O_P.normalize();
         }
 

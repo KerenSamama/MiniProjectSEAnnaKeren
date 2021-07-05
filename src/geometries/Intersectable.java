@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 
 /**
- * Interface Intersectable
+ *  Intersectable is an abstract class.
  */
 public abstract class Intersectable{
 
@@ -61,7 +61,7 @@ public abstract class Intersectable{
     /**
      * GeoPoint class is a static internal auxiliary class
      * (as a fully passive data structure - PDS)
-     * This class gives us an information on a point but also on the class to which belongs this point
+     * This class gives us an information on a point but also on the geometry to which belongs this point
      */
     public static class GeoPoint {
         public Geometry _geometry;
@@ -104,7 +104,7 @@ public abstract class Intersectable{
      }
 
     /**
-
+     * The function receive a Ray and a maximum distance where we want to find the intersection points
      * @param ray of type Ray
      * @param maxDistance : maximum distance where we found intersection points
      * @return a list of intersections points of type GeoPoint that are located before this maxDistance
@@ -115,8 +115,7 @@ public abstract class Intersectable{
      * She calls the function findGeoIntersections that returns a list of GeoPoints and recovers the field point of each GeoPoint
      * to create a list of intersection points of type Point3D
      */
-    public List<Point3D> findIntersections(Ray ray) {
-
+     public List<Point3D> findIntersections(Ray ray) {
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null
                 : geoList.stream()

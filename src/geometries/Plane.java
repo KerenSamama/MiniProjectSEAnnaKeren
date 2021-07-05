@@ -48,7 +48,7 @@ public class Plane extends Geometry {
      */
     public Plane(Point3D point, Vector normal) {
         _q0 = point;
-        _normal = normal;
+        _normal = normal.normalize();
     }
 
 
@@ -94,7 +94,6 @@ public class Plane extends Geometry {
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D p0 = ray.getP0();  // beginning point of the ray
         Vector v = ray.getDir();   // direction vector of the ray
-        //Point3D q0 = _q0;          // reference point of the plane
         Vector n = _normal;          // normal vector of the plane
         double nv = n.dotProduct(v);
 

@@ -70,7 +70,7 @@ class RayTest {
         Collections.addAll(list1, new GeoPoint(tr, new Point3D(0, 15, 0)), new GeoPoint(plane, new Point3D(0, 2, 0)),
                 new GeoPoint(sp, new Point3D(0, 7, 0)));
         assertEquals(new GeoPoint(plane,new Point3D(0, 2, 0)), ray.findClosestGeoPoint(list1),
-                "Don't find the closest point, it was the middle point !");
+                "Don't find the closest geoPoint, it was the middle point !");
 
 
         // =============== Boundary Values Tests ==================
@@ -85,14 +85,14 @@ class RayTest {
         Collections.addAll(list2, new GeoPoint(tr, new Point3D(0, 2, 0)), new GeoPoint(plane, new Point3D(0, 15, 0)),
                 new GeoPoint(sp, new Point3D(0, 7, 0)));
         assertEquals(new GeoPoint(tr, new Point3D(0, 2, 0)), ray.findClosestGeoPoint(list2),
-                "Don't find the closest point, it was the first point !");
+                "Don't find the closest geoPoint, it was the first point !");
 
         // TC13: The last point of the list is the closest to the beginning of the ray
         List<GeoPoint> list3 = new ArrayList<GeoPoint>();
         Collections.addAll(list3, new GeoPoint(tr, new Point3D(0, 15, 0)), new GeoPoint(plane, new Point3D(0, 7, 0)),
                 new GeoPoint(sp, new Point3D(0, 2, 0)));
         assertEquals(new GeoPoint(sp, new Point3D(0, 2, 0)), ray.findClosestGeoPoint(list3),
-                "Don't find the closest point, it was the last point !");
+                "Don't find the closest geoPoint, it was the last point !");
 
     }
 

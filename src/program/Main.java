@@ -1,5 +1,8 @@
-package program;
 
+//Anna Zerbib/Azancot 340941244 anna-azancot@hotmail.fr
+// Keren Samama 336351366 kerensamama@gmail.com
+
+package program;
 import primitives.*;
 import static java.lang.System.out;
 import static primitives.Util.*;

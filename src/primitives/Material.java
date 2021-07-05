@@ -1,5 +1,10 @@
 package primitives;
 
+
+/**
+ * Material class is PDS with a basic Builder template.
+ * All the fields are in public permission.
+ */
 public class Material {
 
     public double Kd = 0; // diffuse coefficient
@@ -35,8 +40,8 @@ public class Material {
     /**
      * Update method for Kr
      *
-     * @param kr
-     * @return
+     * @param kr reflective coefficient
+     * @return the Material object itself for chaining calls
      */
     public Material setKr(double kr) {
         this.Kr = kr;
@@ -46,8 +51,8 @@ public class Material {
     /**
      * Update method for Kt
      *
-     * @param kt
-     * @return
+     * @param kt transparent coefficient
+     * @return the Material object itself for chaining calls
      */
     public Material setKt(double kt) {
         this.Kt = kt;

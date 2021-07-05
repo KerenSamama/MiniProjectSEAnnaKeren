@@ -153,7 +153,7 @@ public class LightsTests {
         scene1.lights.add(new SpotLight(new Color(java.awt.Color.cyan), new Point3D(-30, -50, 70), new Vector(3, 5, -7)) //
                 .setKl(0.001).setKq(0.001));
 
-        ImageWriter imageWriter = new ImageWriter("sphereLightsTest", 500, 500);
+        ImageWriter imageWriter = new ImageWriter("OurSphereLightsTest", 500, 500);
         Render render = new Render()//
                 .setImageWriter(imageWriter) //
                 .setCamera(camera1) //
@@ -177,7 +177,7 @@ public class LightsTests {
         scene2.lights.add(new SpotLight(new Color(500, 250, 250), new Point3D(30, -10, -130), new Vector(-2, -2, -1)) //
                 .setKl(0.0003).setKq(0.000007));
 
-        ImageWriter imageWriter = new ImageWriter("trianglesLightsTest", 500, 500);
+        ImageWriter imageWriter = new ImageWriter("OurTwoTrianglesLightsTest", 500, 500);
         Render render = new Render()//
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //

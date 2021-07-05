@@ -8,7 +8,7 @@ import primitives.Vector;
 import static org.junit.jupiter.api.Assertions.*;
 /**
  * Unit tests for primitives.Tube class
- * @author Anna Keren
+ * @author Anna & Keren
  */
 class TubeTest {
 
@@ -31,19 +31,20 @@ class TubeTest {
         Tube tube = new Tube(ray,10);
         double t= dir.dotProduct(p.subtract(p0));
         Point3D o= p0.add(dir.scale(t));
-        Vector expectedNormal=(p.subtract(o)).normalize();
-        Vector normal = tube.getNormal(p);
+        Vector expectedNormal1=(p.subtract(o)).normalize();
+        Vector normal1 = tube.getNormal(p);
 
-         assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
+         assertEquals(normal1, expectedNormal1, "ERROR: Not the same : getNormal() for Tube wrong result");
 
         // =============== Boundary Values Tests ==================
 
-        // TC11:
-        double t2= dir.dotProduct(pE.subtract(p0));
+        // TC11: When a connection of the point with the head of the ray of the tube axis produces a straight angle with the axis –
+        // the point is in front of the head of the ray
+
         Vector expectedNormal2=(pE.subtract(p0)).normalize();
         Vector normal2 = tube.getNormal(pE);
 
-        assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() wrong result");
+        assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() for Tube wrong result");
 
     }
 }

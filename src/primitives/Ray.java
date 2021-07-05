@@ -16,13 +16,14 @@ import java.util.List;
  */
 public class Ray {
     final Point3D _p0; // starting point of the ray
-    final Vector _dir; // directional vector of the ray
-    private static final double DELTA = 0.1;
+    final Vector _dir; // directional vector of the ray (a unit vector)
+    private static final double DELTA = 0.1; // constant to move the head of a ray
 
     /**
-     * Primary constructor for Ray receiving a point and a vector
-     * @param p0
-     * @param dir
+     * Primary constructor for Ray receiving a point and a vector.
+     * Ray's constructor ensures that the direction vector is normalized.
+     * @param p0 of type Point3D to represent the starting point of the ray
+     * @param dir of type Vector to represent the directional vector of the ray
      */
     public Ray(Point3D p0, Vector dir) {
         _p0 = p0;
@@ -30,19 +31,26 @@ public class Ray {
     }
 
     /**
-     * Special Ray moove a little of origin
+     *  Ray moove a little of origin
      * @param point
      * @param lightSource
-     * @param n
+     * @param n Vector normal
      * @param delta
      */
-    public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
+    /**public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
        Vector l= lightSource.getL(point).scale(-1);
         Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
         _p0=point.add(teta);
-        _dir=l;
+        _dir=l.normalized();
     }
+     **/
 
+    /**
+     * Ray constructor to create a new Ray by moving the head of the ray by DELTA over the normal's line
+     * @param point of type Point3D
+     * @param direction  of type Vector : direction of the ray
+     * @param n of type Vector : normal Vector
+     */
     public Ray(Point3D point, Vector direction, Vector n) {
         Vector teta=n.scale(n.dotProduct(direction)>0? DELTA : -DELTA);
         _p0=point.add(teta);

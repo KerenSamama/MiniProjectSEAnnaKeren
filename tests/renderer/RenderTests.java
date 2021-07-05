@@ -638,7 +638,7 @@ public class RenderTests {
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //
-                .setMultithreading(4)
+                .setMultithreading(3)
                 .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(1)); //.set_numOfRays(5).setRadius(40).set_rayDistance(5));
 
         render.renderImage();
@@ -951,156 +951,75 @@ public class RenderTests {
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0.6).setKr(0)));
 
 
-        //etoiles
+        //---------------------------------ETOILES KEREN--------------------------------------------------------------------
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-300, 0, 930))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-400, 10, 910))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-455, 15, 915))
+        scene3.geometries.add(new Sphere(1, new Point3D(450, 20, 525))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 1000))
+        scene3.geometries.add(new Sphere(1, new Point3D(196, 20, 610))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-497, 20, 1057))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-474, 20, 846))
+        scene3.geometries.add(new Sphere(1, new Point3D(20, 20, 625))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-484, 20, 746))
+        scene3.geometries.add(new Sphere(2, new Point3D(484, 20, 746))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-414, 20, 685))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-457, 20, 584))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-572, 20, 1006))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-500, 20, 505))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-500, 20, 600))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 700))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 800))
+        scene3.geometries.add(new Sphere(2, new Point3D(394, 20, 773))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
 
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-500, 20, 900))
+        scene3.geometries.add(new Sphere(1, new Point3D(274, 20, 846))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(474, 20, 846))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-491, 20, 1017))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-457, 20, 703))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-464, 20, 380))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-485, 20, 595))
+        scene3.geometries.add(new Sphere(1, new Point3D(159, -15, 895))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
 
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-450, 20, 525))
+
+        scene3.geometries.add(new Sphere(1, new Point3D(345, 20, 900))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(2, new Point3D(450, 20, 925))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(1, new Point3D(400, 10, 950))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
+        scene3.geometries.add(new Sphere(1, new Point3D(360, 20, 1057))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(460, 20, 1057))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+//------------------------------------------------
 
-        scene3.geometries.add(new Sphere(3, new Point3D(-450, 20, 825))
+        scene3.geometries.add(new Sphere(2, new Point3D(-300, 20, 505))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-450, 20, 925))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-450, 20, 1025))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-300, 20, 810))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-300, 20, 710))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-300, 20, 610))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-350, 20, 910))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-350, 20, 810))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-350, 20, 710))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-350, 20, 610))
+        scene3.geometries.add(new Sphere(5, new Point3D(-104, 20, 510))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1108,72 +1027,96 @@ public class RenderTests {
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-375, 20, 1010))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-;
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-394, 20, 773))
+        scene3.geometries.add(new Sphere(5, new Point3D(-450, 20, 525))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-388, 20, 683))
+        scene3.geometries.add(new Sphere(1, new Point3D(-314, 20, 525))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-380, 20, 527))
+        scene3.geometries.add(new Sphere(3, new Point3D(-80, 20, 527))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-//LAAAAAA
-        scene3.geometries.add(new Sphere(3, new Point3D(-287, 0, 530))
+        scene3.geometries.add(new Sphere(3, new Point3D(-380, 20, 527))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-159, -15, 895))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-585, 20, 1000))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-297, 20, 1057))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-274, 20, 846))
+        scene3.geometries.add(new Sphere(3, new Point3D(-385, 20, 595))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
 
 
+        scene3.geometries.add(new Sphere(1, new Point3D(-500, 20, 600))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-257, 20, 584))
+        scene3.geometries.add(new Sphere(1, new Point3D(-196, 20, 610))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(5, new Point3D(-316, 20, 610))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(-20, 20, 625))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-320, 20, 625))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(-414, 20, 685))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-372, 20, 1006))
+        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 700))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+        scene3.geometries.add(new Sphere(2, new Point3D(-457, 20, 703))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+        scene3.geometries.add(new Sphere(2, new Point3D(-300, 20, 710))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-300, 20, 505))
+        scene3.geometries.add(new Sphere(2, new Point3D(-350, 20, 710))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(2, new Point3D(19, 20, 710))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(2, new Point3D(-329, 20, 710))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(1, new Point3D(-190, 20, 725))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-150, 20, 725))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-177, 20, 725))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(-330, 20, 725))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(2, new Point3D(-30, 20, 725))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-484, 20, 746))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(-394, 20, 773))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1185,118 +1128,52 @@ public class RenderTests {
         scene3.geometries.add(new Sphere(2, new Point3D(68, 20, 800))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-345, 20, 900))
+        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 800))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-191, 20, 1017))
+        scene3.geometries.add(new Sphere(2, new Point3D(-383, 20, 810))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-204, 20, 954))
+        scene3.geometries.add(new Sphere(1, new Point3D(-143, 20, 810))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(-300, 20, 810))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-032, 20, 887))
+        scene3.geometries.add(new Sphere(6, new Point3D(-183, 20, 825))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-100, 20, 825))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-385, 20, 595))
+        scene3.geometries.add(new Sphere(2, new Point3D(-340, 20, 825))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-350, 20, 525))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-250, 20, 625))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-150, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-165, 20, 1025))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-279, 20, 1025))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-139, 20, 1010))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(0, 20, 710))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-196, 20, 610))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-290, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-159, 20, 1010))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-258, 20, 910))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-250, 20, 610))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-150, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-275, 20, 1010))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-157, 20, 899))
+        scene3.geometries.add(new Sphere(5, new Point3D(-450, 20, 825))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
         scene3.geometries.add(new Sphere(2, new Point3D(-22, 20, 826))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-80, 20, 527))
+        scene3.geometries.add(new Sphere(1, new Point3D(-274, 20, 846))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(-474, 20, 846))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-45, 20, 1964))
+        scene3.geometries.add(new Sphere(1, new Point3D(-159, -15, 895))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-032, 20, 887))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-157, 20, 899))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1306,47 +1183,48 @@ public class RenderTests {
 
 
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-88, 20, 683))
+
+
+        scene3.geometries.add(new Sphere(1, new Point3D(-345, 20, 900))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-95, 20, 527))
+        scene3.geometries.add(new Sphere(3, new Point3D(-258, 20, 910))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-14, 20, 1176))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-20, 20, 625))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-30, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-40, 20, 1128))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-57, 20, 1225))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
 
         scene3.geometries.add(new Sphere(2, new Point3D(-9, 20, 910))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(-139, 20, 910))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+        scene3.geometries.add(new Sphere(4, new Point3D(-199, 20, 910))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+        scene3.geometries.add(new Sphere(1, new Point3D(-319, 20, 910))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(-455, 15, 915))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-450, 20, 925))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(19, 20, 710))
+        scene3.geometries.add(new Sphere(2, new Point3D(-357, 20, 925))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(-300, 0, 930))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(-400, 10, 950))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-204, 20, 954))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1354,20 +1232,38 @@ public class RenderTests {
 
 
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-314, 20, 525))
+
+        scene3.geometries.add(new Sphere(2, new Point3D(-500, 20, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-572, 20, 1006))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-585, 20, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-372, 20, 1006))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-320, 20, 625))
+        scene3.geometries.add(new Sphere(1, new Point3D(-275, 20, 1010))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(3, new Point3D(-330, 20, 725))
+        scene3.geometries.add(new Sphere(3, new Point3D(-389, 20, 1010))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(-191, 20, 1017))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(2, new Point3D(-491, 20, 1017))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-365, 20, 1198))
+        scene3.geometries.add(new Sphere(3, new Point3D(-165, 20, 1025))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(-159, 20, 1025))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1375,180 +1271,53 @@ public class RenderTests {
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-383, 20, 810))
+        scene3.geometries.add(new Sphere(5, new Point3D(-440, 20, 1100))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-329, 20, 710))
+        scene3.geometries.add(new Sphere(2, new Point3D(-297, 20, 1057))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-316, 20, 610))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-330, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-330, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-340, 20, 1225))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-357, 20, 925))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-319, 20, 910))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-383, 20, 810))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-330, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-//
-        scene3.geometries.add(new Sphere(2, new Point3D(-314, 20, 525))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-330, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-340, 20, 825))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-379, 20, 1164))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-389, 20, 1010))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-316, 20, 610))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-330, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-//lol
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-194, 20, 1167))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(-140, 20, 1270))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-177, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-183, 20, 825))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-
         scene3.geometries.add(new Sphere(2, new Point3D(-129, 20, 1060))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-139, 20, 910))
+        scene3.geometries.add(new Sphere(2, new Point3D(-135, 20, 1110))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(5, new Point3D(-40, 20, 1000))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-143, 20, 810))
+        scene3.geometries.add(new Sphere(3, new Point3D(-40, 20, 1095))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-104, 20, 510))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-//polo
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-190, 20, 725))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-100, 20, 825))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(6, new Point3D(-107, 20, 1155))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(2, new Point3D(-165, 20, 1145))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(-159, 20, 1025))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
         scene3.geometries.add(new Sphere(2, new Point3D(-169, 20, 1135))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-199, 20, 910))
+        scene3.geometries.add(new Sphere(5, new Point3D(-165, 20, 1145))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(1, new Point3D(-183, 20, 1200))
+        scene3.geometries.add(new Sphere(4, new Point3D(-500, 20, 1140))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(2, new Point3D(-135, 20, 1110))
+        scene3.geometries.add(new Sphere(3, new Point3D(-25, 20, 1140))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+        // indication : au dessus de 1150 pas besoin
 
-//ANNA
 
-        scene3.geometries.add(new Sphere(3, new Point3D(400, 0, 1000))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 600))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+
+
+//----------------------------------------------------------------------ETOILES ANNA----------------------------------------------------------------------------------------------------------------------------
+
+
 
         scene3.geometries.add(new Sphere(5, new Point3D(350, 0, 450))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(420, 0, 800))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
@@ -1556,165 +1325,12 @@ public class RenderTests {
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
-        scene3.geometries.add(new Sphere(3, new Point3D(260, 0, 980))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(400, 0, 850))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 900))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 600))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(100, 0, 990))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
 
-
-        scene3.geometries.add(new Sphere(3, new Point3D(250, 0, 1000))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(250, 0, 900))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(250, 0, 900))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
         scene3.geometries.add(new Sphere(3, new Point3D(330, 0, 500))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(500, 0, 650))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(350, 0, 650))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(300, 0, 600))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(90, 0, 750))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(75, 0, 1000))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(75, 0, 1100))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-        scene3.geometries.add(new Sphere(5, new Point3D(85, 0, 1050))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-        scene3.geometries.add(new Sphere(3, new Point3D(120, 0, 1100))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-        scene3.geometries.add(new Sphere(3, new Point3D(250, 0, 1150))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(300, 0, 1070))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(430, 0, 1100))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 860))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(260, 0, 730))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(150, 0, 670))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(180, 0, 650))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(220, 0, 590))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(220, 0, 700))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(220, 0, 760))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(100, 0, 800))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(100, 0, 940))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(55, 0, 900))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(40, 0, 800))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(35, 0, 930))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(30, 0, 1025))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(1, new Point3D(20, 0, 1075))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(180, 0, 980))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(190, 0, 1015))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 1000))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 1060))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
-
         scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 500))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
@@ -1723,18 +1339,110 @@ public class RenderTests {
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
-        scene3.geometries.add(new Sphere(5, new Point3D(400, 0, 750))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(400, 0, 630))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
         scene3.geometries.add(new Sphere(3, new Point3D(460, 0, 583))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(220, 0, 590))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
+
+
+
+
+        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 600))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(300, 0, 600))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 600))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(400, 0, 630))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(1, new Point3D(500, 0, 650))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(350, 0, 650))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(180, 0, 650))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(5, new Point3D(150, 0, 670))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+
+
+
+
+
+
+
+
+        scene3.geometries.add(new Sphere(3, new Point3D(220, 0, 700))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(260, 0, 730))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(90, 0, 750))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(400, 0, 750))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(5, new Point3D(220, 0, 760))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(520, 0, 770))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+
+
+
+
+        scene3.geometries.add(new Sphere(3, new Point3D(420, 0, 800))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(100, 0, 800))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(5, new Point3D(40, 0, 800))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(5, new Point3D(400, 0, 850))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 860))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+
+
+
+        scene3.geometries.add(new Sphere(5, new Point3D(250, 0, 900))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 900))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(55, 0, 900))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 900))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
         scene3.geometries.add(new Sphere(3, new Point3D(460, 0, 920))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
@@ -1743,41 +1451,55 @@ public class RenderTests {
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
+        scene3.geometries.add(new Sphere(3, new Point3D(35, 0, 930))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(100, 0, 940))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(180, 0, 980))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(260, 0, 980))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(100, 0, 990))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+
+
+
+
+
+
+        scene3.geometries.add(new Sphere(3, new Point3D(400, 0, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(250, 0, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(1, new Point3D(75, 0, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 1000))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(190, 0, 1015))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(30, 0, 1025))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
 
         scene3.geometries.add(new Sphere(1, new Point3D(520, 0, 1025))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 600))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 900))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(5, new Point3D(520, 0, 770))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(1, new Point3D(520, 0, 1050))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 1050))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-
-        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 1050))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
-
-        scene3.geometries.add(new Sphere(5, new Point3D(300, 0, 1130))
-                .setEmission(new Color(255, 255, 255))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
-
         scene3.geometries.add(new Sphere(1, new Point3D(-520, 0, 1050))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
@@ -1790,9 +1512,51 @@ public class RenderTests {
         scene3.geometries.add(new Sphere(3, new Point3D(-300, 0, 1050))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(1, new Point3D(520, 0, 1050))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
+        scene3.geometries.add(new Sphere(3, new Point3D(520, 0, 1050))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(300, 0, 1050))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+
+        scene3.geometries.add(new Sphere(5, new Point3D(85, 0, 1050))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(3, new Point3D(200, 0, 1060))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(300, 0, 1070))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(1, new Point3D(20, 0, 1075))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(430, 0, 1100))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.1)));
+        scene3.geometries.add(new Sphere(3, new Point3D(75, 0, 1100))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(120, 0, 1100))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+        scene3.geometries.add(new Sphere(5, new Point3D(300, 0, 1130))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
         scene3.geometries.add(new Sphere(5, new Point3D(-300, 0, 1130))
+                .setEmission(new Color(255, 255, 255))
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
+
+        scene3.geometries.add(new Sphere(3, new Point3D(250, 0, 1150))
                 .setEmission(new Color(255, 255, 255))
                 .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(100).setKt(0).setKr(0.4)));
 
@@ -1800,9 +1564,15 @@ public class RenderTests {
 
 
 
-        //ESSAIE
 
-//essaie
+
+
+
+
+
+
+
+
 
 /*        scene3.geometries.add(new Sphere(20, new Point3D(-40, -25, 400))// violet
                 .setEmission(new Color(200, 200, 200))

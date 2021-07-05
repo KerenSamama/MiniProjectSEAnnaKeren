@@ -26,6 +26,7 @@ public class DirectionalLight extends Light implements LightSource{
     }
 
     /**
+     * * Function getIntensity who returns the point's color
      * @param p a point of type Point3D
      * @return the point's color of type Color
      */
@@ -44,6 +45,12 @@ public class DirectionalLight extends Light implements LightSource{
         return _direction;
     }
 
+    /**
+     * Directional light is a light source without position, therefore the function
+     * getDistance returns for value Double.POSITIVE_INFINITY
+     * @param point of type Point3D
+     * @return  value Double.POSITIVE_INFINITY
+     */
     @Override
     public double getDistance(Point3D point) {
         return Double.POSITIVE_INFINITY;

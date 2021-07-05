@@ -32,9 +32,9 @@ public class Triangle extends Polygon {
      * @param ray
      * @return a list of intersection points of type GeoPoint or null if there are no intersections
      */
-
-    @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+    /**
+      @Override
+      public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> intersections = _plane.findGeoIntersections(ray,maxDistance);
         if (intersections == null) {
             return null;
@@ -68,6 +68,7 @@ public class Triangle extends Polygon {
                 List.of(new GeoPoint(this,intersections.get(0)._point)) : null;
 
         }
+     **/
 
     }
 

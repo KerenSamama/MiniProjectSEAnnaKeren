@@ -61,7 +61,7 @@ public class PointLight extends  Light implements LightSource{
 
     /**
      * Setter Method for _Kc
-     * @param kc
+     * @param kc of type double : coefficients of attenuation
      * @return the PointLight object itself for chaining calls
      */
     public PointLight setKc(double kc) {
@@ -71,7 +71,7 @@ public class PointLight extends  Light implements LightSource{
 
     /**
      * Setter Method for _Kl
-     * @param kl
+     * @param kl of type double : coefficients of attenuation
      * @return the PointLight object itself for chaining calls
      */
     public PointLight setKl(double kl) {
@@ -81,7 +81,7 @@ public class PointLight extends  Light implements LightSource{
 
     /**
      * Setter Method  for _Kq
-     * @param kq
+     * @param kq of type double : coefficients of attenuation
      * @return the PointLight object itself for chaining calls
      */
     public PointLight setKq(double kq) {

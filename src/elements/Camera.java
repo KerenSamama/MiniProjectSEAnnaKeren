@@ -10,9 +10,9 @@ public class Camera {
     private final Vector _vTo; // forward directional vector
     private final Vector _vUp; // up directional vector
     private final Vector _vRight; // right directional vector
-    private double _width;
-    private double _height;
-    private double _distance;
+    private double _width; // width of the view plane
+    private double _height; // height of the view plane
+    private double _distance; // distance from the camera to the view plane
 
     /**
      * Constructor for Camera class who receives two vectors and a position point
@@ -86,11 +86,11 @@ public class Camera {
 
     /**
      *
-     * @param nX
-     * @param nY
-     * @param j
-     * @param i
-     * @return
+     * @param nX In resolution – Nx represents amount of columns (row width)
+     * @param nY In resolution – Ny represents amount of rows (column height)
+     * @param j index of column for pixel
+     * @param i index of row for pixel
+     * @return a Ray
      */
     public Ray constructRayThroughPixel(int nX, int nY,int j,int i) {
         if(isZero(_distance)){

@@ -153,8 +153,8 @@ public class Polygon extends Geometry {
             return null;
         }
 
-        Point3D p0 = ray.getP0();
-        Vector v = ray.getDir();
+        Point3D p0 = ray.getP0(); // head of the ray
+        Vector v = ray.getDir(); // directional vector of the ray
 
         Vector v1 = _vertices.get(1).subtract(p0);
         Vector v2 = _vertices.get(0).subtract(p0);
@@ -169,10 +169,11 @@ public class Polygon extends Geometry {
             v1 = v2;
             v2 = _vertices.get(i).subtract(p0);
             sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
-            if (isZero(sign)) {
+            if (isZero(sign)) { // if one or more  𝒗 ∙ 𝑵𝒊  are 0.0 – no intersection
+
                 return null;
             }
-            if (positive != (sign > 0)) {
+            if (positive != (sign > 0)) { // The point is inside if all 𝒗 ∙ 𝑵𝒊 have the same sign
                 return null;
             }
         }

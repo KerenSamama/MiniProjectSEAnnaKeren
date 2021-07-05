@@ -26,11 +26,11 @@ class CylinderTest {
         Cylinder cylinder = new Cylinder(ray,10,40);
 
         // ============ Equivalence Partitions Tests ==============
-       // TCO1 EP : Point is on cylindre'side
+       // TCO1 EP : Point is on cylinder'side
 
-        Vector expectedNormal=dir;
-        Vector normal = cylinder.getNormal(p1);
-        assertEquals(normal, expectedNormal, "ERROR: Not the same : getNormal() wrong result");
+        Vector expectedNormal1=dir;
+        Vector normal1 = cylinder.getNormal(p1);
+        assertEquals(normal1, expectedNormal1, "ERROR: Not the same : getNormal() for Cylinder wrong result");
 
         //TC02 EP : Point is on upper basis
 
@@ -38,27 +38,26 @@ class CylinderTest {
         Point3D o2= p0.add(dir.scale(t2));
         Vector expectedNormal2=(p2.subtract(o2)).normalize();
         Vector normal2 = cylinder.getNormal(p2);
-        assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() wrong result");
+        assertEquals(normal2, expectedNormal2, "ERROR: Not the same : getNormal() for Cylinder wrong result");
 
         //TC03 EP : Point is on bottom base
 
         Vector expectedNormal3=dir;
         Vector normal3 = cylinder.getNormal(p3);
-        assertEquals(normal3, expectedNormal3, "ERROR: Not the same : getNormal() wrong result");
+        assertEquals(normal3, expectedNormal3, "ERROR: Not the same : getNormal() for Cylinder wrong result");
 
         // =============== Boundary Values Tests ==================
 
        // TC10 BDA :  Point is center of the top circle
 
         Vector expectedNormal4=dir;
-
         Vector normal4 = cylinder.getNormal(p4);
-        assertEquals(normal4, expectedNormal4, "ERROR: Not the same : getNormal() wrong result");
+        assertEquals(normal4, expectedNormal4, "ERROR: Not the same : getNormal() for Cylinder wrong result");
 
         // TC11 BDA : Point is P0, center of the bottom circle
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> cylinder.getNormal(p0), "ERROR : vector 0");
+                () -> cylinder.getNormal(p0), "ERROR : getNormal() for Cylinder gives vector 0 when the point is P0");
         }
 }
