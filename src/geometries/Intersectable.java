@@ -8,17 +8,30 @@ import java.util.stream.Collectors;
 
 
 /**
- *  Intersectable is an abstract class.
+ *  Intersectable is an abstract class for all geometries that are able to intersect with a ray.
  */
 public abstract class Intersectable{
 
-   // public boolean setBoxes = false;
-    public static boolean _setBoundingBoxes = false;
-    public static void set_BoundingBoxes(boolean _actBoundingBox) {
-        Intersectable._setBoundingBoxes = _actBoundingBox;
+
+    /**
+     * _setBoundingBox is a parameter for BVH feature
+     * It is true if we want to use a bounding box for improvement
+     */
+    public boolean _setBoundingBox = false;
+
+    /**
+     * Setter function for _setBoundingBox
+     * @param setBoundingBox of type boolean
+     */
+    public  void setBoundingBox(boolean setBoundingBox) {
+        _setBoundingBox = setBoundingBox;
     }
 
-    public class Box{
+    /**
+     * A static internal helper class to create a Box. A box is represented by a minimal point and a maximal point.
+     */
+    public static class Box{
+
         public double _maxX = Double.POSITIVE_INFINITY;
         public double _minX = Double.NEGATIVE_INFINITY;
         public double _maxY = Double.POSITIVE_INFINITY;
@@ -27,8 +40,10 @@ public abstract class Intersectable{
         public double _minZ = Double.NEGATIVE_INFINITY;
     }
 
+    // For each intersectable shape, it calls to the default constructor to build a box
     protected Box box = new Box();
 
+    //--------------- Getters and Setters -----------------------
     public Box getBox() {
         return box;
     }
@@ -97,7 +112,7 @@ public abstract class Intersectable{
      * @return List<GeoPoint> :  returns a list of intersections points of type GeoPoint with this ray
      */
     public List<GeoPoint> findGeoIntersections(Ray ray){
-        if (!_setBoundingBoxes || isIntersectionWithBox(ray)) {
+        if (!_setBoundingBox || isIntersectionWithBox(ray)) {
             return  findGeoIntersections(ray,Double.POSITIVE_INFINITY);
         }
         return null;
@@ -124,6 +139,11 @@ public abstract class Intersectable{
     }
 
 
+    /**
+     *  This function checks if the ray intersects the box around a shape.
+     * @param ray of type Ray
+     * @return true if there is an intersection, otherwise return false.
+     */
     public boolean isIntersectionWithBox(Ray ray){
 
         Point3D start = ray.getP0();
@@ -144,7 +164,7 @@ public abstract class Intersectable{
         //If the direction_X is negative then the _min_X give the maximal value
         if (direction_X < 0) {
             max_t_for_X = (box._minX - start_X) / direction_X;
-            // Check if the Intersectble is behind the camera
+            // Check if the Intersectable is behind the camera
             if (max_t_for_X <= 0) return false;
             min_t_for_X = (box._maxX - start_X) / direction_X;
         }

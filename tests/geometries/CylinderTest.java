@@ -26,7 +26,7 @@ class CylinderTest {
         Cylinder cylinder = new Cylinder(ray,10,40);
 
         // ============ Equivalence Partitions Tests ==============
-       // TCO1 EP : Point is on cylinder'side
+       // TCO1 EP : Point is on cylinder's side
 
         Vector expectedNormal1=dir;
         Vector normal1 = cylinder.getNormal(p1);

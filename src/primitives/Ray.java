@@ -17,7 +17,7 @@ import java.util.List;
 public class Ray {
     final Point3D _p0; // starting point of the ray
     final Vector _dir; // directional vector of the ray (a unit vector)
-    private static final double DELTA = 0.1; // constant to move the head of a ray
+    private static final double DELTA = 0.1; // constant double to move the head of a ray for shadows , reflections,etc
 
     /**
      * Primary constructor for Ray receiving a point and a vector.
@@ -30,20 +30,7 @@ public class Ray {
         _dir = dir.normalized();
     }
 
-    /**
-     *  Ray moove a little of origin
-     * @param point
-     * @param lightSource
-     * @param n Vector normal
-     * @param delta
-     */
-    /**public Ray(Point3D point, LightSource lightSource, Vector n, double delta) {
-       Vector l= lightSource.getL(point).scale(-1);
-        Vector teta=n.scale(n.dotProduct(l)>0? delta : -delta);
-        _p0=point.add(teta);
-        _dir=l.normalized();
-    }
-     **/
+
 
     /**
      * Ray constructor to create a new Ray by moving the head of the ray by DELTA over the normal's line
@@ -142,44 +129,41 @@ public class Ray {
 
 
     /**
-
-     * creates a beam of rays(in a list of rays)
-     *
-     * @param normal        Vector - normal vector where the rays start
-     * @param distance double - the distance between the  point and the circle we are creating to find the beam
-     * @param numOfRays     int - the number of rays that will be in the beam
-     * @return list that includes all the rays that make up the beam
+     * This function creates a beam of rays
+     * @param normal of type Vector : normal vector where the ray who calls the function start
+     * @param distance  of type double : the distance between the  point and the circle we are creating to find the beam
+     * @param numOfRays of type int : the number of rays that will be in the beam
+     * @return a list of all the rays int the beam
      */
     public List<Ray>createBeamOfRays(Vector normal,double distance,int numOfRays)
     {
         List<Ray> beam=new LinkedList<Ray>();
-        beam.add(this);//the original ray that calls the function - there has to be at least one beam
-        if(numOfRays==1)//if no additional rays were requested here  there is nothing else to do in this function
+        beam.add(this);//the original ray that calls the function - there has to be at least one ray
+        if(numOfRays==1) //if no additional rays were requested here
             return beam;
 
-        Vector w=this.getDir().normalToVector();//finds a vector that is normal to the direction on the ray
-        Vector v=this.getDir().crossProduct(w).normalize();//the cross product between the normal and the direction
+        Vector w=this.getDir().normalToVector();//finds a vector that is normal to the direction of the ray
+        //the cross product between the normal vector w and the direction gives a new normal vector to the direction of the ray
+        Vector v=this.getDir().crossProduct(w).normalize();
 
-        Point3D center=this.getPoint(distance);//the center of our circle is the distance requested from p0
+        Point3D center=this.getPoint(distance);//the center of our circle is the distance requested from p0, the head of the ray that calls the function
         Point3D randomP=Point3D.ZERO;
         double xRandom,yRandom,random;
-        //double r=Math.abs(Math.tan(Math.acos(w.dotProduct(v))));
+
         double randomRadiusValue = random(3 , 6); // the radius will be in range: 3 < r < 6, and will have double values
 
 
-        for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already dealt with it
+        for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already add it to the beam
         {
             xRandom=random(-1,1);//random number [-1,1)
             yRandom=Math.sqrt(1-Math.pow(xRandom,2)); // toujours entre 0 et 1
             random=random(-randomRadiusValue,randomRadiusValue);
-            //random=random(-r,r);
-
-            if(xRandom!=0)//vector cannot be sca2led with zero
-                randomP=center.add(w.scale(randomRadiusValue));//
+            if(xRandom!=0)//vector cannot be scaled with zero
+                randomP=center.add(w.scale(randomRadiusValue));
             if(yRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(v.scale(randomRadiusValue));//yRandom*
+                randomP=center.add(v.scale(randomRadiusValue));
 
-            Vector t= randomP.subtract(this.getP0());//vector between the random point and the start of the original ray
+            Vector t= randomP.subtract(this.getP0());//vector from the head of the original ray and the random point
 
             double normalDotDir=alignZero(normal.dotProduct(this.getDir()));
             double normalDotT=alignZero(normal.dotProduct(t));

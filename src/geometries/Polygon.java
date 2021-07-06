@@ -82,7 +82,7 @@ public class Polygon extends Geometry {
             if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
 
-            if (_setBoundingBoxes == true) {
+            if (_setBoundingBox == true) {
                 //starting points
                 box._minX = this._vertices.get(0).getX();
                 box._maxX = this._vertices.get(0).getX();

@@ -1,5 +1,6 @@
 package geometries;
 
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -37,7 +38,7 @@ public class Sphere extends Geometry {
         _radius = radius;
 
         //sets the bounding box parameters for BVH
-        if(this._setBoundingBoxes  ==true) {
+        if(this._setBoundingBox ==true) {
             this.box._minX = center.getX() - radius; // x min
             this.box._maxX = center.getX() + radius; //x max
             this.box._minY = center.getY() - radius; // y min
@@ -46,6 +47,8 @@ public class Sphere extends Geometry {
             this.box._maxZ = center.getZ() + radius; // z max
         }
     }
+
+
 
     /**
      * Function get

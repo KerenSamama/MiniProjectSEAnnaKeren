@@ -1,6 +1,5 @@
 package primitives;
 
-
 import static primitives.Point3D.ZERO;
 import static primitives.Util.isZero;
 
@@ -16,7 +15,7 @@ public class Vector {
 
     /**
      * Primary constructor for Vector receiving a Point3D
-     * @param head
+     * @param head of type Point3D
      */
     public Vector(Point3D head) {
         if (ZERO.equals(head)) {
@@ -209,14 +208,15 @@ public class Vector {
 
 
 
-
-
+    /**
+     * This function helps us to calculate  a normal vector to the vector that calls the function
+     * @return a new vector
+     */
     public Vector normalToVector()
     {
         double coordinate;
 
-        //finding the smallest coordinate of the vector to replace it with 0
-        if(this.getHead().getX()>0)
+        if(this.getHead().getX()>0) //finding the smallest coordinate of the vector to replace it with 0
         {
             coordinate = this.getHead().getX();
         }
@@ -234,8 +234,8 @@ public class Vector {
         }
         if(Math.abs(this.getHead().getZ())<coordinate)
         {
-            coordinate=2;
-            //last coordinate that we are checking so no need to reassign coordinate
+            coordinate=2;//last coordinate that we are checking so no need to reassign coordinate
+
         }
         if(coordinate==0) {//x is the smallest
             return new Vector(0, -this.getHead().getZ(), this.getHead().getY()).normalize();
@@ -248,6 +248,5 @@ public class Vector {
     }
 
 
-
-    }
+}
 

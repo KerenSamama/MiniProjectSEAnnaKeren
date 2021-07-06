@@ -1,6 +1,4 @@
 package primitives;
-
-
 /**
  * Material class is PDS with a basic Builder template.
  * All the fields are in public permission.
@@ -70,11 +68,18 @@ public class Material {
         return this;
     }
 
-
+    /**
+     * Getter function
+     * @return Kt
+     */
     public double getKt() {
         return Kt;
     }
 
+    /**
+     * Getter function
+     * @return Ks
+     */
     public double getKs() {
         return Ks;
     }

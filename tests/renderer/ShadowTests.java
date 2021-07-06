@@ -118,7 +118,6 @@ public class ShadowTests {
 
 
 
-
    //2 x: +24  y : +24  z : -130
     @Test
     public void sphereTriangleMoveLightPosition2() {

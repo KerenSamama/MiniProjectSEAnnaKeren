@@ -17,7 +17,7 @@ public class Camera {
     /**
      * Constructor for Camera class who receives two vectors and a position point
      * The constructor checks if the vectors are orthogonal, are unit vectors and creates the right directional vector.
-     * @param p0 of type Point3D for position
+     * @param p0 of type Point3D for camera position
      * @param vTo of type Vector for forward directional vector
      * @param vUp of type Vector for up directional vector
      */
@@ -93,7 +93,7 @@ public class Camera {
      * @return a Ray
      */
     public Ray constructRayThroughPixel(int nX, int nY,int j,int i) {
-        if(isZero(_distance)){
+        if(isZero(_distance)){ //the distance between the camera and the view plane cannot be zero
             throw new IllegalArgumentException("distance cannot be 0");
         }
         Point3D Pc=_p0.add(_vTo.scale(_distance));
