@@ -206,8 +206,6 @@ public class Vector {
                 '}';
     }
 
-
-
     /**
      * This function helps us to calculate  a normal vector to the vector that calls the function
      * @return a new vector

@@ -59,6 +59,10 @@ public class Scene {
         return this;
     }
 
+    public Geometries getGeometries() {
+        return geometries;
+    }
+
     /**
      * Update methods for lights
      * @param lights list of all the scene's light sources

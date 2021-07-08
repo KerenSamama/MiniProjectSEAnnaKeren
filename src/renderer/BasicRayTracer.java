@@ -25,27 +25,15 @@ public class BasicRayTracer extends RayTracerBase {
      */
     private int _numOfRays=0;
     private double _rayDistance=0;
-    /**
 
+    private boolean _bvhTree;
+    public BasicRayTracer set_bvhTree(boolean sign)
+    {
+        this._scene.getGeometries()._setBoundingBox=sign;
+        return this;
 
-    /**
-     * Constructor for BasicRayTracer receiving a scene object
-     * and activating the father constructor
-     * @param scene of type Scene
-     */
-    public BasicRayTracer(Scene scene) {
-        super(scene);
     }
 
-
-
-    /**
-     * Get the distance we want between the intersection point and the circle
-     * @return double for distance
-     */
-    public double get_rayDistance() {
-        return _rayDistance;
-    }
 
     /**
      * Set the distance between the intersection point and the circle
@@ -57,14 +45,15 @@ public class BasicRayTracer extends RayTracerBase {
         this._rayDistance = _rayDistance;
         return this;
     }
-
     /**
-     * Get number of rays of the beam
-     * @return number of rays that will be part of the beam
+     * Get the distance we want between the intersection point and the circle
+     * @return double for distance
      */
-    public int get_numOfRays() {
-        return _numOfRays;
+
+    public double get_rayDistance() {
+        return _rayDistance;
     }
+
 
     /**
      * Set the number of rays that will be part of the beam
@@ -76,8 +65,23 @@ public class BasicRayTracer extends RayTracerBase {
         this._numOfRays = _numOfRays;
         return this;
     }
+    /**
+     * Get number of rays of the beam
+     * @return number of rays that will be part of the beam
+     */
+    public int get_numOfRays() {
+        return _numOfRays;
+    }
 
 
+    /**
+     * Constructor for BasicRayTracer receiving a scene object
+     * and activating the father constructor
+     * @param scene of type Scene
+     */
+    public BasicRayTracer(Scene scene) {
+        super(scene);
+    }
 
     /**
      * Function traceRay calculates the list of intersection points between a ray and the 3D model.
@@ -89,7 +93,7 @@ public class BasicRayTracer extends RayTracerBase {
      */
     @Override
     public Color traceRay(Ray ray) {
-        List<GeoPoint> intersections = _scene.geometries.findGeoIntersections(ray);
+        List<GeoPoint> intersections = _scene.geometries.treeGeometries(ray);
         if (intersections != null) {
             GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
             return calcColor(closestPoint, ray);
@@ -194,10 +198,10 @@ public class BasicRayTracer extends RayTracerBase {
     }
 
 
-    private Color calcGlobalEffects(Ray ray, int level, double kx, double kkx) {
+        private Color calcGlobalEffects(Ray ray, int level, double kx, double kkx) {
         GeoPoint gp = ray.findClosestGeoPoint(_scene.geometries.findGeoIntersections(ray));
         //return (gp == null ? Color.BLACK.add(_scene.backGroundColor).scale(kx) : calcColor(gp, ray, level - 1, kkx)).scale(kkx);
-        return  ((gp == null ? _scene.backGroundColor : calcColor(gp, ray, level-1, kkx)).scale(kx));
+        return  ((gp == null ? _scene.backGroundColor : calcColor(gp, ray, level-1, kkx)).scale(kkx));
 
     }
 

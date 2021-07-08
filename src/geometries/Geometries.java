@@ -47,6 +47,7 @@ public class Geometries extends Intersectable {
 
     }
     public Geometries(Geometries... geometries) {
+        this();
         add(geometries);
     }
 
@@ -75,7 +76,7 @@ public class Geometries extends Intersectable {
                 if (geo.box._minZ < this.box._minZ)
                     this.box._minZ = geo.box._minZ;
             }
-            //      _geometries.add((Geometries) _intersectables);
+            //_geometries.add((Geometries) _intersectables);
 
         }
 
@@ -93,6 +94,7 @@ public class Geometries extends Intersectable {
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> result = null;
         for (Intersectable geo : _intersectables) {
+            if(this._setBoundingBox == true && geo.isIntersectionWithBox(ray) || this._setBoundingBox == false){
             List<GeoPoint> geoPoints = geo.findGeoIntersections(ray,maxDistance);  // geopoints is temporary intersections points with one geometric body
             if (geoPoints != null) {
                 if (result == null) {
@@ -100,6 +102,7 @@ public class Geometries extends Intersectable {
                 }
                 result.addAll(geoPoints);
             }
+        }
         }
         return result;
     }
@@ -109,16 +112,20 @@ public class Geometries extends Intersectable {
      * @param ray : the ray we are checking for an intersection with
      * @return list of intersection points
      */
-    public List<GeoPoint> treeGeometries(Ray ray,double max){
-        if(this._geometries.size()==0)
+    public List<GeoPoint> treeGeometries(Ray ray){
+        if(_setBoundingBox==false)
         {
-            return this.findGeoIntersections(ray,max);
+            return this.findGeoIntersections(ray); //we need to check for an intersection with the geometry
         }
         else {
-            if (this.isIntersectionWithBox(ray)) {
+            if(this._geometries.size()==0)// if there are no boxes left to check
+            {
+                return this.findGeoIntersections(ray);
+            }
+            else if (this.isIntersectionWithBox(ray) && _setBoundingBox==true) { // if there is an intersection with a ray
 
-                for (Geometries g : _geometries) {
-                    g.treeGeometries(ray, max);
+                for (Geometries g : _geometries) { // for each geometry in the box that we found an intersection with
+                    g.treeGeometries(ray);
                 }
             }
         }

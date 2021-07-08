@@ -138,8 +138,6 @@ public class RenderTests {
                 .setBackground(new Color(0, 0, 0));
 
 
-        // (double _kD, double _kS, int _nShininess, double _kT, double _kR)
-
         scene2.geometries.add(new Sphere(20, new Point3D(125, -36, 50))// violet
                 .setEmission(new Color(108, 2, 119))
                 .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(5).setKt(0).setKr(0)));
@@ -159,7 +157,7 @@ public class RenderTests {
 
         scene2.geometries.add(new Sphere(50, new Point3D(-63, +30, -200))//BIG BLUE
                 .setEmission(new Color(15, 5, 107))
-                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
+                .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0)));
 
 
         scene2.geometries.add(new Sphere(50, new Point3D(48, 30, -200))// BIG JAUNE
@@ -174,9 +172,6 @@ public class RenderTests {
                 .setEmission(new Color(34, 80, 30))
                 .setMaterial(new Material().setKd(0.3).setKs(0.4).setShininess(5).setKt(0.22).setKr(0)));
 
-        /*scene2.geometries.add(new Plane(new Point3D(0,0,-210),new Vector(0,0,1))
-                .setEmission(new Color(20, 20, 20)).setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(5).setKt(0).setKr(0.5)));
-*/
       //------------------first line from the side right
         scene2.geometries.add(new Polygon(new Point3D(250,250,-250),new Point3D(187.5,250,-250),
              new Point3D(187.5,187.5,-250),new Point3D(250,187.5,-250))
@@ -461,13 +456,13 @@ public class RenderTests {
 
 
 
-        ImageWriter imageWriter = new ImageWriter("final project 1", 1000, 1000);
+        ImageWriter imageWriter = new ImageWriter("final project 5 rays", 1000, 1000);
 
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //
                 .setMultithreading(3)
-                .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(1)); //.set_numOfRays(5).setRadius(40).set_rayDistance(5));
+                .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(5).set_bvhTree(true));
 
         render.renderImage();
         render.writeToImage();
@@ -478,7 +473,7 @@ public class RenderTests {
 
 
     @Test
-    public void FinalProject() {
+    public void FinalProject2() {
 
 
         Scene scene3 = new Scene("Test scene")//
@@ -1450,14 +1445,14 @@ public class RenderTests {
        //        scene3.lights.add(new SpotLight(new Color(255,255,255), new Point3D(0,  150, 100), new Vector(0, 1, 0))
       //         .setKl(4E-5).setKq(2E-7));
 
-        ImageWriter imageWriter = new ImageWriter("finalProject", 1500, 1500);
+        ImageWriter imageWriter = new ImageWriter("finalProject2", 1500, 1500);
 
         Render render = new Render() //
                 .setImageWriter(imageWriter)
                 //
                 .setCamera(camera3) //
                 .setMultithreading(4)
-                .setRayTracer(new BasicRayTracer(scene3)); //.set_numOfRays(1).set_rayDistance(1));
+                .setRayTracer(new BasicRayTracer(scene3).set_numOfRays(5).set_rayDistance(1));
 
         render.renderImage();
         render.writeToImage();

@@ -31,7 +31,7 @@ public class Render {
     private boolean print = false; // printing progress percentage
 
 
-    // Chaining methods
+    //---------------------------Chaining methods
 
     /**
      * Image writer setter
@@ -67,7 +67,7 @@ public class Render {
         _rayTracer = rayTracerBase;
         return this;
     }
-
+//---------------------------------------------------------------------------------------
 
     /**
      * This function renders image's pixel color map from the scene included with

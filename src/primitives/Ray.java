@@ -130,7 +130,7 @@ public class Ray {
 
     /**
      * This function creates a beam of rays
-     * @param normal of type Vector : normal vector where the ray who calls the function start
+     * @param normal of type Vector : normal vector to the head of the ray who calls the function
      * @param distance  of type double : the distance between the  point and the circle we are creating to find the beam
      * @param numOfRays of type int : the number of rays that will be in the beam
      * @return a list of all the rays int the beam
@@ -150,7 +150,7 @@ public class Ray {
         Point3D randomP=Point3D.ZERO;
         double xRandom,yRandom,random;
 
-        double randomRadiusValue = random(3 , 6); // the radius will be in range: 3 < r < 6, and will have double values
+        double randomRadiusValue = random(3 ,6); // the radius will be in range: 3 < r < 6, and will have double values
 
 
         for(int i=1;i<numOfRays;i++)//starts from 1 because there has to be at least one ray(the original)and we already add it to the beam
@@ -159,9 +159,9 @@ public class Ray {
             yRandom=Math.sqrt(1-Math.pow(xRandom,2)); // toujours entre 0 et 1
             random=random(-randomRadiusValue,randomRadiusValue);
             if(xRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(w.scale(randomRadiusValue));
+                randomP=center.add(w.scale(xRandom*randomRadiusValue));//
             if(yRandom!=0)//vector cannot be scaled with zero
-                randomP=center.add(v.scale(randomRadiusValue));
+                randomP=center.add(v.scale(yRandom*randomRadiusValue));//randomRadiusValue
 
             Vector t= randomP.subtract(this.getP0());//vector from the head of the original ray and the random point
 

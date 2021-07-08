@@ -30,7 +30,7 @@ public abstract class Intersectable{
     /**
      * A static internal helper class to create a Box. A box is represented by a minimal point and a maximal point.
      */
-    public static class Box{
+    public static class Box {
 
         public double _maxX = Double.POSITIVE_INFINITY;
         public double _minX = Double.NEGATIVE_INFINITY;
@@ -112,7 +112,7 @@ public abstract class Intersectable{
      * @return List<GeoPoint> :  returns a list of intersections points of type GeoPoint with this ray
      */
     public List<GeoPoint> findGeoIntersections(Ray ray){
-        if (!_setBoundingBox || isIntersectionWithBox(ray)) {
+        if (!_setBoundingBox || isIntersectionWithBox(ray) && _setBoundingBox==true) {
             return  findGeoIntersections(ray,Double.POSITIVE_INFINITY);
         }
         return null;
