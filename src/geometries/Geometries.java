@@ -49,7 +49,6 @@ public class Geometries extends Intersectable {
     public void add(Intersectable... geometries) {
         for (Intersectable geo : geometries) {
             _intersectables.add(geo);
-
         }
         setBoundingBox();
          // in order to create the bounding box to all of the geometries in the list
