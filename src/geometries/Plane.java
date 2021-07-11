@@ -92,6 +92,9 @@ public class Plane extends Geometry {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        if(_setBoundingBox==true && !isIntersectionWithBox(ray)) {
+            return null;
+        }
         Point3D p0 = ray.getP0();  // beginning point of the ray
         Vector v = ray.getDir();   // direction vector of the ray
         Vector n = _normal;          // normal vector of the plane

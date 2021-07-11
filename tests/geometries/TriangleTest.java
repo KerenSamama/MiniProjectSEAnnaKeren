@@ -13,6 +13,7 @@ class TriangleTest {
     /**
      * Test method for {@link geometries.Triangle#getNormal(Point3D)} 
      */
+    @Test
     public void testGetNormal()
     {
         // ============ Equivalence Partitions Tests ==============

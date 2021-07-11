@@ -218,6 +218,5 @@ public abstract class Intersectable{
         return true;
     }
 
-
 }
 

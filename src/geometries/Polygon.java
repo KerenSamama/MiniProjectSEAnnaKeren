@@ -133,7 +133,6 @@ public class Polygon extends Geometry {
 
         if(_setBoundingBox==true && !isIntersectionWithBox(ray))// if the ray does not intersect the bounding box
         {
-
                 return  null; // we will not calculate the intersection points with the polygon
         }
 

@@ -23,8 +23,8 @@ public class Geometries extends Intersectable {
     public Geometries() {
 
         _intersectables = new LinkedList<Intersectable>();
+        setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
 
-          setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
 
     }
 
@@ -47,15 +47,18 @@ public class Geometries extends Intersectable {
      * @param geometries list of objects who implement the interface Intersectable
      */
     public void add(Intersectable... geometries) {
+        for (Intersectable geo : geometries) {
+            _intersectables.add(geo);
 
-        Collections.addAll(_intersectables, geometries);
-        setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
+        }
+        setBoundingBox();
+         // in order to create the bounding box to all of the geometries in the list
     }
 
 
 
 
-    /**
+   /**
      * a function that every intersectable geometry- should have in order to create
      * a bounding box
      * Set the bounding boxes between shapes - if there is a bigger max value of smaller min value for one of the coordinates than what we already have we will switch it
@@ -166,6 +169,8 @@ public class Geometries extends Intersectable {
         }
         return result;
     }
+
+
 
 
 }
