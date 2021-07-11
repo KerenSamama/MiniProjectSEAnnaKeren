@@ -38,14 +38,9 @@ public class Sphere extends Geometry {
         _radius = radius;
 
         //sets the bounding box parameters for BVH
-        if(this._setBoundingBox ==true) {
-            this.box._minX = center.getX() - radius; // x min
-            this.box._maxX = center.getX() + radius; //x max
-            this.box._minY = center.getY() - radius; // y min
-            this.box._maxY = center.getY() + radius; // y max
-            this.box._minZ = center.getZ() - radius; // z min
-            this.box._maxZ = center.getZ() + radius; // z max
-        }
+        setBoundingBox();
+
+
     }
 
 
@@ -92,6 +87,12 @@ public class Sphere extends Geometry {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+
+        if(_setBoundingBox==true && !isIntersectionWithBox(ray))// if the ray does not intersect the bounding box
+        {
+            return  null; // we will not calculate the intersection points with the sphere
+        }
+
         Point3D p0 = ray.getP0(); // beginning point of the ray
         Vector v = ray.getDir();  // vector direction of the ray
         Point3D O = _center;      // center of the sphere
@@ -139,6 +140,21 @@ public class Sphere extends Geometry {
         return null;
 
     }
+
+    /**
+     * this function sets the values of the bounding box of the sphere
+     */
+    @Override
+    public void setBoundingBox() {
+        this.box._minX = _center.getX() - _radius; // x min
+        this.box._maxX = _center.getX() + _radius; //x max
+        this.box._minY = _center.getY() - _radius; // y min
+        this.box._maxY = _center.getY() + _radius; // y max
+        this.box._minZ = _center.getZ() - _radius; // z min
+        this.box._maxZ = _center.getZ() + _radius; // z max
+    }
+
+
 
 
     @Override

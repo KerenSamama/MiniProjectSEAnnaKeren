@@ -1,6 +1,7 @@
 package geometries;
 import primitives.Ray;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class Geometries extends Intersectable {
 
 
     private List<Intersectable> _intersectables = null; // list of geometric bodies
-    private  List<Geometries> _geometries =new LinkedList<>();
 
 
     /**
@@ -22,17 +22,9 @@ public class Geometries extends Intersectable {
      */
     public Geometries() {
 
-
-        if(this._setBoundingBox==true) {
-          //makes them the opposite of what they should be so we can build boxes by checking if there is a bigger max or smaller min
-            this.box._maxX = Double.NEGATIVE_INFINITY;
-            this.box._minX = Double.POSITIVE_INFINITY;
-            this.box._maxY = Double.NEGATIVE_INFINITY;
-            this.box._minY = Double.POSITIVE_INFINITY;
-            this.box._maxZ = Double.NEGATIVE_INFINITY;
-            this.box._minZ = Double.POSITIVE_INFINITY;
-        }
         _intersectables = new LinkedList<Intersectable>();
+
+          setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
 
     }
 
@@ -45,12 +37,9 @@ public class Geometries extends Intersectable {
         _intersectables = new LinkedList<Intersectable>();
         add(intersectables);
 
-    }
-    public Geometries(Geometries... geometries) {
-        this();
-        add(geometries);
-    }
+        setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
 
+    }
 
 
     /**
@@ -59,26 +48,94 @@ public class Geometries extends Intersectable {
      */
     public void add(Intersectable... geometries) {
 
-        for (Intersectable geo : geometries) {
-            _intersectables.add(geo);
-            //sets the bounding boxes between shapes - if there is a bigger max value of smaller min value for one of the coordinates than what we already have we will switch it
-            if (this._setBoundingBox == true) {
-                if (geo.box._maxX > this.box._maxX)
-                    this.box._maxX = geo.box._maxX;
-                if (geo.box._minX < this.box._minX)
-                    this.box._minX = geo.box._minX;
-                if (geo.box._maxY > this.box._maxY)
-                    this.box._maxY = geo.box._maxY;
-                if (geo.box._minY < this.box._minY)
-                    this.box._minY = geo.box._minY;
-                if (geo.box._maxZ > this.box._maxZ)
-                    this.box._maxZ = geo.box._maxZ;
-                if (geo.box._minZ < this.box._minZ)
-                    this.box._minZ = geo.box._minZ;
-            }
-            //_geometries.add((Geometries) _intersectables);
+        Collections.addAll(_intersectables, geometries);
+        setBoundingBox(); // in order to create the bounding box to all of the geometries in the list
+    }
 
+
+
+
+    /**
+     * a function that every intersectable geometry- should have in order to create
+     * a bounding box
+     * Set the bounding boxes between shapes - if there is a bigger max value of smaller min value for one of the coordinates than what we already have we will switch it
+     */
+    public void setBoundingBox()
+    {
+        double xMinLimit = this.box._minX; // going in the negative direction of x
+        double xMaxLimit = this.box._maxX; // going in the positive direction of x
+
+        double yMinLimit = this.box._minY; // going in the negative direction of y
+        double yMaxLimit = this.box._maxY; // going in the positive direction of y
+
+        double zMinLimit = this.box._minZ; // going in the negative direction of z
+        double zMaxLimit = this.box._maxZ; // going in the positive direction of z
+
+        for(Object geometry : _intersectables)
+        {
+            if(geometry instanceof Geometry)
+            {
+                Geometry geo = ((Geometry)geometry);
+
+                // setting x limits--------------------------
+                if(geo.box._minX < xMinLimit)
+                    xMinLimit = geo.box._minX;
+
+                if(xMaxLimit < geo.box._maxZ)
+                    xMaxLimit = geo.box._maxZ;
+
+                // setting y limits-------------------------
+                if(geo.box._minY< yMinLimit)
+                    yMinLimit = geo.box._minY;
+
+                if(yMaxLimit < geo.box._maxY)
+                    yMaxLimit = geo.box._maxY;
+
+                // setting z limits -----------------------
+                if(geo.box._minZ < zMinLimit)
+                    zMinLimit = geo.box._minZ;
+
+                if(zMaxLimit < geo.box._maxZ)
+                    zMaxLimit = geo.box._maxZ;
+                //------------------------------------------
+            }
+
+            else
+            {
+                Geometries geo = ((Geometries)geometry); // in case there's an object of type Geometries- because of the hierarchy
+
+                // setting x limits--------------------------
+                if(geo.box._minX< xMinLimit)
+                    xMinLimit = geo.box._minX;
+
+                if(xMaxLimit < geo.box._maxZ)
+                    xMaxLimit = geo.box._maxZ;
+
+                // setting y limits-------------------------
+                if(geo.box._minY< yMinLimit)
+                    yMinLimit = geo.box._minY;
+
+                if(yMaxLimit < geo.box._maxY)
+                    yMaxLimit = geo.box._maxY;
+
+                // setting z limits -----------------------
+                if(geo.box._minZ < zMinLimit)
+                    zMinLimit = geo.box._minZ;
+
+                if(zMaxLimit < geo.box._maxZ)
+                    zMaxLimit = geo.box._maxZ;
+                //------------------------------------------
+
+            }
         }
+
+        this.box._maxX = xMaxLimit;
+        this.box._minX = xMinLimit;
+        this.box._maxY = yMaxLimit;
+        this.box._minY = yMinLimit;
+        this.box._maxZ = zMaxLimit;
+        this.box._minZ =zMinLimit;
+
 
     }
 
@@ -92,44 +149,22 @@ public class Geometries extends Intersectable {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        if(_setBoundingBox==true && !isIntersectionWithBox(ray))// if the ray does not intersect the bounding box
+        {
+            return  null; // we will not calculate the intersection points with the geometries
+        }
         List<GeoPoint> result = null;
         for (Intersectable geo : _intersectables) {
-            if(this._setBoundingBox == true && geo.isIntersectionWithBox(ray) || this._setBoundingBox == false){
-            List<GeoPoint> geoPoints = geo.findGeoIntersections(ray,maxDistance);  // geopoints is temporary intersections points with one geometric body
-            if (geoPoints != null) {
-                if (result == null) {
-                    result = new LinkedList<>();
+                List<GeoPoint> geoPoints = geo.findGeoIntersections(ray,maxDistance);  // geopoints is temporary intersections points with one geometric body
+                if (geoPoints != null) {
+                    if (result == null) {
+                        result = new LinkedList<>();
+                    }
+                    result.addAll(geoPoints);
                 }
-                result.addAll(geoPoints);
-            }
-        }
+
         }
         return result;
-    }
-
-    /**
-     * Recursive function to check for intersections with the bvh tree
-     * @param ray : the ray we are checking for an intersection with
-     * @return list of intersection points
-     */
-    public List<GeoPoint> treeGeometries(Ray ray){
-        if(_setBoundingBox==false)
-        {
-            return this.findGeoIntersections(ray); //we need to check for an intersection with the geometry
-        }
-        else {
-            if(this._geometries.size()==0)// if there are no boxes left to check
-            {
-                return this.findGeoIntersections(ray);
-            }
-            else if (this.isIntersectionWithBox(ray) && _setBoundingBox==true) { // if there is an intersection with a ray
-
-                for (Geometries g : _geometries) { // for each geometry in the box that we found an intersection with
-                    g.treeGeometries(ray);
-                }
-            }
-        }
-        return null;
     }
 
 

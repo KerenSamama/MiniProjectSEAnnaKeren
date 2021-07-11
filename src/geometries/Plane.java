@@ -113,6 +113,11 @@ public class Plane extends Geometry {
 
     }
 
+    @Override
+    public void setBoundingBox() {
+
+    }
+
 
     @Override
     public String toString() {

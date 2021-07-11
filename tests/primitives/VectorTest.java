@@ -66,8 +66,33 @@ class VectorTest {
         Vector v1 = new Vector(1, 2, 3);
         Vector v2 = new Vector(-2, -4, -6);
         Vector v3 = new Vector(0, 3, -2);
+
+        //Orthogonal
         assertTrue(isZero(v1.dotProduct(v3)), "ERROR: dotProduct() for orthogonal vectors is not zero");
         assertTrue(isZero(v1.dotProduct(v2) + 28), "ERROR: dotProduct() wrong value");
+
+        //Same direction
+        Vector v10 = new Vector(2, 0, 0);
+        Vector v11 = new Vector(1, 0, 0);
+        assertTrue(isZero((Math.acos((v10.dotProduct(v11))/(v10.length()*v11.length()))*180/Math.PI)), "ERROR: Not opposite vector wrong value");
+
+        //Acute angle
+        Vector v4 = new Vector(1, 0, 0);
+        Vector v5 = new Vector(1, 1, 0);
+        assertTrue(isZero((Math.acos((v4.dotProduct(v5))/(v4.length()*v5.length()))*180/Math.PI)-45), "ERROR: acute angle wrong value");
+
+        //Obtuse angle
+        Vector v6 = new Vector(0, 0, -1);
+        Vector v7 = new Vector(1, 0, 1);
+        assertTrue(isZero((Math.acos((v6.dotProduct(v7))/(v6.length()*v7.length()))*180/Math.PI)-135), "ERROR: obtuse angle wrong value");
+
+
+
+        // opposite vector
+        Vector v8 = new Vector(-2, 0, 0);
+        Vector v9 = new Vector(1, 0, 0);
+        assertTrue(isZero((Math.acos((v8.dotProduct(v9))/(v8.length()*v9.length()))*180/Math.PI)-180), "ERROR: Not opposite vector wrong value");
+
 
     }
 

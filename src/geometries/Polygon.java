@@ -84,30 +84,9 @@ public class Polygon extends Geometry {
 
 
             //sets the bounding box parameters for BVH
-            if (_setBoundingBox == true) {
-                //starting points
-                box._minX = this._vertices.get(0).getX();
-                box._maxX = this._vertices.get(0).getX();
-                box._minY = this._vertices.get(0).getY();
-                box._maxY = this._vertices.get(0).getY();
-                box._minZ = this._vertices.get(0).getZ();
-                box._maxZ = this._vertices.get(0).getZ();
+            setBoundingBox();
 
-                for (int j = 1; j < this._vertices.size(); j++) {
-                    if (this._vertices.get(j).getX() < box._minX)//checks for min x
-                        box._minX = this._vertices.get(j).getX();
-                    if (this._vertices.get(j).getY() < box._minY)//checks for min y
-                        box._minY = this._vertices.get(j).getY();
-                    if (this._vertices.get(j).getZ() < box._minZ)//checks for min z
-                        box._minZ = this._vertices.get(j).getZ();
-                    if (this._vertices.get(j).getX() > box._maxX)//checks for max x
-                        box._maxX = this._vertices.get(j).getX();
-                    if (this._vertices.get(j).getY() > box._maxY)//checks for max y
-                        box._maxY = this._vertices.get(j).getY();
-                    if (this._vertices.get(j).getZ() > box._maxZ)//checks for max z
-                        box._maxZ = this._vertices.get(j).getZ();
-                }
-            }
+
         }
     }
 
@@ -150,6 +129,15 @@ public class Polygon extends Geometry {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+
+
+        if(_setBoundingBox==true && !isIntersectionWithBox(ray))// if the ray does not intersect the bounding box
+        {
+
+                return  null; // we will not calculate the intersection points with the polygon
+        }
+
+
         List<GeoPoint> intersections = _plane.findGeoIntersections(ray, maxDistance);
         if (intersections == null) {
             return null;
@@ -181,6 +169,36 @@ public class Polygon extends Geometry {
         }
 
         return List.of(new GeoPoint(this, intersections.get(0)._point));
+
+    }
+
+    /**
+     * this function sets the values of the bounding box of the polygon
+     */
+    @Override
+    public void setBoundingBox() {
+        //starting points
+        box._minX = this._vertices.get(0).getX();
+        box._maxX = this._vertices.get(0).getX();
+        box._minY = this._vertices.get(0).getY();
+        box._maxY = this._vertices.get(0).getY();
+        box._minZ = this._vertices.get(0).getZ();
+        box._maxZ = this._vertices.get(0).getZ();
+
+        for (int j = 1; j < this._vertices.size(); j++) {
+            if (this._vertices.get(j).getX() < box._minX)//checks for min x
+                box._minX = this._vertices.get(j).getX();
+            if (this._vertices.get(j).getY() < box._minY)//checks for min y
+                box._minY = this._vertices.get(j).getY();
+            if (this._vertices.get(j).getZ() < box._minZ)//checks for min z
+                box._minZ = this._vertices.get(j).getZ();
+            if (this._vertices.get(j).getX() > box._maxX)//checks for max x
+                box._maxX = this._vertices.get(j).getX();
+            if (this._vertices.get(j).getY() > box._maxY)//checks for max y
+                box._maxY = this._vertices.get(j).getY();
+            if (this._vertices.get(j).getZ() > box._maxZ)//checks for max z
+                box._maxZ = this._vertices.get(j).getZ();
+        }
 
     }
 

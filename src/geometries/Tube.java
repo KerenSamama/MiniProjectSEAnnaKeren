@@ -76,6 +76,11 @@ public class Tube extends Geometry {
     }
 
     @Override
+    public void setBoundingBox() {
+
+    }
+
+    @Override
     public String toString() {
         return "Tube{" +
                 "_axisRay=" + _axisRay +

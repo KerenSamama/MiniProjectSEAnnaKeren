@@ -31,46 +31,19 @@ public abstract class Intersectable{
      * A static internal helper class to create a Box. A box is represented by a minimal point and a maximal point.
      */
     public static class Box {
-
-        public double _maxX = Double.POSITIVE_INFINITY;
-        public double _minX = Double.NEGATIVE_INFINITY;
-        public double _maxY = Double.POSITIVE_INFINITY;
-        public double _minY = Double.NEGATIVE_INFINITY;
-        public double _maxZ = Double.POSITIVE_INFINITY;
-        public double _minZ = Double.NEGATIVE_INFINITY;
+        //makes them the opposite of what they should be so we can build boxes by checking if there is a bigger max or smaller min
+        public double _maxX = Double.NEGATIVE_INFINITY;
+        public double _minX = Double.POSITIVE_INFINITY;
+        public double _maxY = Double.NEGATIVE_INFINITY;
+        public double _minY = Double.POSITIVE_INFINITY;
+        public double _maxZ = Double.NEGATIVE_INFINITY;
+        public double _minZ = Double.POSITIVE_INFINITY;
     }
 
     // For each intersectable shape, it calls to the default constructor to build a box
     protected Box box = new Box();
 
-    //--------------- Getters and Setters -----------------------
-    public Box getBox() {
-        return box;
-    }
 
-    public void setMaxX(double max_X) {
-        this.box._maxX = max_X;
-    }
-
-    public void setMinX(double min_X) {
-        this.box._minX = min_X;
-    }
-
-    public void setMaxY(double max_Y) {
-        this.box._maxY = max_Y;
-    }
-
-    public void setMinY(double min_Y) {
-        this.box._minY = min_Y;
-    }
-
-    public void setMaxZ(double max_Z) {
-        this.box._maxZ = max_Z;
-    }
-
-    public void setMinZ(double min_Z) {
-        this.box._minZ = min_Z;
-    }
 
 
     /**
@@ -112,11 +85,9 @@ public abstract class Intersectable{
      * @return List<GeoPoint> :  returns a list of intersections points of type GeoPoint with this ray
      */
     public List<GeoPoint> findGeoIntersections(Ray ray){
-        if (!_setBoundingBox || isIntersectionWithBox(ray) && _setBoundingBox==true) {
             return  findGeoIntersections(ray,Double.POSITIVE_INFINITY);
-        }
-        return null;
-     }
+
+    }
 
     /**
      * The function receive a Ray and a maximum distance where we want to find the intersection points
@@ -127,10 +98,16 @@ public abstract class Intersectable{
     abstract List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance);
 
     /**
+     * a function that every intersectable geometry- should have in order to create
+     * a bounding box
+     */
+    abstract public void setBoundingBox();
+
+    /**
      * She calls the function findGeoIntersections that returns a list of GeoPoints and recovers the field point of each GeoPoint
      * to create a list of intersection points of type Point3D
      */
-     public List<Point3D> findIntersections(Ray ray) {
+    public List<Point3D> findIntersections(Ray ray) {
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null
                 : geoList.stream()
@@ -140,7 +117,7 @@ public abstract class Intersectable{
 
 
     /**
-     *  This function checks if the ray intersects the box around a shape.
+     * This function checks if the ray intersects the box around a shape.
      * @param ray of type Ray
      * @return true if there is an intersection, otherwise return false.
      */
