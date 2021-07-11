@@ -355,7 +355,7 @@ public class FinalProjectTest {
                 .setImageWriter(imageWriter) //
                 .setCamera(camera2) //
                 .setMultithreading(3)
-                .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(1).set_bvhTree(false));
+                .setRayTracer(new BasicRayTracer(scene2).set_rayDistance(1).set_numOfRays(1));
 
         render.renderImage();
         render.writeToImage();
